@@ -1,0 +1,55 @@
+package com.ardublock.translator.block;
+
+import com.ardublock.translator.Translator;
+import com.ardublock.translator.block.exception.SocketNullException;
+import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;
+
+public class SwitchBlock extends TranslatorBlock {
+	public SwitchBlock(Long blockId, Translator translator, String codePrefix,
+			String codeSuffix, String label) {
+		super(blockId, translator, codePrefix, codeSuffix, label);
+	}
+
+	@Override
+	public String toCode() throws SocketNullException,
+			SubroutineNotDeclaredException {
+		int i = 1;
+		TranslatorBlock blk = this.getRequiredTranslatorBlockAtSocket(0);
+		String ret = "switch(" + blk.toCode() + "){\n";
+		while (true) {
+			if (isTranslatorBlockAtSocketNull(i)) {
+				// if there is an empty case, break out of loop
+				if ((i + 1) % 2 == 0) {
+					break;
+				}
+
+			} else {
+				// if it is a case
+				if ((i + 1) % 2 == 0) {
+					ret += "case "
+							+ this.getRequiredTranslatorBlockAtSocket(i)
+									.toCode() + ":";
+				} else {
+					ret = translateCodeForExecutionOfCase(i, ret);
+				}
+			}
+			i++;
+		}
+		// String ret = translatorBlock.toCode()+"\n";
+		// translatorBlock = this.getRequiredTranslatorBlockAtSocket(1);
+		// ret = ret+" = " +translatorBlock.toCode() + ";\n";
+		return ret + "}\n";
+
+	}
+
+	private String translateCodeForExecutionOfCase(int i, String ret)
+			throws SocketNullException, SubroutineNotDeclaredException {
+		TranslatorBlock translatorBlock = this
+				.getRequiredTranslatorBlockAtSocket(i);
+		while (translatorBlock != null) {
+			ret = ret + translatorBlock.toCode();
+			translatorBlock = translatorBlock.nextTranslatorBlock();
+		}
+		return ret;
+	}
+}

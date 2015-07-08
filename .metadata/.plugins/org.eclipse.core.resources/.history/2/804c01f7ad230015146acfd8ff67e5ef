@@ -1,0 +1,24 @@
+package com.ardublock.translator;
+
+import java.util.ArrayList;
+
+public class List_Variables {
+	private static ArrayList<String> list_variables = new ArrayList<String>();
+	public List_Variables(){
+		
+	}
+	public static ArrayList<String> getListVariables(){
+		return list_variables;
+	}
+	public static void addItem(String item){
+		list_variables.add(item);
+	}
+	public static void printItems() {
+		System.out.println("items in list");
+		for(int i=0; i <list_variables.size();i++){
+			System.out.println("item no. "+i+ " is "+list_variables.get(i));
+		}
+		
+	}
+
+}

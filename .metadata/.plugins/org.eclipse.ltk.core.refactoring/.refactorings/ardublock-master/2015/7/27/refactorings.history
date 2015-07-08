@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;com.ardublock.translator.block.SerialPortOut.java&apos; to &apos;SerialPortOutBlock.java&apos;&#x0D;&#x0A;- Original project: &apos;ardublock-master&apos;&#x0D;&#x0A;- Original element: &apos;com.ardublock.translator.block.SerialPortOut.java&apos;&#x0D;&#x0A;- Renamed element: &apos;com.ardublock.translator.block.SerialPortOutBlock.java&apos;" description="Rename compilation unit &apos;SerialPortOut.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src\/main\/java&lt;com.ardublock.translator.block{SerialPortOut.java" name="SerialPortOutBlock.java" references="false" stamp="1435899346329" version="1.0"/>
+</session>
