@@ -171,8 +171,7 @@ public class Workspace extends JLayeredPane implements ISupportMemento, RBParent
         this.focusManager = new FocusTraversalManager(this);
 
         this.typeBlockManager = new TypeBlockManager(this, blockCanvas);
-        
-       blockSave.readXML(this);
+       
     }
 
     /*
@@ -843,7 +842,7 @@ public class Workspace extends JLayeredPane implements ISupportMemento, RBParent
     	
         //reset procedure output information POM finishload
         ProcedureOutputManager.finishLoad();
-
+       
         if (newRoot != null) {
             PageDrawerLoadingUtils.loadBlockDrawerSets(this, originalLangRoot, factory); //
             //load pages, page drawers, and their blocks from save file
@@ -853,12 +852,18 @@ public class Workspace extends JLayeredPane implements ISupportMemento, RBParent
 //            PageDrawerLoadingUtils.loadBlockDrawerSets(this, originalLangRoot, factory);
             PageDrawerLoadingUtils.loadBlockDrawerSets(this, newRoot, factory);
             loadWorkspaceSettings(newRoot);
+            
         } else {
             //load from original language/workspace root specification
             blockCanvas.loadSaveString(originalLangRoot);
             //load block drawers and their content
             PageDrawerLoadingUtils.loadBlockDrawerSets(this, originalLangRoot, factory);
             loadWorkspaceSettings(originalLangRoot);
+            if(blockSave.FileExists()){
+            	   blockSave.readXML(this,factory);
+            }
+            //load blocks from myBlocks.xml
+           
         }
 
     }

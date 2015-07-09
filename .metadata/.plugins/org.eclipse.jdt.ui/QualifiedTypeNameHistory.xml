@@ -20,4 +20,6 @@
 <fullyQualifiedTypeName name="javax.xml.parsers.ParserConfigurationException"/>
 <fullyQualifiedTypeName name="javax.xml.transform.TransformerException"/>
 <fullyQualifiedTypeName name="org.w3c.dom.Attr"/>
+<fullyQualifiedTypeName name="edu.mit.blocks.codeblocks.BlockGenus"/>
+<fullyQualifiedTypeName name="com.ardublock.translator.block.MyBlockBlock"/>
 </qualifiedTypeNameHistroy>

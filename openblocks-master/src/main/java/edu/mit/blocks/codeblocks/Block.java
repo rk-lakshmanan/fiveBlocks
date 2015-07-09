@@ -30,6 +30,11 @@ import edu.mit.blocks.workspace.WorkspaceEnvironment;
  *
  */
 public class Block implements ISupportMemento {
+	
+	//boolean to check if it is a instance of myBlock
+	boolean isMyBlock = false;
+	//code that is stored in myBlock
+	private String code;
 
     //Defines a NULL id for a Block
     public static final Long NULL = Long.valueOf(-1);
@@ -75,6 +80,8 @@ public class Block implements ISupportMemento {
 
     // shortcut field (workspace.getEnv() call provides the same)
     private final WorkspaceEnvironment env;
+
+
 
     /**
      * Constructs a new Block from the specified information.  This class constructor is
@@ -1703,4 +1710,22 @@ public class Block implements ISupportMemento {
             }
         }
     }
+
+	public void setIsMyBlock(boolean value) {
+		// TODO Auto-generated method stub
+		isMyBlock = value;
+	}
+
+	public boolean isMyBlocks() {
+		// TODO Auto-generated method stub
+		return isMyBlock;
+	}
+
+	public void setCode(String code) {
+		// TODO Auto-generated method stub
+		this.code = code;
+	}
+	public String getCode(){
+		return this.code;
+	}
 }

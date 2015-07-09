@@ -440,7 +440,6 @@ public class WorkspaceController {
             //also load drawers, or any custom drawers from file.  if no custom drawers
             //are present in root, then the default set of drawers is loaded from
             //langDefRoot
-            System.out.println(langDefRoot+" is langDefRoot");
             workspace.loadWorkspaceFrom(projectRoot, langDefRoot);
             workspaceLoaded = true;
         } catch (ParserConfigurationException e) {

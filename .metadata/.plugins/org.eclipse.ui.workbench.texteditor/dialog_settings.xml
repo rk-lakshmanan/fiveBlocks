@@ -2,9 +2,9 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="257" key="DIALOG_WIDTH"/>
-		<item value="292" key="DIALOG_Y_ORIGIN"/>
+		<item value="249" key="DIALOG_Y_ORIGIN"/>
 		<item value="381" key="DIALOG_HEIGHT"/>
-		<item value="1058" key="DIALOG_X_ORIGIN"/>
+		<item value="832" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
@@ -13,16 +13,16 @@
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="BlockSave" key="selection"/>
+		<item value="getGenusName" key="selection"/>
 		<list key="findhistory">
-			<item value="blockSave"/>
-			<item value="langDefRoot"/>
-			<item value="loadwork"/>
-			<item value="loadfreshworkspace"/>
-			<item value="loadfresh"/>
-			<item value="resetworkspace"/>
-			<item value="reset"/>
-			<item value="loadworkspacefrom"/>
+			<item value="getGenusName"/>
+			<item value="setCode"/>
+			<item value="isMyBlock"/>
+			<item value="connect("/>
+			<item value="connect"/>
+			<item value="afterblock"/>
+			<item value="block"/>
+			<item value="myBlocks"/>
 		</list>
 		<list key="replacehistory">
 		</list>
