@@ -1,6 +1,7 @@
 package com.ardublock.translator.adaptor;
 
 import com.ardublock.translator.Translator;
+import com.ardublock.translator.block.MyBlockBlock;
 import com.ardublock.translator.block.TranslatorBlock;
 import com.ardublock.translator.block.TranslatorBlockFactory;
 
@@ -45,6 +46,9 @@ public class OpenBlocksAdaptor implements BlockAdaptor
 		if (Block.NULL.equals(blockId))
 		{
 			return null;
+		}
+		else if(translator.getWorkspace().getBlockSave().isMyBlock(translator.getBlock(blockId).getGenusName())){
+			return new MyBlockBlock(blockId,translator,codePrefix,codeSuffix,"");
 		}
 		else
 		{

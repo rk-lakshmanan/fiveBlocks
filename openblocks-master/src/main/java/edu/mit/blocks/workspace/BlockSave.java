@@ -9,6 +9,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -30,21 +32,26 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import edu.mit.blocks.codeblocks.Block;
+import edu.mit.blocks.codeblocks.BlockGenus;
 import edu.mit.blocks.renderable.FactoryRenderableBlock;
 import edu.mit.blocks.renderable.RenderableBlock;
 
 // The following class handles reading and writing to myBlocks.xml
 // which is a user-defined block library
 public class BlockSave {
+	private Map<String, String> myBlock = new HashMap<String,String>();
 	private static File file;
-
+	private boolean isFileExists = true;
+	public boolean isFileExists(){
+		return this.isFileExists;
+	}
 	public BlockSave() {
 
 		File file = new File("myBlocks.xml");
-		boolean isFileExists = true;
 		try {
 			if (!file.exists()) {
 				file.createNewFile();
+				isFileExists = false;
 			}
 		} catch (IOException e) {
 			System.out.println("File cannot be created!");
@@ -86,8 +93,14 @@ public class BlockSave {
 
 		}
 	}
+	public String getCodeOfMyBlock(String key){
+		return myBlock.get(key);
+	}
+	public boolean isMyBlock(String key){
+		return myBlock.containsKey(key);
+	}
 
-	public void readXML(Workspace workspace) {
+	public void readXML(Workspace workspace,FactoryManager manager) {
 
 		final DocumentBuilderFactory factory = DocumentBuilderFactory
 				.newInstance();
@@ -108,6 +121,7 @@ public class BlockSave {
 			// are present in root, then the default set of drawers is loaded
 			// from
 			// langDefRoot
+			/*
 			NodeList blockList = root.getElementsByTagName("Block");
 		
 				System.out.println("empty");
@@ -115,7 +129,8 @@ public class BlockSave {
 			for (int i =0 ; i<blockList.getLength();i++){
 				Node node = blockList.item(i);
 				System.out.println("item is "+node.getTextContent());
-			}
+			}*/
+		 BlockGenus.loadMyBlockFrom(workspace, root, manager,myBlock);
 		} catch (ParserConfigurationException e) {
 			throw new RuntimeException(e);
 		} catch (SAXException e) {
