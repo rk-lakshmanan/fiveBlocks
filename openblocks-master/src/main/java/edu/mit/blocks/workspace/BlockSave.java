@@ -226,8 +226,10 @@ public class BlockSave {
 	
 	
 
-	public void writeToXML(String code) {
+	public void writeToXML(String code, Workspace workspace) {
 		String name =JOptionPane.showInputDialog("Enter your MyBlock Name","");
+		myBlock.put(name,code);
+		
 		try {
 			
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -251,6 +253,7 @@ public class BlockSave {
 			StreamResult result = new StreamResult(new File(file.getAbsolutePath()));
 			transformer.transform(source, result);
 			
+			BlockGenus.loadMyBlockAfterSave(workspace,workspace.getFactoryManager(),name,code);
 		} catch (ParserConfigurationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

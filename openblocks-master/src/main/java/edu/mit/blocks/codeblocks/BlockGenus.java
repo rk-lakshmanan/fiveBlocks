@@ -1159,17 +1159,18 @@ public class BlockGenus {
 			}
 			famList.clear();
 		}
-		
+
 	}
 
-	public static void loadMyBlockFrom(Workspace workspace, Element root,FactoryManager manager, Map<String, String> myBlock) {
+	public static void loadMyBlockFrom(Workspace workspace, Element root,
+			FactoryManager manager, Map<String, String> myBlock) {
 		WorkspaceEnvironment env = workspace.getEnv();
-		 ArrayList<RenderableBlock> drawerRBs = new ArrayList<RenderableBlock>();
+		ArrayList<RenderableBlock> drawerRBs = new ArrayList<RenderableBlock>();
 		Pattern attrExtractor = Pattern.compile("\"(.*)\"");
 		Matcher nameMatcher;
 		NodeList genusNodes = root.getElementsByTagName("MyBlock"); // look for
 																	// genus
-	
+
 		Node genusNode;
 		StringTokenizer col;
 		String attribName = "";// Added to get attribute name
@@ -1194,13 +1195,13 @@ public class BlockGenus {
 				newGenus.color = new Color(100, 20, 40);
 				newGenus.kind = ("command");
 				newGenus.initLabel = newGenus.genusName;
-			
+
 				// get the code
-				 code = ((Element)	genusNode).getAttribute("code");
-				//System.out.println("code is "+code);
-			/*	if (nameMatcher.find()) {
-					code= nameMatcher.group(1);
-				}*/
+				code = ((Element) genusNode).getAttribute("code");
+				// System.out.println("code is "+code);
+				/*
+				 * if (nameMatcher.find()) { code= nameMatcher.group(1); }
+				 */
 				myBlock.put(newGenus.genusName, code);
 				// if genus is a data genus (kind=data) or a variable block (and
 				// soon a declaration block)
@@ -1230,23 +1231,73 @@ public class BlockGenus {
 
 				// System.out.println("Added "+newGenus.toString());
 				env.addBlockGenus(newGenus);
-				
-				 Block newBlock;
-	             //don't link factory blocks to their stubs because they will
-	             //forever remain inside the drawer and never be active
-	             newBlock = new Block(workspace, newGenus.genusName, false);
-	             drawerRBs.add(new FactoryRenderableBlock(workspace, manager, newBlock.getBlockID()));
-	            
+
+				Block newBlock;
+				// don't link factory blocks to their stubs because they will
+				// forever remain inside the drawer and never be active
+				newBlock = new Block(workspace, newGenus.genusName, false);
+				drawerRBs.add(new FactoryRenderableBlock(workspace, manager,
+						newBlock.getBlockID()));
 
 			}
-			 manager.addStaticBlocks(drawerRBs, "fiveBlocks");
-			
-         }
-     }
+			manager.addStaticBlocks(drawerRBs, "fiveBlocks");
 
-		
+		}
+	}
 
-	
+	public static void loadMyBlockAfterSave(Workspace workspace,
+			FactoryManager manager, String name, String code) {
+		WorkspaceEnvironment env = workspace.getEnv();
+		ArrayList<RenderableBlock> drawerRBs = new ArrayList<RenderableBlock>();
+
+		BlockGenus newGenus = new BlockGenus(env);
+		// first, parse out the attributes
+
+		newGenus.genusName = name;
+
+		assert env.getGenusWithName(newGenus.genusName) == null : "Block genus names must be unique.  A block genus already exists with this name: "
+				+ newGenus.genusName;
+		newGenus.color = new Color(100, 20, 40);
+		newGenus.kind = ("command");
+		newGenus.initLabel = newGenus.genusName;
+		// if genus is a data genus (kind=data) or a variable block (and
+		// soon a declaration block)
+		// it is both a starter and terminator
+		// in other words, it should not have before and after
+		// connectors
+		if (newGenus.isDataBlock() || newGenus.isVariableDeclBlock()
+				|| newGenus.isFunctionBlock()) {
+			newGenus.isStarter = true;
+			newGenus.isTerminator = true;
+		}
+
+		// John's code to add command sockets... probably in the wrong
+		// place
+		if (!newGenus.isStarter) {
+			newGenus.before = new BlockConnector(workspace,
+					BlockConnectorShape.getCommandShapeName(),
+					BlockConnector.PositionType.TOP, "", false, false,
+					Block.NULL);
+		}
+		if (!newGenus.isTerminator) {
+			newGenus.after = new BlockConnector(workspace,
+					BlockConnectorShape.getCommandShapeName(),
+					BlockConnector.PositionType.BOTTOM, "", false, false,
+					Block.NULL);
+		}
+
+		// System.out.println("Added "+newGenus.toString());
+		env.addBlockGenus(newGenus);
+
+		Block newBlock;
+		// don't link factory blocks to their stubs because they will
+		// forever remain inside the drawer and never be active
+		newBlock = new Block(workspace, newGenus.genusName, false);
+		drawerRBs.add(new FactoryRenderableBlock(workspace, manager, newBlock
+				.getBlockID()));
+
+		manager.addStaticBlocks(drawerRBs, "fiveBlocks");
+	}
 
 	/**
 	 * Returns String representation of this
