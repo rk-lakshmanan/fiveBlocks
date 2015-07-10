@@ -25,7 +25,6 @@ import javax.swing.JSplitPane;
 import javax.swing.SwingUtilities;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-
 import javax.xml.xpath.XPathFactory;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathExpression;
@@ -45,6 +44,7 @@ import edu.mit.blocks.codeblockutil.ExplorerEvent;
 import edu.mit.blocks.codeblockutil.ExplorerListener;
 import edu.mit.blocks.renderable.BlockUtilities;
 import edu.mit.blocks.renderable.RenderableBlock;
+import edu.mit.blocks.renderable.SaveBlockObservable;
 import edu.mit.blocks.workspace.typeblocking.FocusTraversalManager;
 import edu.mit.blocks.workspace.typeblocking.TypeBlockManager;
 
@@ -55,6 +55,9 @@ import edu.mit.blocks.workspace.typeblocking.TypeBlockManager;
  */
 public class Workspace extends JLayeredPane implements ISupportMemento,
 		RBParent, ChangeListener, ExplorerListener {
+	
+	//observable class for detection of saving myBlock
+	private SaveBlockObservable saveBlockObservable;
 
 	private static final long serialVersionUID = 328149080422L;
 
@@ -70,7 +73,9 @@ public class Workspace extends JLayeredPane implements ISupportMemento,
 	public BlockSave getBlockSave() {
 		return this.blockSave;
 	}
-
+	public SaveBlockObservable getSaveBlockObservable(){
+		return saveBlockObservable;
+	}
 	/**
 	 * WorkspaceListeners that monitor: block: added, removed, dropped, label
 	 * changed, connected, disconnected workspace: scrolled, zoom changed
@@ -185,6 +190,8 @@ public class Workspace extends JLayeredPane implements ISupportMemento,
 		this.focusManager = new FocusTraversalManager(this);
 
 		this.typeBlockManager = new TypeBlockManager(this, blockCanvas);
+		
+		this.saveBlockObservable = new SaveBlockObservable();
 	}
 
 	/*

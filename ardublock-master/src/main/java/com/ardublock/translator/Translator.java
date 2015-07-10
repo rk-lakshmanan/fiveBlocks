@@ -164,7 +164,24 @@ public class Translator
 		}
 		return rootTranslatorBlock.toCode();
 	}
-	
+	//translate method for gettting code for MyBlock
+	public String translateForSave(Long blockId)throws SocketNullException, SubroutineNotDeclaredException, BlockException{
+		TranslatorBlockFactory translatorBlockFactory = new TranslatorBlockFactory();
+		Block block = workspace.getEnv().getBlock(blockId);
+		TranslatorBlock translatorBlock = translatorBlockFactory.buildTranslatorBlock(this, blockId, block.getGenusName(), "", "", block.getBlockLabel());
+		//ERROR SHOULD BE THROWN WHEN THERE IS FUNCTION
+		if(block.getGenusName().equals("function")){
+			return translatorBlock.getCode();
+		}
+		String ret = new String("");
+		while (translatorBlock != null)
+		{
+			ret = ret + translatorBlock.toCode();
+			translatorBlock = translatorBlock.nextTranslatorBlock();
+		}
+		return  ret;
+		
+	}
 	public BlockAdaptor getBlockAdaptor()
 	{
 		return blockAdaptor;

@@ -16,6 +16,8 @@ import java.util.List;
 import javax.swing.JComponent;
 import javax.swing.SwingUtilities;
 
+//import com.sun.java.accessibility.util.Translator;
+
 import edu.mit.blocks.codeblocks.Block;
 import edu.mit.blocks.codeblocks.BlockConnector;
 import edu.mit.blocks.codeblocks.BlockConnectorShape;
@@ -411,11 +413,15 @@ public class BlockLabel implements MouseListener, MouseMotionListener,
 				rb.getBlock().addSocket(0, new BlockConnector(workspace,"input param","number",false,false));
 				rb.getBlock().addSocket(0, new BlockConnector(workspace,"function name","number",false,false));
 			}
+			if(genus.equals("save")){
+				workspace.getSaveBlockObservable().saveBlock(oldBlock);
+			}else{
 			oldBlock.changeGenusTo(genus);
 			rb.repaintBlock();
 			workspace.notifyListeners(new WorkspaceEvent(workspace, rb
 					.getParentWidget(), blockID,
 					WorkspaceEvent.BLOCK_GENUS_CHANGED));
+			}
 		}
 	}
 	

@@ -288,4 +288,5 @@ public class GenerateCodeButtonListener implements ActionListener
 			context.didGenerate(codeOut);
 		}
 	}
+
 }

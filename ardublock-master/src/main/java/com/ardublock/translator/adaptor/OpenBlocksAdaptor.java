@@ -25,6 +25,9 @@ public class OpenBlocksAdaptor implements BlockAdaptor
 		{
 			return null;
 		}
+		else if(translator.getWorkspace().getBlockSave().isMyBlock(translator.getBlock(blockId).getGenusName())){
+			return new MyBlockBlock(blockId,translator,codePrefix,codeSuffix,"");
+		}
 		else
 		{
 			block = translator.getBlock(blockId);

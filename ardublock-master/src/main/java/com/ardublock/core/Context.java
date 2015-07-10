@@ -85,7 +85,7 @@ public class Context
 	
 	private WorkspaceController workspaceController;
 	private Workspace workspace;
-	
+	private SaveBlockObserver saveBlockObserver;
 	private Context()
 	{
 		workspaceController = new WorkspaceController();
@@ -99,7 +99,14 @@ public class Context
 		isInArduino = false;
 		
 		osType = determineOsType();
+		linkSaveBlockObserves();
 	}
+	
+	private void linkSaveBlockObserves(){
+		SaveBlockObserver saveBlockObserver = new SaveBlockObserver(workspace);
+			workspace.getSaveBlockObservable().addObserver(saveBlockObserver);;
+	}
+	
 	
 	public void resetWorksapce()
 	{

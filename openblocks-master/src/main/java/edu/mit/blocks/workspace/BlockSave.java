@@ -1,5 +1,6 @@
 package edu.mit.blocks.workspace;
 
+
 import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -30,6 +31,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+
 
 import edu.mit.blocks.codeblocks.Block;
 import edu.mit.blocks.codeblocks.BlockGenus;
@@ -212,6 +214,9 @@ public class BlockSave {
 			System.out.println(e.getMessage());
 		}
 
+	}
+	public void saveMyBlock(Workspace workspace){
+			
 	}
 
 }

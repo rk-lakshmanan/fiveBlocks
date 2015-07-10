@@ -303,7 +303,10 @@
 
 			</BlockConnectors>
 		</BlockGenus>
-
+		<!-- dummy block that is meant for BlockSave functionality -->
+	<BlockGenus name="save" kind="command" color="200 200 0"
+			initlabel="bg.save" editable-label="yes">
+		</BlockGenus>
 		<BlockGenus name="subroutine-ref" kind="command" color="200 200 0"
 			initlabel="bg.subroutine" editable-label="yes">
 			<description>
@@ -10615,6 +10618,7 @@
 			<FamilyMember>function</FamilyMember>
 			<FamilyMember>delay</FamilyMember>
 			<FamilyMember>setter_variable_number</FamilyMember>
+			<FamilyMember>save</FamilyMember>
 
 		</BlockFamily>
 
@@ -10632,6 +10636,7 @@
 			<FamilyMember>greater_equal</FamilyMember>
 			<FamilyMember>less_equal</FamilyMember>
 			<FamilyMember>not_equal</FamilyMember>
+			<FamilyMember>save</FamilyMember>
 			
 		</BlockFamily>
 		<BlockFamily>
@@ -10641,6 +10646,7 @@
 			<FamilyMember>do_while</FamilyMember>
 			<FamilyMember>for</FamilyMember>
 			<FamilyMember>switch</FamilyMember>
+			<FamilyMember>save</FamilyMember>
 		</BlockFamily>
 		<BlockFamily>
 		<FamilyMember>Input/Output</FamilyMember>
@@ -10648,7 +10654,7 @@
 			<FamilyMember>serial_port_out</FamilyMember>
 			<FamilyMember>serial_pin_in</FamilyMember>
 			<FamilyMember>serial_pin_out</FamilyMember>
-
+<FamilyMember>save</FamilyMember>
 		</BlockFamily>
 
 		<BlockFamily>
