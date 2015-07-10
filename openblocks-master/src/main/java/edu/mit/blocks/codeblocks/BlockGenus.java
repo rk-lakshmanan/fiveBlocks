@@ -1196,11 +1196,11 @@ public class BlockGenus {
 				newGenus.initLabel = newGenus.genusName;
 			
 				// get the code
-				nameMatcher = attrExtractor.matcher(genusNode.getAttributes()
-						.getNamedItem("code").toString());
-				if (nameMatcher.find()) {
+				 code = ((Element)	genusNode).getAttribute("code");
+				//System.out.println("code is "+code);
+			/*	if (nameMatcher.find()) {
 					code= nameMatcher.group(1);
-				}
+				}*/
 				myBlock.put(newGenus.genusName, code);
 				// if genus is a data genus (kind=data) or a variable block (and
 				// soon a declaration block)

@@ -12,12 +12,15 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.swing.JOptionPane;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
@@ -31,6 +34,10 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+
+
+
+
 
 
 import edu.mit.blocks.codeblocks.Block;
@@ -68,8 +75,8 @@ public class BlockSave {
 
 				// root elements
 				Document doc = docBuilder.newDocument();
-				// Element rootElement = doc.createElement("creaate");
-				// doc.appendChild(rootElement);
+				Element rootElement = doc.createElement("MyBlockSet");
+				doc.appendChild(rootElement);
 
 				// write the content into xml file
 				TransformerFactory transformerFactory = TransformerFactory
@@ -215,8 +222,51 @@ public class BlockSave {
 		}
 
 	}
-	public void saveMyBlock(Workspace workspace){
-			
-	}
+	
+	
+	
 
+	public void writeToXML(String code) {
+		String name =JOptionPane.showInputDialog("Enter your MyBlock Name","");
+		try {
+			
+			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+			Document doc = docBuilder.parse(file.getAbsolutePath());
+			
+			// Get the root element
+			Node rootNode = doc.getFirstChild();
+			
+			
+			Element myBlock = doc.createElement("MyBlock");
+			
+			//System.out.println("code is "+code);
+			myBlock.setAttribute("code",code);
+			myBlock.setAttribute("name", name);
+			rootNode.appendChild(myBlock);
+			
+			TransformerFactory transformerFactory = TransformerFactory.newInstance();
+			Transformer transformer = transformerFactory.newTransformer();
+			DOMSource source = new DOMSource(doc);
+			StreamResult result = new StreamResult(new File(file.getAbsolutePath()));
+			transformer.transform(source, result);
+			
+		} catch (ParserConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (TransformerConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (TransformerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+	}
 }
