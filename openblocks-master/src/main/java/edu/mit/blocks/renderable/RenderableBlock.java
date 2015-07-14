@@ -169,7 +169,14 @@ public class RenderableBlock extends JComponent implements SearchableElement,
 	// the values of the x and y coordinates of block when zoom = 1.0
 	private double unzoomedX;
 	private double unzoomedY;
-
+	
+	//Getter for socketTags
+	public List<ConnectorTag> getSocketTags(){
+		return this.socketTags;
+	}
+	public void removeSocketTag(int i){
+		this.socketTags.remove(i);
+	}
 	/**
 	 * Constructs a new RenderableBlock instance with the specified parent
 	 * WorkspaceWidget and Long blockID of its associated Block
@@ -2408,7 +2415,7 @@ public class RenderableBlock extends JComponent implements SearchableElement,
 		}
 	}
 
-	ConnectorTag getConnectorTag(BlockConnector socket) {
+	public ConnectorTag getConnectorTag(BlockConnector socket) {
 		if (socket == null) {
 			throw new RuntimeException("Socket may not be null");
 		}
@@ -2500,5 +2507,9 @@ public class RenderableBlock extends JComponent implements SearchableElement,
 			x += getCollapseLabelWidth();
 		}
 		return x;
+	}
+	public void addSocketTag(ConnectorTag connectorTag) {
+		// TODO Auto-generated method stub
+		this.socketTags.add(connectorTag);
 	}
 }

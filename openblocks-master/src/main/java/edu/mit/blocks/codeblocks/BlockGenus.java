@@ -1192,7 +1192,7 @@ public class BlockGenus {
 				// assert that no other genus has this name
 				assert env.getGenusWithName(newGenus.genusName) == null : "Block genus names must be unique.  A block genus already exists with this name: "
 						+ newGenus.genusName;
-				newGenus.color = new Color(100, 20, 40);
+				newGenus.color = new Color(200,150,100);
 				newGenus.kind = ("command");
 				newGenus.initLabel = newGenus.genusName;
 
@@ -1257,7 +1257,7 @@ public class BlockGenus {
 
 		assert env.getGenusWithName(newGenus.genusName) == null : "Block genus names must be unique.  A block genus already exists with this name: "
 				+ newGenus.genusName;
-		newGenus.color = new Color(100, 20, 40);
+		newGenus.color = new Color(200,150,100);
 		newGenus.kind = ("command");
 		newGenus.initLabel = newGenus.genusName;
 		// if genus is a data genus (kind=data) or a variable block (and

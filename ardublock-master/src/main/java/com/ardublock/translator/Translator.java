@@ -169,7 +169,7 @@ public class Translator
 		TranslatorBlockFactory translatorBlockFactory = new TranslatorBlockFactory();
 		Block block = workspace.getEnv().getBlock(blockId);
 		TranslatorBlock translatorBlock = translatorBlockFactory.buildTranslatorBlock(this, blockId, block.getGenusName(), "", "", block.getBlockLabel());
-		//ERROR SHOULD BE THROWN WHEN THERE IS FUNCTION
+		//ERROR SHOULD BE THROWN WHEN THERE IS FUNCTION(MODIFY THE FOLLOWING CODE)
 		if(block.getGenusName().equals("function")){
 			return translatorBlock.getCode();
 		}

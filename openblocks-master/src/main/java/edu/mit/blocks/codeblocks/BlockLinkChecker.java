@@ -28,7 +28,7 @@ public class BlockLinkChecker {
 	private static ArrayList<LinkRule> rules = new ArrayList<LinkRule>();
 	// TODO get a better value
 	private static double MAX_LINK_DISTANCE = 20.0;
-
+	private static ArrayList<Long> changedBlocks = new ArrayList<Long>();
 	/**
 	 * Clears all the rules within this.
 	 */
@@ -150,8 +150,10 @@ public class BlockLinkChecker {
 					currentDistance = currentPlugPoint
 							.distance(currentSocketPoint);
 					if (currentDistance < closestDistance) {
-						/*
+						
 						if(rblock1.getBlock().getGenusName().equals("function")&&rblock2.getBlock().getGenusName().equals("execution")){
+							if(!changedBlocks.contains(rblock2.getBlockID())){
+								changedBlocks.add(rblock2.getBlockID());
 							rblock2.getBlock().removeSocket(1);
 							rblock2.getBlock().addSocket(1,new BlockConnector(workspace,"","cmd",false,false));
 							rblock2.repaintBlock();
@@ -163,8 +165,9 @@ public class BlockLinkChecker {
 							currentDistance = currentPlugPoint
 									.distance(currentSocketPoint);
 							block2 =workspace.getEnv().getBlock(rblock2.getBlockID());
+							}
 	
-						}*/
+						}
 						if (checkRules(block1, block2, currentPlug,
 								currentSocket)) {
 							closestBlock2 = block2;
