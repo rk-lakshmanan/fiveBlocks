@@ -194,7 +194,7 @@
 			initlabel="bg.switch">
 			<BlockConnectors>
 				<BlockConnector connector-type="number"
-					connector-kind="socket" />
+					connector-kind="socket" label="switch"/>
 				<BlockConnector label="case" connector-type="number"
 					connector-kind="socket" />
 				<BlockConnector connector-type="cmd" connector-kind="socket" />
@@ -458,7 +458,7 @@
 		</BlockGenus>
 
 
-		<BlockGenus name="pin-read-digital-pullup" kind="command"
+<!-- <BlockGenus name="pin-read-digital-pullup" kind="command"
 			color="77 191 169" initlabel="bg.pin-write-digital">
 			<description>
 				<text>write digital to pin</text>
@@ -467,6 +467,18 @@
 				<BlockConnector connector-type="number"
 					connector-kind="socket" label="#">
 					<DefaultArg genus-name="DuinoEDU_D2" label="D2" />
+				</BlockConnector>
+			</BlockConnectors>
+		</BlockGenus> -->
+
+		<BlockGenus name="pin-read-digital-pullup" kind="command"
+			color="77 191 169" initlabel="bg.pin-write-digital">
+			<description>
+				<text>write digital to pin</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number"
+					connector-kind="socket" label="">
 				</BlockConnector>
 			</BlockConnectors>
 		</BlockGenus>

@@ -422,6 +422,9 @@ public class BlockLabel implements MouseListener, MouseMotionListener,
 					.getParentWidget(), blockID,
 					WorkspaceEvent.BLOCK_GENUS_CHANGED));
 			}
+			if(genus.equals("function")){
+				rb.cloneMe();
+			}
 		}
 	}
 	

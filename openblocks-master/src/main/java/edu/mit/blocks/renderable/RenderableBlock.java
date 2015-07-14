@@ -169,14 +169,16 @@ public class RenderableBlock extends JComponent implements SearchableElement,
 	// the values of the x and y coordinates of block when zoom = 1.0
 	private double unzoomedX;
 	private double unzoomedY;
-	
-	//Getter for socketTags
-	public List<ConnectorTag> getSocketTags(){
+
+	// Getter for socketTags
+	public List<ConnectorTag> getSocketTags() {
 		return this.socketTags;
 	}
-	public void removeSocketTag(int i){
+
+	public void removeSocketTag(int i) {
 		this.socketTags.remove(i);
 	}
+
 	/**
 	 * Constructs a new RenderableBlock instance with the specified parent
 	 * WorkspaceWidget and Long blockID of its associated Block
@@ -256,7 +258,9 @@ public class RenderableBlock extends JComponent implements SearchableElement,
 		synchronizeSockets();
 
 		// initialize collapse label
-		if ((getBlock().isProcedureDeclBlock()||getBlock().getGenusName().equals("execution")||getBlock().getGenusName().equals("function"))
+		if ((getBlock().isProcedureDeclBlock()
+				|| getBlock().getGenusName().equals("execution") || getBlock()
+				.getGenusName().equals("function"))
 				&& (parent == null || !(parent instanceof FactoryManager))) {
 			this.collapseLabel = new CollapseLabel(workspace, blockID);
 			this.add(collapseLabel);
@@ -1221,22 +1225,37 @@ public class RenderableBlock extends JComponent implements SearchableElement,
 	 */
 	public void blockConnected(BlockConnector connectedSocket,
 			long connectedBlockID) {
-		if(getBlock().getGenusName().equals("switch")&&getBlock().getSocketIndex(connectedSocket)==getBlock().getNumSockets()-2){
-			this.getBlock().addSocket(this.getBlock().getNumSockets(),new BlockConnector(workspace,"case","number",false,false));
-			this.getBlock().addSocket(this.getBlock().getNumSockets(),new BlockConnector(workspace,"","cmd",false,false));
+		if (getBlock().getGenusName().equals("switch")
+				&& getBlock().getSocketIndex(connectedSocket) == getBlock()
+						.getNumSockets() - 2) {
+			this.getBlock().addSocket(
+					this.getBlock().getNumSockets(),
+					new BlockConnector(workspace, "case", "number", false,
+							false));
+			this.getBlock().addSocket(this.getBlock().getNumSockets(),
+					new BlockConnector(workspace, "", "cmd", false, false));
 		}
-		//check that adding socket is input param
-		if(getBlock().getGenusName().equals("function")&&
-				connectedSocket.getLabel().equals("input param")&&
-				getBlock().getSocketAt(getBlock().getSocketIndex(connectedSocket)+1).getLabel().equals("return param")){
-			this.getBlock().addSocket(this.getBlock().getSocketIndex(connectedSocket)+1, new BlockConnector(workspace,"input param","number",false,false));
+		// check that adding socket is input param
+		if (getBlock().getGenusName().equals("function")
+				&& connectedSocket.getLabel().equals("input param")
+				&& getBlock()
+						.getSocketAt(
+								getBlock().getSocketIndex(connectedSocket) + 1)
+						.getLabel().equals("return param")) {
+			this.getBlock().addSocket(
+					this.getBlock().getSocketIndex(connectedSocket) + 1,
+					new BlockConnector(workspace, "input param", "number",
+							false, false));
 		}
-		/*if(getBlock().getGenusName().equals("function")&&getBlock().getSocketIndex(connectedSocket)==getBlock().getNumSockets()-2){
-			this.getBlock().addSocket(this.getBlock().getNumSockets()-1,new BlockConnector(workspace,"return param","number",false,false));
-			
-		}*/
-		
-		
+		/*
+		 * if(getBlock().getGenusName().equals("function")&&getBlock().
+		 * getSocketIndex(connectedSocket)==getBlock().getNumSockets()-2){
+		 * this.getBlock().addSocket(this.getBlock().getNumSockets()-1,new
+		 * BlockConnector(workspace,"return param","number",false,false));
+		 * 
+		 * }
+		 */
+
 		// notify block first so that we will only need to repaint this block
 		// once
 		getBlock().blockConnected(connectedSocket, connectedBlockID);
@@ -1623,78 +1642,116 @@ public class RenderableBlock extends JComponent implements SearchableElement,
 
 	public void cloneMe() {
 		cloneThis(this);
-		
+
 		workspace.notifyListeners(new WorkspaceEvent(workspace, this
 				.getParentWidget(), this.getBlockID(),
 				WorkspaceEvent.BLOCK_CLONED, true));
 	}
 
-	private RenderableBlock cloneThis(RenderableBlock rb)
-    {
-    	Block oriBlock = rb.getBlock();
-    	oriBlock.getSockets();
-    	
-    	Point oriLocation =rb.getLocation();
-    	
-    	Block newBlock = new Block(workspace, rb.getGenus(), rb.blockLabel.getText());
-    	RenderableBlock newRb = new RenderableBlock(workspace, parent, newBlock.getBlockID(), false);
-    	
-    	int i = 0;
-    	Iterable<BlockConnector> oriSockets = oriBlock.getSockets();
-    	Iterator<BlockConnector> newSockets = newBlock.getSockets().iterator();
-    	
-    	for (BlockConnector oriSocket: oriSockets)
-    	{
-    		BlockConnector newSocket = newSockets.next();
-    		if (oriSocket.hasBlock())
-    		{
-    			oriSocket.getBlockID();
-    			RenderableBlock subRb = workspace.getEnv().getRenderableBlock(oriSocket.getBlockID());
-    			RenderableBlock newSubRb = cloneThis(subRb);
-    			
-    			if (newSubRb.getBlock().isFunctionBlock())
-    			{
-    				newSubRb.getBlock().getPlug().setConnectorBlockID(newRb.getBlockID());
-    				newSocket.setConnectorBlockID(newSubRb.getBlockID());
-    			}
-    			if (newSubRb.getBlock().isDataBlock())
-    			{
-    				newSubRb.getBlock().getPlug().setConnectorBlockID(newRb.getBlockID());
-    				newSocket.setConnectorBlockID(newSubRb.getBlockID());
-    			}
-    			if (newSubRb.getBlock().isCommandBlock())
-    			{
-    				newSubRb.getBlock().getBeforeConnector().setConnectorBlockID(newRb.getBlockID());
-    				newSocket.setConnectorBlockID(newSubRb.getBlockID());
-    			}
-    			
-    			
-    		}
-    		++i;
-    	}
-    	
-    	if (rb.getBlock().isCommandBlock())
-    	{
-    		BlockConnector oriAfterConnector = rb.getBlock().getAfterConnector();
-    		if (oriAfterConnector != null)
-    		{
-	    		if (oriAfterConnector.hasBlock())
-	    		{
-	    			RenderableBlock oriAfterRb = workspace.getEnv().getRenderableBlock(oriAfterConnector.getBlockID());
-	    			RenderableBlock newAfterRb = cloneThis(oriAfterRb);
-	    			
-	    			newAfterRb.getBlock().getBeforeConnector().setConnectorBlockID(newRb.getBlockID());
-	    			newRb.getBlock().getAfterConnector().setConnectorBlockID(newAfterRb.getBlockID());
-	    		}
-    		}
-    	}
-    	
-    	newRb.setLocation(oriLocation.x+(int)(NEARBY_RADIUS),oriLocation.y+(int)(NEARBY_RADIUS));
-    	newRb.moveConnectedBlocks();
-    	parent.addBlock(newRb);
-    	newRb.linkedDefArgsBefore = true;
-    	return newRb;
-    }
+	private RenderableBlock cloneThis(RenderableBlock rb) {
+		Block oriBlock = rb.getBlock();
+		oriBlock.getSockets();
+
+		Point oriLocation = rb.getLocation();
+
+		Block newBlock = new Block(workspace, rb.getGenus(),
+				rb.blockLabel.getText());
+		RenderableBlock newRb = new RenderableBlock(workspace, parent,
+				newBlock.getBlockID(), false);
+
+		int i = 0;
+
+		if (rb.getBlock().getGenusName().equals("function")
+				|| rb.getBlock().getGenusName().equals("switch")) {
+			newBlock.removeAllSockets();
+
+			for (int j = 0; j < oriBlock.getNumSockets(); j++) {
+
+				BlockConnector oriSocket = oriBlock.getSocketAt(j);
+				BlockConnector newSocket = new BlockConnector(workspace,oriSocket.getLabel(),oriSocket.getKind(),false,false);
+				if (oriSocket.hasBlock()) {
+					oriSocket.getBlockID();
+					RenderableBlock subRb = workspace.getEnv()
+							.getRenderableBlock(oriSocket.getBlockID());
+					RenderableBlock newSubRb = cloneThis(subRb);
+
+					if (newSubRb.getBlock().isFunctionBlock()) {
+						newSubRb.getBlock().getPlug()
+								.setConnectorBlockID(newRb.getBlockID());
+						newSocket.setConnectorBlockID(newSubRb.getBlockID());
+					}
+					if (newSubRb.getBlock().isDataBlock()) {
+						newSubRb.getBlock().getPlug()
+								.setConnectorBlockID(newRb.getBlockID());
+						newSocket.setConnectorBlockID(newSubRb.getBlockID());
+					}
+					if (newSubRb.getBlock().isCommandBlock()) {
+						newSubRb.getBlock().getBeforeConnector()
+								.setConnectorBlockID(newRb.getBlockID());
+						newSocket.setConnectorBlockID(newSubRb.getBlockID());
+					}
+				}
+				newBlock.addSocket(j, newSocket);
+			}
+
+			newRb.repaintBlock();
+		} else {
+			Iterable<BlockConnector> oriSockets = oriBlock.getSockets();
+			Iterator<BlockConnector> newSockets = newBlock.getSockets()
+					.iterator();
+			for (BlockConnector oriSocket : oriSockets) {
+				BlockConnector newSocket = newSockets.next();
+				if (oriSocket.hasBlock()) {
+					oriSocket.getBlockID();
+					RenderableBlock subRb = workspace.getEnv()
+							.getRenderableBlock(oriSocket.getBlockID());
+					RenderableBlock newSubRb = cloneThis(subRb);
+
+					if (newSubRb.getBlock().isFunctionBlock()) {
+						newSubRb.getBlock().getPlug()
+								.setConnectorBlockID(newRb.getBlockID());
+						newSocket.setConnectorBlockID(newSubRb.getBlockID());
+					}
+					if (newSubRb.getBlock().isDataBlock()) {
+						newSubRb.getBlock().getPlug()
+								.setConnectorBlockID(newRb.getBlockID());
+						newSocket.setConnectorBlockID(newSubRb.getBlockID());
+					}
+					if (newSubRb.getBlock().isCommandBlock()) {
+						newSubRb.getBlock().getBeforeConnector()
+								.setConnectorBlockID(newRb.getBlockID());
+						newSocket.setConnectorBlockID(newSubRb.getBlockID());
+					}
+
+				}
+				++i;
+			}
+		}
+
+		if (rb.getBlock().isCommandBlock()) {
+			BlockConnector oriAfterConnector = rb.getBlock()
+					.getAfterConnector();
+			if (oriAfterConnector != null) {
+				if (oriAfterConnector.hasBlock()) {
+					RenderableBlock oriAfterRb = workspace.getEnv()
+							.getRenderableBlock(oriAfterConnector.getBlockID());
+					RenderableBlock newAfterRb = cloneThis(oriAfterRb);
+
+					newAfterRb.getBlock().getBeforeConnector()
+							.setConnectorBlockID(newRb.getBlockID());
+					newRb.getBlock().getAfterConnector()
+							.setConnectorBlockID(newAfterRb.getBlockID());
+				}
+			}
+		}
+
+		newRb.setLocation(oriLocation.x + (int) (NEARBY_RADIUS), oriLocation.y
+				+ (int) (NEARBY_RADIUS));
+		newRb.moveConnectedBlocks();
+		parent.addBlock(newRb);
+		newRb.linkedDefArgsBefore = true;
+		return newRb;
+	}
 
 	// ////////////////////////////////
 	// MOVEMENT OF CONNECTED BLOCKS //
@@ -1817,10 +1874,11 @@ public class RenderableBlock extends JComponent implements SearchableElement,
 			renderable.comment.setLocation(renderable.comment.getLocation());
 			renderable.comment.getArrow().updateArrow();
 		}
-	// When dragging, Child blocks can become mis-aligned to their Parent Block which is very annoying
-	// I can't stop this happening, nor work out why it happens.
-	// This is just a quick 'fix' to stop things looking too bad
-	renderable.moveConnectedBlocks();
+		// When dragging, Child blocks can become mis-aligned to their Parent
+		// Block which is very annoying
+		// I can't stop this happening, nor work out why it happens.
+		// This is just a quick 'fix' to stop things looking too bad
+		renderable.moveConnectedBlocks();
 	}
 
 	private void drag(RenderableBlock renderable, int dx, int dy,
@@ -2508,6 +2566,7 @@ public class RenderableBlock extends JComponent implements SearchableElement,
 		}
 		return x;
 	}
+
 	public void addSocketTag(ConnectorTag connectorTag) {
 		// TODO Auto-generated method stub
 		this.socketTags.add(connectorTag);
