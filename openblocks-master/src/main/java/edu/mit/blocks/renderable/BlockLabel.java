@@ -424,6 +424,8 @@ public class BlockLabel implements MouseListener, MouseMotionListener,
 			}
 			if(genus.equals("function")){
 				rb.cloneMe();
+				rb.getBlock().removeSocket(rb.getBlock().getNumSockets()-1);
+				rb.getBlock().removeSocket(rb.getBlock().getNumSockets()-1);
 			}
 		}
 	}

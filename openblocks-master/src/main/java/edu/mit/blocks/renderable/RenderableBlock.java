@@ -1238,7 +1238,8 @@ public class RenderableBlock extends JComponent implements SearchableElement,
 		// check that adding socket is input param
 		if (getBlock().getGenusName().equals("function")
 				&& connectedSocket.getLabel().equals("input param")
-				&& getBlock()
+				&& (getBlock().getSocketIndex(connectedSocket)==getBlock().getNumSockets()-1)||
+				(getBlock().getNumSockets()> (getBlock().getSocketIndex(connectedSocket)+1))&&          getBlock()
 						.getSocketAt(
 								getBlock().getSocketIndex(connectedSocket) + 1)
 						.getLabel().equals("return param")) {
@@ -1651,11 +1652,16 @@ public class RenderableBlock extends JComponent implements SearchableElement,
 	private RenderableBlock cloneThis(RenderableBlock rb) {
 		Block oriBlock = rb.getBlock();
 		oriBlock.getSockets();
-
+		Block newBlock;
 		Point oriLocation = rb.getLocation();
-
-		Block newBlock = new Block(workspace, rb.getGenus(),
-				rb.blockLabel.getText());
+		if (rb.getBlock().getGenusName().equals("function")) {
+			System.out.println(rb.getBlock().getBlockLabel());
+			 newBlock = new Block(workspace, rb.getGenus(),
+					rb.getBlock().getInitialLabel());
+		} else {
+			 newBlock = new Block(workspace, rb.getGenus(),
+					rb.blockLabel.getText());
+		}
 		RenderableBlock newRb = new RenderableBlock(workspace, parent,
 				newBlock.getBlockID(), false);
 
@@ -1668,7 +1674,8 @@ public class RenderableBlock extends JComponent implements SearchableElement,
 			for (int j = 0; j < oriBlock.getNumSockets(); j++) {
 
 				BlockConnector oriSocket = oriBlock.getSocketAt(j);
-				BlockConnector newSocket = new BlockConnector(workspace,oriSocket.getLabel(),oriSocket.getKind(),false,false);
+				BlockConnector newSocket = new BlockConnector(workspace,
+						oriSocket.getLabel(), oriSocket.getKind(), false, false);
 				if (oriSocket.hasBlock()) {
 					oriSocket.getBlockID();
 					RenderableBlock subRb = workspace.getEnv()
