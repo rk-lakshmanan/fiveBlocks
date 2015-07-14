@@ -320,7 +320,7 @@
 			</description>
 			<BlockConnectors>
 				<BlockConnector connector-type="number"
-					connector-kind="socket" label="bc.microseconds">
+					connector-kind="socket" label="micro-seconds">
 					<DefaultArg genus-name="number" label="1000" />
 				</BlockConnector>
 			</BlockConnectors>

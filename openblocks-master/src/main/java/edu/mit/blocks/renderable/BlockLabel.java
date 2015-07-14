@@ -359,7 +359,7 @@ public class BlockLabel implements MouseListener, MouseMotionListener,
 				rb.getBlock().addSocket(0,  new BlockConnector(workspace,"test","number",false,false));
 				rb.getBlock().addSocket(0,  new BlockConnector(workspace,"","cmd",false,false));
 			}
-			if (genus.equals("execution")) {
+			if (genus.equals("execution")||genus.equals("setter_variable_number")) {
 				widget.setEditable(false);
 				rb.getBlock().removeAllSockets();
 				rb.getBlock().addSocket(0,new BlockConnector(workspace,"value","number",false,false));
@@ -412,6 +412,10 @@ public class BlockLabel implements MouseListener, MouseMotionListener,
 				rb.getBlock().addSocket(0, new BlockConnector(workspace,"return param","number",false,false));
 				rb.getBlock().addSocket(0, new BlockConnector(workspace,"input param","number",false,false));
 				rb.getBlock().addSocket(0, new BlockConnector(workspace,"function name","number",false,false));
+			}
+			if(genus.equals("delay")){
+				rb.getBlock().removeAllSockets();
+				rb.getBlock().addSocket(0, new BlockConnector(workspace,"micro-seconds","number",false,false));
 			}
 			if(genus.equals("save")){
 				workspace.getSaveBlockObservable().saveBlock(oldBlock);
