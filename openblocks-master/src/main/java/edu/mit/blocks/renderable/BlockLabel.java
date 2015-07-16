@@ -415,7 +415,7 @@ public class BlockLabel implements MouseListener, MouseMotionListener,
 			}
 			if(genus.equals("delay")){
 				rb.getBlock().removeAllSockets();
-				rb.getBlock().addSocket(0, new BlockConnector(workspace,"micro-seconds","number",false,false));
+				rb.getBlock().addSocket(0, new BlockConnector(workspace,"milli-seconds","number",false,false));
 			}
 			if(genus.equals("save")){
 				workspace.getSaveBlockObservable().saveBlock(oldBlock);

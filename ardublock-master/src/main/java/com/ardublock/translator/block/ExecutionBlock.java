@@ -29,7 +29,9 @@ public class ExecutionBlock extends TranslatorBlock {
 			return variable + " = " + value + ";\n";
 		} else {
 			translator.addNumberVariable(variable, value);
-			return "float " + variable + " = " + value + ";\n";
+			
+			translator.addDefinitionCommand( "float " + variable + " = " + value + ";\n");
+			return  variable + " = " + value + ";\n";
 
 		}
 	}

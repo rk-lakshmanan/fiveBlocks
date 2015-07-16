@@ -239,12 +239,14 @@
 				</text>
 			</description>
 			<BlockConnectors>
-				<BlockConnector label="commands" connector-kind="socket"
+				<!-- BlockConnector label="commands" connector-kind="socket"
 					connector-type="cmd" />
 				<BlockConnector label="bc.condition" connector-kind="socket"
 					connector-type="boolean">
 					<DefaultArg genus-name="less" label="Pick a test" />
-				</BlockConnector>
+				</BlockConnector>-->
+				<BlockConnector connector-type="cmd" connector-kind="socket"></BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="socket" label="test"></BlockConnector>
 			</BlockConnectors>
 		</BlockGenus>
 
@@ -450,7 +452,7 @@
 			<BlockConnectors>
 				<BlockConnector connector-type="number"
 					connector-kind="socket" label="#">
-					<DefaultArg genus-name="DuinoEDU_D2" label="D2" />
+					<!-- DefaultArg genus-name="DuinoEDU_D2" label="D2" />-->
 				</BlockConnector>
 				<BlockConnector connector-type="boolean"
 					connector-kind="plug" />
@@ -504,12 +506,12 @@
 			</description>
 			<BlockConnectors>
 				<BlockConnector connector-type="number"
-					connector-kind="socket" label="#">
-					<DefaultArg genus-name="DuinoEDU_D2" label="D2" />
+					connector-kind="socket" label="pin">
+				<!-- 	<DefaultArg genus-name="DuinoEDU_D2" label="D2" />-->
 				</BlockConnector>
 				<BlockConnector connector-type="number"
-					connector-kind="socket">
-					<DefaultArg genus-name="digital-high" label="HIGH" />
+					connector-kind="socket" label="HIGH/LOW">
+					<!-- <DefaultArg genus-name="digital-high" label="HIGH" />-->
 				</BlockConnector>
 			</BlockConnectors>
 		</BlockGenus>
@@ -2129,11 +2131,11 @@
 					connector-kind="plug" label="cm" />
 				<BlockConnector connector-type="number"
 					connector-kind="socket" label="trigger #">
-					<DefaultArg genus-name="DuinoEDU_D2" label="D2" />
+				<!-- <DefaultArg genus-name="DuinoEDU_D2" label="D2" />-->
 				</BlockConnector>
 				<BlockConnector connector-type="number"
 					connector-kind="socket" label="echo #">
-					<DefaultArg genus-name="DuinoEDU_D3" label="D3" />
+					<!-- <DefaultArg genus-name="DuinoEDU_D3" label="D3" />-->
 				</BlockConnector>
 			</BlockConnectors>
 		</BlockGenus>
@@ -2336,18 +2338,22 @@
 
 
 		<!-- ******************** Communication *************** -->
-		<BlockGenus name="serial_port_in" kind="function" color="245 245 245"
+		<BlockGenus name="serial_port_in" kind="command" color="245 245 245"
 			initlabel="bg.serial_port_in">
 			<BlockConnectors>
 				<BlockConnector connector-type="number"
-					connector-kind="socket" />
+					connector-kind="socket" label="baudrate" />
+						<BlockConnector connector-type="number"
+					connector-kind="socket" label="variable"/>
 			</BlockConnectors>
 		</BlockGenus>
-		<BlockGenus name="serial_pin_in" kind="data" color="245 245 245"
+		<BlockGenus name="serial_pin_in" kind="command" color="245 245 245"
 			initlabel="bg.serial_pin_in">
 			<BlockConnectors>
 				<BlockConnector connector-type="number"
-					connector-kind="socket" />
+					connector-kind="socket" label="variable"/>
+					<BlockConnector connector-type="number"
+					connector-kind="socket" label="pin" />
 			</BlockConnectors>
 		</BlockGenus>
 		<BlockGenus name="Input/Output" kind="command" color="245 245 245"
@@ -2366,11 +2372,13 @@
 					connector-kind="socket" label="value" />
 			</BlockConnectors>
 		</BlockGenus>
-		<BlockGenus name="serial_pin_out" kind="data" color="245 245 245"
+		<BlockGenus name="serial_pin_out" kind="command" color="245 245 245"
 			initlabel="bg.serial_pin_out">
 			<BlockConnectors>
 				<BlockConnector connector-type="number"
-					connector-kind="socket" />
+					connector-kind="socket" label="variable"/>
+					<BlockConnector connector-type="number"
+					connector-kind="socket" label="pin" />
 			</BlockConnectors>
 		</BlockGenus>
 		<BlockGenus name="serial_read" kind="data" color="245 245 245"
@@ -10629,7 +10637,7 @@
 			<FamilyMember>pin-write-digital</FamilyMember>
 			<FamilyMember>function</FamilyMember>
 			<FamilyMember>delay</FamilyMember>
-			<FamilyMember>setter_variable_number</FamilyMember>
+		<!-- <FamilyMember>setter_variable_number</FamilyMember>-->
 			<FamilyMember>save</FamilyMember>
 
 		</BlockFamily>
@@ -11022,6 +11030,10 @@
 				<BlockGenusMember>Input/Output</BlockGenusMember>
 				
 			</BlockDrawer>
+			<BlockDrawer button-color="200 100 50" name="bd.sensors">
+			<BlockGenusMember>ultrasonic</BlockGenusMember>
+			</BlockDrawer>
+			<!-- <BlockDrawer button-color="250 100 100" name="bd.user_defined"></BlockDrawer>-->
 			<!-- Shapes are automatically loaded as blocks in the Shapes drawer (see 
 				slcodeblocks.ShapeBlocksGenerator for details) -->
 			<!-- Sound blocks reside in the auto-generated String drawer. (see slcodeblocks.SoundBlocksGenerator 
