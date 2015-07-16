@@ -17,7 +17,9 @@ import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileSystemView;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
@@ -40,6 +42,8 @@ import org.xml.sax.SAXException;
 
 
 
+
+
 import edu.mit.blocks.codeblocks.Block;
 import edu.mit.blocks.codeblocks.BlockGenus;
 import edu.mit.blocks.renderable.FactoryRenderableBlock;
@@ -55,8 +59,12 @@ public class BlockSave {
 		return this.isFileExists;
 	}
 	public BlockSave() {
-		File file = new File("C:\\Users\\Laksh\\Desktop\\myBlocksFolder\\myBlocks.xml");
-		
+		//File file = new File("C:\\Users\\Laksh\\Desktop\\myBlocksFolder\\myBlocks.xml");
+		 JFileChooser fr = new JFileChooser();
+	     FileSystemView fw = fr.getFileSystemView();
+	     File tempPath = fw.getDefaultDirectory();
+	     String path = tempPath.getAbsolutePath()+"\\myBlocks.xml";
+	     File file = new File(path);
 
 	//	File file = new File("myBlocks.xml");
 		try {

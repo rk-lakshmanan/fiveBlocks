@@ -13,16 +13,16 @@
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="BlockSave" key="selection"/>
+		<item value="" key="selection"/>
 		<list key="findhistory">
-			<item value="blocksave"/>
-			<item value="FactoryManager"/>
-			<item value="factoryManager"/>
-			<item value="translate("/>
-			<item value="Translator("/>
-			<item value="Translator()"/>
-			<item value="Translator"/>
-			<item value="translate"/>
+			<item value="functionSet"/>
+			<item value="function"/>
+			<item value="loop"/>
+			<item value="newFunctionNameSet"/>
+			<item value="addFunctionName"/>
+			<item value="functionNameSe"/>
+			<item value="numberVariableSet"/>
+			<item value="cloneThis"/>
 		</list>
 		<list key="replacehistory">
 		</list>

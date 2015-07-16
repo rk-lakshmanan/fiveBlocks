@@ -12,7 +12,6 @@
 <fullyQualifiedTypeName name="java.io.BufferedReader"/>
 <fullyQualifiedTypeName name="java.io.FileReader"/>
 <fullyQualifiedTypeName name="com.ardublock.translator.List_Variables"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="javax.xml.transform.TransformerFactory"/>
 <fullyQualifiedTypeName name="javax.xml.transform.Transformer"/>
 <fullyQualifiedTypeName name="javax.xml.transform.dom.DOMSource"/>
@@ -35,4 +34,9 @@
 <fullyQualifiedTypeName name="com.ardublock.translator.Translator"/>
 <fullyQualifiedTypeName name="java.util.Random"/>
 <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="edu.mit.blocks.renderable.ConnectorTag"/>
+<fullyQualifiedTypeName name="java.lang.Exception"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>
