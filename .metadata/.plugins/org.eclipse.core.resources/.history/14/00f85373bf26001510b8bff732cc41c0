@@ -1,0 +1,25 @@
+package edu.mit.blocks.renderable;
+
+import java.util.Observable;
+
+import edu.mit.blocks.codeblocks.Block;
+import edu.mit.blocks.workspace.Workspace;
+
+public class SaveBlockObservable extends Observable {
+	private Block block;
+	
+	  public SaveBlockObservable(){
+		
+	  }
+	   public void saveBlock(Block block)
+	   {
+	      this.block = block;
+	      setChanged();
+	      notifyObservers();
+	   }
+	   public Block getBlockToBeSaved()
+	   {
+	      return block;
+	   }
+
+}

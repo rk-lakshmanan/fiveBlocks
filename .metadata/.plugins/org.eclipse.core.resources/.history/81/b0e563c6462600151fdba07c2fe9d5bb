@@ -1,0 +1,14 @@
+package com.ardublock.ui.listener;
+
+import javax.swing.JFrame;
+
+import com.ardublock.core.Context;
+
+public class SaveGenerateCodeListener extends GenerateCodeButtonListener{
+
+	public SaveGenerateCodeListener(JFrame frame, Context context) {
+		super(frame, context);
+		// TODO Auto-generated constructor stub
+	}
+
+}

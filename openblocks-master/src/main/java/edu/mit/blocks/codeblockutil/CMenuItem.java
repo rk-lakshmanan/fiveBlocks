@@ -61,7 +61,13 @@ public class CMenuItem extends JButton implements MouseListener {
                 x = (float) ((this.getWidth() / 2) - (textWidth / 2));
             }
 
-            g2.setColor(Color.black);
+           // g2.setColor(Color.black);
+            if(text.equals("save")){
+            	g2.setColor(new Color(100,200,100));
+            }else {
+            	g2.setColor(Color.BLACK);
+            }
+           
             g2.drawString(text, x, y);
         }
     }

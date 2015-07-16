@@ -1,0 +1,5 @@
+package com.ardublock.translator.block;
+
+public class MyBlockBlock {
+
+}

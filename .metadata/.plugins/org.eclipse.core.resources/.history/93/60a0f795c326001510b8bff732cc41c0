@@ -1,0 +1,22 @@
+package com.ardublock.core;
+
+import java.util.Observable;
+import java.util.Observer;
+
+import edu.mit.blocks.codeblocks.Block;
+import edu.mit.blocks.workspace.Workspace;
+
+public class SaveBlockObserver implements Observer{
+	Workspace workspace;
+	public SaveBlockObserver(Workspace workspace){
+		this.workspace = workspace;
+	}
+
+	public void update(Observable arg0, Object arg1) {
+		System.out.println("bingo");
+		if(arg1 instanceof Block){
+			System.out.println("block name is "+ ((Block) arg1).getGenusName());
+					}
+	}
+
+}

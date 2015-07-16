@@ -1,0 +1,19 @@
+package com.ardublock.core;
+
+import java.util.Observable;
+import java.util.Observer;
+
+import edu.mit.blocks.workspace.Workspace;
+
+public class SaveBlockObserver implements Observer{
+	Workspace workspace;
+	public SaveBlockObserver(Workspace workspace){
+		this.workspace = workspace;
+	}
+
+	public void update(Observable arg0, Object arg1) {
+		System.out.println("bingo");
+		
+	}
+
+}
