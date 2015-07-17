@@ -3669,3 +3669,19 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact arduino:pde:j
 2015-07-17 12:08:14,775 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 323 resources
 2015-07-17 12:08:14,950 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2015-07-17 12:08:14,951 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-17 12:40:54,844 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-17 12:40:54,946 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 323 resources
+2015-07-17 12:40:55,100 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-17 12:40:55,101 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-17 12:41:21,604 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-17 12:41:21,715 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 323 resources
+2015-07-17 12:41:21,862 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-17 12:41:21,863 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-17 12:43:25,427 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-17 12:43:25,569 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 323 resources
+2015-07-17 12:43:25,756 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-17 12:43:25,757 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-17 12:43:35,448 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-17 12:43:35,602 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 323 resources
+2015-07-17 12:43:35,814 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-17 12:43:35,815 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource

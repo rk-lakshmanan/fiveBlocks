@@ -15,7 +15,7 @@ public class SwitchBlock extends TranslatorBlock {
 			SubroutineNotDeclaredException {
 		int i = 1;
 		TranslatorBlock blk = this.getRequiredTranslatorBlockAtSocket(0);
-		String ret = "switch(" + blk.toCode() + "){\n";
+		String ret = "switch( (int)" + blk.toCode() + "){\n";
 		while (true) {
 			if (isTranslatorBlockAtSocketNull(i)) {
 				// if there is an empty case, break out of loop
@@ -29,6 +29,10 @@ public class SwitchBlock extends TranslatorBlock {
 					ret += "case "
 							+ this.getRequiredTranslatorBlockAtSocket(i)
 									.toCode() + ":";
+					if(isTranslatorBlockAtSocketNull(i+1)){
+						ret+=";";
+						i++;
+					}
 					//translate the execution statements for each case
 				} else {
 					TranslatorBlock translatorBlock = this
