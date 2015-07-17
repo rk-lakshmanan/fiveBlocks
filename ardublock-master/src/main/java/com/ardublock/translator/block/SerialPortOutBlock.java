@@ -19,6 +19,7 @@ public class SerialPortOutBlock extends TranslatorBlock
 		//String ret = "Serial.read()";
 		
 		//return codePrefix+ret+codeSuffix;
-		return "Serial.write("+getTranslatorBlockAtSocket(1).toCode()+");\n";
+		//return "Serial.write((byte*)&"+getTranslatorBlockAtSocket(1).toCode()+",4);\n";
+		return "Serial.println("+getTranslatorBlockAtSocket(1).toCode()+");\n";
 	}
 }
