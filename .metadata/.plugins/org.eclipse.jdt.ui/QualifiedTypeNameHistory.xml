@@ -39,4 +39,9 @@
 <fullyQualifiedTypeName name="edu.mit.blocks.renderable.ConnectorTag"/>
 <fullyQualifiedTypeName name="java.lang.Exception"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="javax.swing.JFileChooser"/>
+<fullyQualifiedTypeName name="javax.swing.filechooser.FileSystemView"/>
+<fullyQualifiedTypeName name="javax.swing.text.html.HTML"/>
+<fullyQualifiedTypeName name="edu.mit.blocks.codeblockutil.CMenuItem"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
 </qualifiedTypeNameHistroy>

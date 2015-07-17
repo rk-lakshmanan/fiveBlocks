@@ -2080,6 +2080,7 @@ public class RenderableBlock extends JComponent implements SearchableElement,
 				&& getBlock().hasSiblings()) {
 			blockLabel.showMenuIcon(true);
 		}
+		
 	}
 
 	public void mouseExited(MouseEvent e) {

@@ -275,8 +275,8 @@ public class GenerateCodeButtonListener implements ActionListener
 		{
 			AutoFormat formatter = new AutoFormat();
 			String codeOut = code.toString();
-			
-			if (context.isNeedAutoFormat)
+			//forBlock code causes error(bug needs to be fixed & remove 'for' condition)
+			if (context.isNeedAutoFormat&&!codeOut.contains("for"))
 			{
 				codeOut = formatter.format(codeOut);
 			}

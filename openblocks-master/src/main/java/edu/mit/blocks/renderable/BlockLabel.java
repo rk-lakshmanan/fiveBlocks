@@ -10,7 +10,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.geom.Point2D;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.swing.JComponent;
@@ -22,7 +21,6 @@ import edu.mit.blocks.codeblocks.Block;
 import edu.mit.blocks.codeblocks.BlockConnector;
 import edu.mit.blocks.codeblocks.BlockConnectorShape;
 import edu.mit.blocks.codeblocks.BlockStub;
-import edu.mit.blocks.codeblocks.BlockConnector.PositionType;
 import edu.mit.blocks.codeblockutil.LabelWidget;
 import edu.mit.blocks.workspace.Workspace;
 import edu.mit.blocks.workspace.WorkspaceEvent;
@@ -327,7 +325,6 @@ public class BlockLabel implements MouseListener, MouseMotionListener,
 			 * WorkspaceEvent.BLOCK_GENUS_CHANGED));
 			 */
 			Block oldBlock = workspace.getEnv().getBlock(blockID);
-
 			RenderableBlock rb = workspace.getEnv().getRenderableBlock(blockID);
 			// System.out.println(rb.getBlock().getGenusName());
 			// System.out.println(genus);
@@ -364,6 +361,7 @@ public class BlockLabel implements MouseListener, MouseMotionListener,
 				rb.getBlock().removeAllSockets();
 				rb.getBlock().addSocket(0,new BlockConnector(workspace,"value","number",false,false));
 				rb.getBlock().addSocket(0,new BlockConnector(workspace,"variable","number",false,false));
+				
 			}
 			if(genus.equals("pin-write-digital")){
 				widget.setEditable(false);
