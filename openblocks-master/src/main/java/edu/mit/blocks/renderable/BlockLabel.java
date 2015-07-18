@@ -310,8 +310,6 @@ public class BlockLabel implements MouseListener, MouseMotionListener,
 		}
 	}
 
-
-
 	protected void genusChanged(String genus) {
 
 		if (widget.hasSiblings()) {
@@ -324,181 +322,349 @@ public class BlockLabel implements MouseListener, MouseMotionListener,
 			 * WorkspaceEvent(workspace, rb.getParentWidget(), blockID,
 			 * WorkspaceEvent.BLOCK_GENUS_CHANGED));
 			 */
+
 			Block oldBlock = workspace.getEnv().getBlock(blockID);
 			RenderableBlock rb = workspace.getEnv().getRenderableBlock(blockID);
+
 			// System.out.println(rb.getBlock().getGenusName());
 			// System.out.println(genus);
-			if (rb.getBlock().getGenusName().equals("ifelse_2")) {
+			if (genus.equals("ifelse_2")) {
+				setAllPlugToNull(rb);
 				rb.getBlock().removeAllSockets();
-				rb.getBlock().addSocket(0,new BlockConnector(workspace,"","cmd",false,false));
-				rb.getBlock().addSocket(0, new BlockConnector(workspace,"test","number",false,false));
+				rb.getBlock().addSocket(0,
+						new BlockConnector(workspace, "", "cmd", false, false));
+				rb.getBlock().addSocket(
+						0,
+						new BlockConnector(workspace, "test", "number", false,
+								false));
+				createConnectorBlock(rb, rb.getBlock().getSocketAt(0),
+						"greater", "");
 
 			}
 			// System.out.println("socket size is "+rb.getBlock().getNumSockets());
 			if (genus.equals("while") || genus.equals("repeat")) {
+				setAllPlugToNull(rb);
 				rb.getBlock().removeAllSockets();
 				// System.out.println("socket size at the end is "+rb.getBlock().getNumSockets());
 
-				rb.getBlock().addSocket(0, new BlockConnector(workspace,"","cmd",false,false));// testConnector);
-				rb.getBlock().addSocket(0, new BlockConnector(workspace,"test","number",false,false));
+				rb.getBlock().addSocket(0,
+						new BlockConnector(workspace, "", "cmd", false, false));// testConnector);
+				rb.getBlock().addSocket(
+						0,
+						new BlockConnector(workspace, "test", "number", false,
+								false));
 				// System.out.println("hello");
-
+				createConnectorBlock(rb, rb.getBlock().getSocketAt(0),
+						"greater", "");
 			}
 			if (genus.equals("ifelse")) {
+				setAllPlugToNull(rb);
 				rb.getBlock().removeAllSockets();
-				rb.getBlock().addSocket(0,  new BlockConnector(workspace,"else","cmd",false,false));
-				rb.getBlock().addSocket(0, new BlockConnector(workspace,"then","cmd",false,false));
-				rb.getBlock().addSocket(0,  new BlockConnector(workspace,"if","number",false,false));
+				rb.getBlock().addSocket(
+						0,
+						new BlockConnector(workspace, "else", "cmd", false,
+								false));
+				rb.getBlock().addSocket(
+						0,
+						new BlockConnector(workspace, "then", "cmd", false,
+								false));
+				rb.getBlock().addSocket(
+						0,
+						new BlockConnector(workspace, "if", "number", false,
+								false));
+				createConnectorBlock(rb, rb.getBlock().getSocketAt(0),
+						"greater", "");
 			}
 			if (genus.equals("do_while")) {
+				setAllPlugToNull(rb);
 
 				rb.getBlock().removeAllSockets();
-				rb.getBlock().addSocket(0,  new BlockConnector(workspace,"test","number",false,false));
-				rb.getBlock().addSocket(0,  new BlockConnector(workspace,"","cmd",false,false));
+				rb.getBlock().addSocket(
+						0,
+						new BlockConnector(workspace, "test", "number", false,
+								false));
+				rb.getBlock().addSocket(0,
+						new BlockConnector(workspace, "", "cmd", false, false));
+				createConnectorBlock(rb, rb.getBlock().getSocketAt(1),
+						"greater", "");
 			}
-			if (genus.equals("execution")||genus.equals("setter_variable_number")) {
+			if (genus.equals("execution")
+					|| genus.equals("setter_variable_number")) {
+				setAllPlugToNull(rb);
 				widget.setEditable(false);
 				rb.getBlock().removeAllSockets();
-				rb.getBlock().addSocket(0,new BlockConnector(workspace,"value","number",false,false));
-				rb.getBlock().addSocket(0,new BlockConnector(workspace,"variable","number",false,false));
-				
+				rb.getBlock().addSocket(
+						0,
+						new BlockConnector(workspace, "value", "number", false,
+								false));
+				rb.getBlock().addSocket(
+						0,
+						new BlockConnector(workspace, "variable", "number",
+								false, false));
+				createConnectorBlock(rb, rb.getBlock().getSocketAt(0),
+						"number", "var");
+				createConnectorBlock(rb, rb.getBlock().getSocketAt(1),
+						"number", "val");
+
 			}
-			if(genus.equals("pin-write-digital")){
+			if (genus.equals("pin-write-digital")) {
 				widget.setEditable(false);
+				setAllPlugToNull(rb);
 				rb.getBlock().removeAllSockets();
-				rb.getBlock().addSocket(0,new BlockConnector(workspace,"HIGH/LOW","number",false,false));
-				rb.getBlock().addSocket(0,new BlockConnector(workspace,"pin","number",false,false));
+				rb.getBlock().addSocket(
+						0,
+						new BlockConnector(workspace, "HIGH/LOW", "number",
+								false, false));
+				rb.getBlock().addSocket(
+						0,
+						new BlockConnector(workspace, "pin", "number", false,
+								false));
+				createConnectorBlock(rb, rb.getBlock().getSocketAt(0),
+						"number", "pin");
+				createConnectorBlock(rb, rb.getBlock().getSocketAt(1),
+						"number", "HIGH");
 			}
-			//if(genus.equals("switch")){
-				//rb.getBlock().removeAllSockets();
-				//linkArg(rb);
-				//ArrayList<Sockets> sockets = rb.getBlock().getSockets();
-				//Iterator<BlockConnector> sockets = getBlock().getSockets()
-					//	.iterator();
-			//}
-			if(genus.equals("serial_port_out")){
+			// if(genus.equals("switch")){
+			// rb.getBlock().removeAllSockets();
+			// linkArg(rb);
+			// ArrayList<Sockets> sockets = rb.getBlock().getSockets();
+			// Iterator<BlockConnector> sockets = getBlock().getSockets()
+			// .iterator();
+			// }
+			if (genus.equals("serial_port_out")) {
+				setAllPlugToNull(rb);
 				rb.getBlock().removeAllSockets();
-				rb.getBlock().addSocket(0,new BlockConnector(workspace,"value","number",false,false));
-				rb.getBlock().addSocket(0,new BlockConnector(workspace,"baudrate","number",false,false));	
+				rb.getBlock().addSocket(
+						0,
+						new BlockConnector(workspace, "value", "number", false,
+								false));
+				rb.getBlock().addSocket(
+						0,
+						new BlockConnector(workspace, "baudrate", "number",
+								false, false));
+				createConnectorBlock(rb, rb.getBlock().getSocketAt(0),
+						"number", "9600");
+				createConnectorBlock(rb, rb.getBlock().getSocketAt(1),
+						"number", "val");
 			}
-			if(genus.equals("serial_port_in")){
+			if (genus.equals("serial_port_in")) {
+				setAllPlugToNull(rb);
 				rb.getBlock().removeAllSockets();
-				rb.getBlock().addSocket(0,new BlockConnector(workspace,"variable","number",false,false));
-				rb.getBlock().addSocket(0,new BlockConnector(workspace,"baudrate","number",false,false));	
+				rb.getBlock().addSocket(
+						0,
+						new BlockConnector(workspace, "variable", "number",
+								false, false));
+				rb.getBlock().addSocket(
+						0,
+						new BlockConnector(workspace, "baudrate", "number",
+								false, false));
+				createConnectorBlock(rb, rb.getBlock().getSocketAt(0),
+						"number", "9600");
+				createConnectorBlock(rb, rb.getBlock().getSocketAt(1),
+						"number", "var");
 			}
-			if(genus.equals("serial_pin_in")||genus.equals("serial_pin_out")){
+			if (genus.equals("serial_pin_in") || genus.equals("serial_pin_out")) {
+				setAllPlugToNull(rb);
 				rb.getBlock().removeAllSockets();
-				rb.getBlock().addSocket(0,new BlockConnector(workspace,"pin","number",false,false));
-				rb.getBlock().addSocket(0,new BlockConnector(workspace,"variable","number",false,false));	
+				rb.getBlock().addSocket(
+						0,
+						new BlockConnector(workspace, "pin", "number", false,
+								false));
+				rb.getBlock().addSocket(
+						0,
+						new BlockConnector(workspace, "variable", "number",
+								false, false));
+				createConnectorBlock(rb, rb.getBlock().getSocketAt(0),
+						"number", "var");
+				createConnectorBlock(rb, rb.getBlock().getSocketAt(1),
+						"number", "pin");
 			}
-			if(genus.equals("for")){
+			if (genus.equals("for")) {
+				setAllPlugToNull(rb);
 				rb.getBlock().removeAllSockets();
-				rb.getBlock().addSocket(0, new BlockConnector(workspace,"","cmd",false,false));
-				rb.getBlock().addSocket(0,new BlockConnector(workspace,"step","number",false,false));
-				rb.getBlock().addSocket(0,new BlockConnector(workspace,"condition","number",false,false));
-				rb.getBlock().addSocket(0,new BlockConnector(workspace,"init","number",false,false));
+				rb.getBlock().addSocket(0,
+						new BlockConnector(workspace, "", "cmd", false, false));
+				rb.getBlock().addSocket(
+						0,
+						new BlockConnector(workspace, "step", "number", false,
+								false));
+				rb.getBlock().addSocket(
+						0,
+						new BlockConnector(workspace, "condition", "number",
+								false, false));
+				rb.getBlock().addSocket(
+						0,
+						new BlockConnector(workspace, "init", "number", false,
+								false));
+				createConnectorBlock(rb, rb.getBlock().getSocketAt(0), "equal",
+						"");
+				createConnectorBlock(rb, rb.getBlock().getSocketAt(1), "equal",
+						"");
+				createConnectorBlock(rb, rb.getBlock().getSocketAt(2),
+						"number", "1");
+
 			}
-			if(genus.equals("switch")){
+			if (genus.equals("switch")) {
+				setAllPlugToNull(rb);
 				rb.getBlock().removeAllSockets();
-				rb.getBlock().addSocket(0, new BlockConnector(workspace,"","cmd",false,false));
-				rb.getBlock().addSocket(0, new BlockConnector(workspace,"case","number",false,false));
-				rb.getBlock().addSocket(0, new BlockConnector(workspace,"switch","number",false,false));
+				rb.getBlock().addSocket(0,
+						new BlockConnector(workspace, "", "cmd", false, false));
+				rb.getBlock().addSocket(
+						0,
+						new BlockConnector(workspace, "case", "number", false,
+								false));
+				rb.getBlock().addSocket(
+						0,
+						new BlockConnector(workspace, "switch", "number",
+								false, false));
+				createConnectorBlock(rb, rb.getBlock().getSocketAt(0),
+						"number", "var");
 			}
-			if(genus.equals("function")){
+			if (genus.equals("function")) {
+				setAllPlugToNull(rb);
 				rb.getBlock().removeAllSockets();
-				rb.getBlock().addSocket(0, new BlockConnector(workspace,"","cmd",false,false));
-				rb.getBlock().addSocket(0, new BlockConnector(workspace,"return param","number",false,false));
-				rb.getBlock().addSocket(0, new BlockConnector(workspace,"input param","number",false,false));
-				rb.getBlock().addSocket(0, new BlockConnector(workspace,"function name","number",false,false));
+				rb.getBlock().addSocket(0,
+						new BlockConnector(workspace, "", "cmd", false, false));
+				rb.getBlock().addSocket(
+						0,
+						new BlockConnector(workspace, "return param", "number",
+								false, false));
+				rb.getBlock().addSocket(
+						0,
+						new BlockConnector(workspace, "input param", "number",
+								false, false));
+				rb.getBlock().addSocket(
+						0,
+						new BlockConnector(workspace, "function name",
+								"number", false, false));
+				createConnectorBlock(rb, rb.getBlock().getSocketAt(0),
+						"number", "Name");
 			}
-			if(genus.equals("delay")){
+			if (genus.equals("delay")) {
+				setAllPlugToNull(rb);
 				rb.getBlock().removeAllSockets();
-				rb.getBlock().addSocket(0, new BlockConnector(workspace,"milli-seconds","number",false,false));
+				rb.getBlock().addSocket(
+						0,
+						new BlockConnector(workspace, "milli-seconds",
+								"number", false, false));
+				createConnectorBlock(rb, rb.getBlock().getSocketAt(0),
+						"number", "");
 			}
-			if(genus.equals("save")){
+			if (genus.equals("save")) {
 				workspace.getSaveBlockObservable().saveBlock(oldBlock);
-			}else{
-			oldBlock.changeGenusTo(genus);
-			rb.repaintBlock();
-			workspace.notifyListeners(new WorkspaceEvent(workspace, rb
-					.getParentWidget(), blockID,
-					WorkspaceEvent.BLOCK_GENUS_CHANGED));
+			} else {
+				oldBlock.changeGenusTo(genus);
+				rb.repaintBlock();
+				workspace.notifyListeners(new WorkspaceEvent(workspace, rb
+						.getParentWidget(), blockID,
+						WorkspaceEvent.BLOCK_GENUS_CHANGED));
 			}
-			if(genus.equals("function")){
+			if (genus.equals("function")) {
 				rb.cloneMe();
-				rb.getBlock().removeSocket(rb.getBlock().getNumSockets()-1);
-				rb.getBlock().removeSocket(rb.getBlock().getNumSockets()-1);
+				rb.getBlock().removeSocket(rb.getBlock().getNumSockets() - 1);
+				rb.getBlock().removeSocket(rb.getBlock().getNumSockets() - 1);
 			}
 		}
 	}
-	
-	//following code is meant to create and link blocks(does not link currently) when block is switched
+
+	private void setAllPlugToNull(RenderableBlock rb) {
+		for (int i = 0; i < rb.getBlock().getNumSockets(); i++) {
+			if (rb.getBlock().getSocketAt(i).getBlockID() != Block.NULL) {
+				workspace.getEnv()
+						.getBlock((rb.getBlock().getSocketAt(i).getBlockID()))
+						.setPlugBlockID(Block.NULL);
+			}
+		}
+	}
+
+	private void createConnectorBlock(RenderableBlock oldRb,
+			BlockConnector oldBc, String newGenus, String label) {
+		// create new connector block
+		Block newBlock;
+		if (!label.equals("")) {
+			newBlock = new Block(workspace, newGenus, label);
+		} else {
+			newBlock = new Block(workspace, newGenus);
+		}
+		RenderableBlock newRb = new RenderableBlock(workspace,
+				oldRb.getParentWidget(), newBlock.getBlockID(), false);
+
+		// set the ids for both connectors
+		newRb.getBlock().getPlug().setConnectorBlockID(oldRb.getBlockID());
+		oldBc.setConnectorBlockID(newBlock.getBlockID());
+		if (newGenus.equals("greater")||newGenus.equals("equal")) {
+			// TODO connect two number blocks
+		//System.out.println("error is "+	newRb.getSocketSpaceDimension(newRb.getBlock().getSocketAt(0)).width);
+		createConnectorBlock(newRb,newRb.getBlock().getSocketAt(0),"number","");
+		createConnectorBlock(newRb,newRb.getBlock().getSocketAt(1),"number","");
+		}
+
+		// newRb.setLocation(10,10);
+		// newRb.getBlock().getPlug().setConnectorBlockID(id);
+		newRb.moveConnectedBlocks();
+		oldRb.getParentWidget().addBlock(newRb);
+		
+
+	}
+
+	// following code is meant to create and link blocks(does not link
+	// currently) when block is switched
 	private void linkArg(RenderableBlock rb) {
 		/**
-		 * Links the default arguments of this block if it has any and if this block
-		 * has not already linked its default args in this session. Re-linking this
-		 * block's default args everytime it gets dropped/moved within the block
-		 * canvas can get annoying.
-		 
-		
-		/**/
-				
-				BlockConnector socket = rb.getBlock().getSocketAt(0);
+		 * Links the default arguments of this block if it has any and if this
+		 * block has not already linked its default args in this session.
+		 * Re-linking this block's default args everytime it gets dropped/moved
+		 * within the block canvas can get annoying.
+		 * 
+		 * 
+		 * /
+		 **/
 
-				// Store the ids, sockets, and blocks we need to update.
-				 Block block = new Block(workspace, "number", "");
-		           Long id = block.getBlockID();
-				
-						// for each block id, create a new RenderableBlock
-						RenderableBlock arg = new RenderableBlock(workspace,
-								rb.getParentWidget(), id);
-						arg.setZoomLevel(this.zoom);
-						
-						Point myLocation = rb.getLocation();
-						Point2D socketPt = rb.getSocketPixelPoint(socket);
-						Point2D plugPt = arg.getSocketPixelPoint(arg.getBlock()
-								.getPlug());
-						arg.setLocation(
-								(int) (socketPt.getX() + myLocation.x - plugPt
-										.getX()), (int) (socketPt.getY()
-										+ myLocation.y - plugPt.getY()));
-						// update the socket space of at this socket
-						rb.getConnectorTag(socket)
-								.setDimension(
-										new Dimension(
-												arg.getBlockWidth()
-														- (int) BlockConnectorShape.NORMAL_DATA_PLUG_WIDTH,
-												arg.getBlockHeight()));
-						// drop each block to this parent's widget/component
-						// getParentWidget().blockDropped(arg);
-						rb.getParentWidget().addBlock(arg);
+		BlockConnector socket = rb.getBlock().getSocketAt(0);
 
-						//idList.add(id);
-						//socketList.add(socket);
-						//argList.add(arg);
-					
-				
+		// Store the ids, sockets, and blocks we need to update.
+		Block block = new Block(workspace, "number", "");
+		Long id = block.getBlockID();
 
-				
-					workspace.notifyListeners(new WorkspaceEvent(workspace, rb.getParentWidget(), arg.getBlockID(),
-							WorkspaceEvent.BLOCK_ADDED, true));
+		// for each block id, create a new RenderableBlock
+		RenderableBlock arg = new RenderableBlock(workspace,
+				rb.getParentWidget(), id);
+		arg.setZoomLevel(this.zoom);
 
-					// must call this method to update the dimensions of this
-					// TODO ria in the future would be good to just link the default
-					// args
-					// but first creating a block link object and then connecting
-					// something like notifying the renderableblock to update its
-					// dimensions will be
-					// take care of
-					rb.blockConnected(socket, id);
-					arg.repaint();
-				
-				rb.redrawFromTop();
-				
-			
-		
+		Point myLocation = rb.getLocation();
+		Point2D socketPt = rb.getSocketPixelPoint(socket);
+		Point2D plugPt = arg.getSocketPixelPoint(arg.getBlock().getPlug());
+		arg.setLocation((int) (socketPt.getX() + myLocation.x - plugPt.getX()),
+				(int) (socketPt.getY() + myLocation.y - plugPt.getY()));
+		// update the socket space of at this socket
+		rb.getConnectorTag(socket).setDimension(
+				new Dimension(arg.getBlockWidth()
+						- (int) BlockConnectorShape.NORMAL_DATA_PLUG_WIDTH, arg
+						.getBlockHeight()));
+		// drop each block to this parent's widget/component
+		// getParentWidget().blockDropped(arg);
+		rb.getParentWidget().addBlock(arg);
 
-		
+		// idList.add(id);
+		// socketList.add(socket);
+		// argList.add(arg);
+
+		workspace.notifyListeners(new WorkspaceEvent(workspace, rb
+				.getParentWidget(), arg.getBlockID(),
+				WorkspaceEvent.BLOCK_ADDED, true));
+
+		// must call this method to update the dimensions of this
+		// TODO ria in the future would be good to just link the default
+		// args
+		// but first creating a block link object and then connecting
+		// something like notifying the renderableblock to update its
+		// dimensions will be
+		// take care of
+		rb.blockConnected(socket, id);
+		arg.repaint();
+
+		rb.redrawFromTop();
+
 	}
 
 	protected void dimensionsChanged(Dimension value) {

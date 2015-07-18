@@ -520,9 +520,11 @@
 			<BlockConnectors>
 				<BlockConnector connector-type="number"
 					connector-kind="socket" label="variable">
+					<DefaultArg genus-name="number" label="var"/>
 				</BlockConnector>
 				<BlockConnector connector-type="number"
 					connector-kind="socket" label="value">
+					<DefaultArg genus-name="number"/>
 				</BlockConnector>
 			</BlockConnectors>
 		</BlockGenus>
