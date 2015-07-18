@@ -188,7 +188,7 @@ public class Context
         newBlock = new Block(workspace, "loop", false);
         FactoryRenderableBlock factoryRenderableBlock = new FactoryRenderableBlock(workspace, manager, newBlock.getBlockID());
         RenderableBlock renderableBlock = factoryRenderableBlock.createNewInstance();
-        renderableBlock.setLocation(100, 100);
+        renderableBlock.setLocation(210, 100);
         page.addBlock(renderableBlock);
         
         

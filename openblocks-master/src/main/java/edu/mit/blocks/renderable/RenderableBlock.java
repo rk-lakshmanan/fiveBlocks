@@ -209,7 +209,7 @@ public class RenderableBlock extends JComponent implements SearchableElement,
 	 *            indicates if this block is still waiting for all information
 	 *            needed to properly construct it
 	 */
-	RenderableBlock(Workspace workspace, WorkspaceWidget parent,
+	public RenderableBlock(Workspace workspace, WorkspaceWidget parent,
 			Long blockID, boolean isLoading) {
 		super();
 		this.workspace = workspace;
