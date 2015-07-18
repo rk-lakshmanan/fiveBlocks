@@ -1,2 +1,3 @@
 1437027281772	Rename type 'SetGlobalVariable'
 1437034426241	Delete element
+1437220494504	Extract method 'createNewRenderableBlock'

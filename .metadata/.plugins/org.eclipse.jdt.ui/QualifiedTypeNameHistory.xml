@@ -2,7 +2,6 @@
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="java.awt.geom.Point2D"/>
 <fullyQualifiedTypeName name="edu.mit.blocks.codeblocks.BlockConnectorShape"/>
-<fullyQualifiedTypeName name="edu.mit.blocks.codeblocks.BlockConnector"/>
 <fullyQualifiedTypeName name="java.io.BufferedWriter"/>
 <fullyQualifiedTypeName name="java.io.OutputStreamWriter"/>
 <fullyQualifiedTypeName name="java.io.File"/>
@@ -20,7 +19,6 @@
 <fullyQualifiedTypeName name="javax.xml.transform.TransformerException"/>
 <fullyQualifiedTypeName name="org.w3c.dom.Attr"/>
 <fullyQualifiedTypeName name="edu.mit.blocks.workspace.FactoryManager"/>
-<fullyQualifiedTypeName name="edu.mit.blocks.codeblocks.BlockGenus"/>
 <fullyQualifiedTypeName name="java.util.Map"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="com.ardublock.translator.block.MyBlockBlock"/>
@@ -30,7 +28,6 @@
 <fullyQualifiedTypeName name="com.ardublock.core.SaveBlockObserver"/>
 <fullyQualifiedTypeName name="java.util.Observer"/>
 <fullyQualifiedTypeName name="edu.mit.blocks.workspace.Workspace"/>
-<fullyQualifiedTypeName name="edu.mit.blocks.codeblocks.Block"/>
 <fullyQualifiedTypeName name="com.ardublock.translator.Translator"/>
 <fullyQualifiedTypeName name="java.util.Random"/>
 <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
@@ -44,4 +41,9 @@
 <fullyQualifiedTypeName name="javax.swing.text.html.HTML"/>
 <fullyQualifiedTypeName name="edu.mit.blocks.codeblockutil.CMenuItem"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="edu.mit.blocks.codeblocks.BlockGenus"/>
+<fullyQualifiedTypeName name="edu.mit.blocks.renderable.RenderableBlock"/>
+<fullyQualifiedTypeName name="edu.mit.blocks.codeblocks.BlockConnector"/>
+<fullyQualifiedTypeName name="java.lang.Long"/>
+<fullyQualifiedTypeName name="edu.mit.blocks.codeblocks.Block"/>
 </qualifiedTypeNameHistroy>

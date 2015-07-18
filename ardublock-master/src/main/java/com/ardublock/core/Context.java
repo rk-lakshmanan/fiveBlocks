@@ -184,14 +184,31 @@ public class Context
 		Page page = workspace.getPageNamed("Main");
 		
 		FactoryManager manager = workspace.getFactoryManager();
+		 createNewRenderableBlock(workspace,
+				manager,page,"loop",56,165);
+		 createNewRenderableBlock(workspace,
+					manager,page,"addition",136,8);
+		 createNewRenderableBlock(workspace,
+					manager,page,"number",158,47);
+		 createNewRenderableBlock(workspace,
+					manager,page,"execution",254,7);
+		 createNewRenderableBlock(workspace,
+					manager,page,"Input/Output",520,22);
+		 createNewRenderableBlock(workspace,
+					manager,page,"ifelse_2",0,10);
+     
+        
+        
+	}
+
+	private void createNewRenderableBlock( Workspace workspace,
+			FactoryManager manager,Page page,String genusName, int PositionX,int PositionY) {
 		Block newBlock;
-        newBlock = new Block(workspace, "loop", false);
+        newBlock = new Block(workspace, genusName, false);
         FactoryRenderableBlock factoryRenderableBlock = new FactoryRenderableBlock(workspace, manager, newBlock.getBlockID());
         RenderableBlock renderableBlock = factoryRenderableBlock.createNewInstance();
-        renderableBlock.setLocation(210, 100);
+        renderableBlock.setLocation(PositionX,PositionY);
         page.addBlock(renderableBlock);
-        
-        
 	}
 	
 	//determine OS

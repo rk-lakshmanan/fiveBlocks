@@ -153,7 +153,7 @@
 			<BlockConnectors>
 				<!-- fiveBlocks changed boolean to number -->
 				<BlockConnector label="test" connector-kind="socket"
-					connector-type="number" />
+					connector-type="number"/>
 				<BlockConnector label="" connector-kind="socket"
 					connector-type="cmd" />
 			</BlockConnectors>

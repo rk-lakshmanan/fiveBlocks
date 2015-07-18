@@ -11,10 +11,10 @@
 		<item value="1000" key="org.eclipse.search.resultpage.limit"/>
 	</section>
 	<section name="DialogBounds_SearchDialog">
-		<item value="507" key="DIALOG_WIDTH"/>
-		<item value="299" key="DIALOG_Y_ORIGIN"/>
-		<item value="437" key="DIALOG_HEIGHT"/>
-		<item value="445" key="DIALOG_X_ORIGIN"/>
+		<item value="510" key="DIALOG_WIDTH"/>
+		<item value="235" key="DIALOG_Y_ORIGIN"/>
+		<item value="614" key="DIALOG_X_ORIGIN"/>
+		<item value="451" key="DIALOG_HEIGHT"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="Search">
@@ -31,11 +31,11 @@
 			<item value="org.eclipse.jdt.ui.JavaSearchPage"/>
 		</list>
 	</section>
-	<section name="org.eclipse.search.text.FileSearchResultPage">
-		<item value="1000" key="org.eclipse.search.resultpage.limit"/>
-	</section>
 	<section name="SearchDialog">
 		<item value="org.eclipse.search.internal.ui.text.TextSearchPage" key="PREVIOUS_PAGE"/>
+	</section>
+	<section name="org.eclipse.search.text.FileSearchResultPage">
+		<item value="1000" key="org.eclipse.search.resultpage.limit"/>
 	</section>
 	<section name="TextSearchPage">
 		<item value="false" key="CASE_SENSITIVE"/>
@@ -45,19 +45,7 @@
 		<item value="12" key="HISTORY_SIZE"/>
 		<section name="HISTORY11">
 			<item value="false" key="isRegExSearch"/>
-			<item value="getSaveNode" key="textPattern"/>
-			<item value="0" key="scope"/>
-			<item value="true" key="ignoreCase"/>
-			<item value="false" key="isWholeWord"/>
-			<list key="fileNamePatterns">
-				<item value="*"/>
-			</list>
-			<list key="workingSets">
-			</list>
-		</section>
-		<section name="HISTORY2">
-			<item value="false" key="isRegExSearch"/>
-			<item value="generateCodeButton" key="textPattern"/>
+			<item value="hand" key="textPattern"/>
 			<item value="0" key="scope"/>
 			<item value="true" key="ignoreCase"/>
 			<item value="false" key="isWholeWord"/>
@@ -70,9 +58,9 @@
 		<section name="EXTENSIONS">
 			<item value="*" key="0"/>
 		</section>
-		<section name="HISTORY3">
+		<section name="HISTORY2">
 			<item value="false" key="isRegExSearch"/>
-			<item value="setBlockToolTip" key="textPattern"/>
+			<item value="cbutton" key="textPattern"/>
 			<item value="0" key="scope"/>
 			<item value="true" key="ignoreCase"/>
 			<item value="false" key="isWholeWord"/>
@@ -82,9 +70,9 @@
 			<list key="workingSets">
 			</list>
 		</section>
-		<section name="HISTORY10">
+		<section name="HISTORY3">
 			<item value="false" key="isRegExSearch"/>
-			<item value="labelwidget" key="textPattern"/>
+			<item value="staticcanvas" key="textPattern"/>
 			<item value="0" key="scope"/>
 			<item value="true" key="ignoreCase"/>
 			<item value="false" key="isWholeWord"/>
@@ -96,7 +84,19 @@
 		</section>
 		<section name="HISTORY0">
 			<item value="false" key="isRegExSearch"/>
-			<item value="deleteblock" key="textPattern"/>
+			<item value="glassExplorer" key="textPattern"/>
+			<item value="0" key="scope"/>
+			<item value="true" key="ignoreCase"/>
+			<item value="false" key="isWholeWord"/>
+			<list key="fileNamePatterns">
+				<item value="*"/>
+			</list>
+			<list key="workingSets">
+			</list>
+		</section>
+		<section name="HISTORY10">
+			<item value="false" key="isRegExSearch"/>
+			<item value="png" key="textPattern"/>
 			<item value="0" key="scope"/>
 			<item value="true" key="ignoreCase"/>
 			<item value="false" key="isWholeWord"/>
@@ -108,7 +108,7 @@
 		</section>
 		<section name="HISTORY1">
 			<item value="false" key="isRegExSearch"/>
-			<item value="typeBlock" key="textPattern"/>
+			<item value="glasscard" key="textPattern"/>
 			<item value="0" key="scope"/>
 			<item value="true" key="ignoreCase"/>
 			<item value="false" key="isWholeWord"/>
@@ -120,7 +120,7 @@
 		</section>
 		<section name="HISTORY9">
 			<item value="false" key="isRegExSearch"/>
-			<item value="delete" key="textPattern"/>
+			<item value="cursor.hand_cursor" key="textPattern"/>
 			<item value="0" key="scope"/>
 			<item value="true" key="ignoreCase"/>
 			<item value="false" key="isWholeWord"/>
@@ -132,7 +132,7 @@
 		</section>
 		<section name="HISTORY8">
 			<item value="false" key="isRegExSearch"/>
-			<item value="description" key="textPattern"/>
+			<item value="Factoryblockdrawer" key="textPattern"/>
 			<item value="0" key="scope"/>
 			<item value="true" key="ignoreCase"/>
 			<item value="false" key="isWholeWord"/>
@@ -144,7 +144,7 @@
 		</section>
 		<section name="HISTORY5">
 			<item value="false" key="isRegExSearch"/>
-			<item value="assignToolTipToLabel" key="textPattern"/>
+			<item value="factorycanvas" key="textPattern"/>
 			<item value="0" key="scope"/>
 			<item value="true" key="ignoreCase"/>
 			<item value="false" key="isWholeWord"/>
@@ -156,7 +156,7 @@
 		</section>
 		<section name="HISTORY4">
 			<item value="false" key="isRegExSearch"/>
-			<item value="setToolTipText(" key="textPattern"/>
+			<item value="staticanvas" key="textPattern"/>
 			<item value="0" key="scope"/>
 			<item value="true" key="ignoreCase"/>
 			<item value="false" key="isWholeWord"/>
@@ -168,7 +168,7 @@
 		</section>
 		<section name="HISTORY7">
 			<item value="false" key="isRegExSearch"/>
-			<item value="&quot;description&quot;" key="textPattern"/>
+			<item value="CButton" key="textPattern"/>
 			<item value="0" key="scope"/>
 			<item value="true" key="ignoreCase"/>
 			<item value="false" key="isWholeWord"/>
@@ -180,7 +180,7 @@
 		</section>
 		<section name="HISTORY6">
 			<item value="false" key="isRegExSearch"/>
-			<item value="argumentDescription" key="textPattern"/>
+			<item value="pageloading" key="textPattern"/>
 			<item value="0" key="scope"/>
 			<item value="true" key="ignoreCase"/>
 			<item value="false" key="isWholeWord"/>

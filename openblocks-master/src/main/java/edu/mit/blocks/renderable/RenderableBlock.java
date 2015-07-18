@@ -2115,6 +2115,8 @@ public class RenderableBlock extends JComponent implements SearchableElement,
 			dragHandler.mousePressed(e);
 			pickedUp = true; // mark this block as currently being picked up
 		}
+		System.out.println("x is "+this.getLocation().getX() +"y is "+this.getLocation().getY());
+		
 	}
 
 	// //////////////
