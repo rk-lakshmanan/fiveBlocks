@@ -45,13 +45,26 @@ public class FunctionBlock extends TranslatorBlock
 		this.translator.getBlock(blockId).resetLocalVariableSet();
 		
 		String functionName = getTranslatorBlockAtSocket(0).toCode();
-		System.out.println("blockId is "+blockId +" and name is "+functionName);
+		
 		int i = 1;
 		ArrayList<String> paramList = new ArrayList<String>();
 		while(!isTranslatorBlockAtSocketNull(i)){
 			paramList.add(getTranslatorBlockAtSocket(i).toCode());
 			i++;
 		}
+		ArrayList<String> varList = translator.getBlock(blockId).getLocalVariableSet();
+		
+		for(int j = 0;j<paramList.size();j++){
+			varList.add(paramList.get(j));
+		}
+		
+		
+		
+		
+		
+		
+		
+		
 		String inputParams = new String("(");
 		for(int j = 0; j<paramList.size();j++){
 			inputParams += "float ";
@@ -81,7 +94,16 @@ public class FunctionBlock extends TranslatorBlock
 				translatorBlock = translatorBlock.nextTranslatorBlock();
 			}
 		}
-		return returnType+" "+functionName+" "+inputParams+functionCode+returnString+"}\n";
+		String varDec = new String("");
+		ArrayList<String> arr = translator.getBlock(blockId).getLocalVariableSet();
+		
+		for(int j=0;j<arr.size();j++){
+			if(!paramList.contains(arr.get(j))){
+			varDec += "float "+ arr.get(j)+" = 0\n";
+			}
+		}
+		
+		return returnType+" "+functionName+" "+inputParams+varDec+functionCode+returnString+"}\n";
 		
 	}
 }

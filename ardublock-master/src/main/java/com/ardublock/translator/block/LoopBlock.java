@@ -1,5 +1,7 @@
 package com.ardublock.translator.block;
 
+import java.util.ArrayList;
+
 import com.ardublock.translator.Translator;
 import com.ardublock.translator.block.exception.SocketNullException;
 import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;
@@ -17,21 +19,28 @@ public class LoopBlock extends TranslatorBlock
 		translator.getBlock(blockId).resetLocalVariableSet();
 		String ret;
 		ret = "void loop()\n{\n";
+		String code = new String("");
 		if (translator.isGuinoProgram())
 		{
-			ret += "GUINO_GERER_INTERFACE();\n";
+			code += "GUINO_GERER_INTERFACE();\n";
 		}
 		TranslatorBlock translatorBlock = getTranslatorBlockAtSocket(0);
 		while (translatorBlock != null)
 		{
-			ret = ret + translatorBlock.toCode();
+			code = code + translatorBlock.toCode();
 			translatorBlock = translatorBlock.nextTranslatorBlock();
 		}
 		if (translator.isScoopProgram())
 		{
-			ret += "yield();\n";
+			code += "yield();\n";
 		}
-		ret = ret + "}\n\n";
-		return ret;
+		String varDec = new String("");
+		ArrayList<String> arr = translator.getBlock(blockId).getLocalVariableSet();
+		for(int j=0;j<arr.size();j++){
+			varDec += "float "+ arr.get(j)+" = 0\n";
+		}
+		return ret+varDec+code+"}\n\n";
+		//ret = ret + "}\n\n";
+		//return ret;
 	}
 }

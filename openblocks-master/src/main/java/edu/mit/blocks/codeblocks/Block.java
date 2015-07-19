@@ -51,7 +51,7 @@ public class Block implements ISupportMemento {
     
     public void resetLocalVariableSet (){
     	this.localVariableSet.clear();
-    	System.out.println("////////////////////////////////////////////////////////////// and block name is "+this.blockID);
+    	
     }
     public ArrayList<String> getLocalVariableSet(){
     	return this.localVariableSet;

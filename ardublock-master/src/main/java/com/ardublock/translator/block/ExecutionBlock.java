@@ -31,9 +31,7 @@ public class ExecutionBlock extends TranslatorBlock {
 		Block block = translator.getWorkspace().getEnv().getBlock(blockId);
 		Block beforeBlock = block;
 		ArrayList<String> localVariableSet = getLocalVariable(beforeBlock);
-		if(localVariableSet == null){
-			System.out.println("null catch");
-		}
+	
 
 
 
@@ -41,12 +39,11 @@ public class ExecutionBlock extends TranslatorBlock {
 
 		String value = this.getRequiredTranslatorBlockAtSocket(1).toCode();
 		if (localVariableSet.contains(variable)) {
-
 			return variable + " = " + value + "	;\n";
 		} else {
 			localVariableSet.add(variable);
 
-			return "float " +variable + " = " + value + ";\n";
+			return/* "float " +*/variable + " = " + value + ";\n";
 
 		}
 	}
@@ -60,18 +57,11 @@ public class ExecutionBlock extends TranslatorBlock {
 				beforeBlock = translator.getWorkspace().getEnv()
 						.getBlock(beforeBlock.getPlugBlockID());
 			}else{
-				System.out.println("cannot find root BLOCK");
 				break;
 			}
-			System.out.println("still looping "+beforeBlock.getGenusName());
 			if(beforeBlock!=null&&			
 					beforeBlock.getBeforeBlockID().equals(Block.NULL)&&
 					beforeBlock.getPlugBlockID().equals(Block.NULL)){
-				System.out.println("root BLOCK is "+beforeBlock.getGenusName());
-				System.out.println("blockId is "+beforeBlock.getBlockID());
-				if(beforeBlock.getLocalVariableSet() == null){
-					System.out.println("null catch 2");
-				}
 				return beforeBlock.getLocalVariableSet();
 			}
 			
