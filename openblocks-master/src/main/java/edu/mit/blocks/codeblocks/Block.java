@@ -46,6 +46,17 @@ public class Block implements ISupportMemento {
     private BlockConnector before;
     private BlockConnector after;
 
+    //local variable map set
+    ArrayList<String> localVariableSet;
+    
+    public void resetLocalVariableSet (){
+    	this.localVariableSet.clear();
+    	System.out.println("////////////////////////////////////////////////////////////// and block name is "+this.blockID);
+    }
+    public ArrayList<String> getLocalVariableSet(){
+    	return this.localVariableSet;
+    }
+    
     /**
      * The expand-groups. A list is used instead of a map, because we don't
      * expect a lot of groups in one block.
@@ -140,6 +151,7 @@ public class Block implements ISupportMemento {
         if (linkToStubs && this.hasStubs()) {
             BlockStub.putNewParentInStubMap(workspace, this.blockID);
         }
+        this.localVariableSet = new ArrayList<String>();
     }
 
     /**

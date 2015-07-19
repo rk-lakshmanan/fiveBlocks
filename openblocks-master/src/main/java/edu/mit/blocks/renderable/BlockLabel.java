@@ -592,18 +592,20 @@ public class BlockLabel implements MouseListener, MouseMotionListener,
 		// set the ids for both connectors
 		newRb.getBlock().getPlug().setConnectorBlockID(oldRb.getBlockID());
 		oldBc.setConnectorBlockID(newBlock.getBlockID());
-		if (newGenus.equals("greater")||newGenus.equals("equal")) {
+		if (newGenus.equals("greater") || newGenus.equals("equal")) {
 			// TODO connect two number blocks
-		//System.out.println("error is "+	newRb.getSocketSpaceDimension(newRb.getBlock().getSocketAt(0)).width);
-		createConnectorBlock(newRb,newRb.getBlock().getSocketAt(0),"number","");
-		createConnectorBlock(newRb,newRb.getBlock().getSocketAt(1),"number","");
+			// System.out.println("error is "+
+			// newRb.getSocketSpaceDimension(newRb.getBlock().getSocketAt(0)).width);
+			createConnectorBlock(newRb, newRb.getBlock().getSocketAt(0),
+					"number", "");
+			createConnectorBlock(newRb, newRb.getBlock().getSocketAt(1),
+					"number", "");
 		}
 
 		// newRb.setLocation(10,10);
 		// newRb.getBlock().getPlug().setConnectorBlockID(id);
 		newRb.moveConnectedBlocks();
 		oldRb.getParentWidget().addBlock(newRb);
-		
 
 	}
 

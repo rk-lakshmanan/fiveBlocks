@@ -26,6 +26,7 @@ import edu.mit.blocks.renderable.FactoryRenderableBlock;
 import edu.mit.blocks.renderable.RenderableBlock;
 import edu.mit.blocks.renderable.BlockImageIcon.ImageLocation;
 import edu.mit.blocks.workspace.FactoryManager;
+import edu.mit.blocks.workspace.MyBlock;
 import edu.mit.blocks.workspace.Workspace;
 import edu.mit.blocks.workspace.WorkspaceEnvironment;
 
@@ -1163,19 +1164,84 @@ public class BlockGenus {
 	}
 
 	public static void loadMyBlockFrom(Workspace workspace, Element root,
-			FactoryManager manager, Map<String, String> myBlock) {
+			FactoryManager manager, ArrayList<MyBlock> myBlockSet) {
+		WorkspaceEnvironment env = workspace.getEnv();
+		ArrayList<RenderableBlock> drawerRBs = new ArrayList<RenderableBlock>();
+		
+		Node genusNode;
+		StringTokenizer col;
+
+		// / LOAD BLOCK GENUS PROPERTIES ///
+		BlockGenus newGenus = new BlockGenus(env);
+		// first, parse out the attributes
+		newGenus.genusName = "haha";
+		newGenus.color = new Color(200, 150, 100);
+		newGenus.kind = ("command");
+		newGenus.initLabel = newGenus.genusName;
+		newGenus.hasDefArgs = true;
+		BlockConnector socket = new BlockConnector(workspace, "function name",
+				"number", false, false);
+
+	// add def args if any
+	
+		socket.setDefaultArgument("number", "NAME");
+	
+
+	
+
+		newGenus.sockets.add(socket);
+		
+
+		if (newGenus.isDataBlock() || newGenus.isVariableDeclBlock()
+				|| newGenus.isFunctionBlock()) {
+			newGenus.isStarter = true;
+			newGenus.isTerminator = true;
+		}
+
+		if (!newGenus.isStarter) {
+			newGenus.before = new BlockConnector(workspace,
+					BlockConnectorShape.getCommandShapeName(),
+					BlockConnector.PositionType.TOP, "", false, false,
+					Block.NULL);
+		}
+		if (!newGenus.isTerminator) {
+			newGenus.after = new BlockConnector(workspace,
+					BlockConnectorShape.getCommandShapeName(),
+					BlockConnector.PositionType.BOTTOM, "", false, false,
+					Block.NULL);
+		}
+
+		// System.out.println("Added "+newGenus.toString());
+		env.addBlockGenus(newGenus);
+
+		Block newBlock;
+		// don't link factory blocks to their stubs because they will
+		// forever remain inside the drawer and never be active
+		newBlock = new Block(workspace, newGenus.genusName, false);
+		drawerRBs.add(new FactoryRenderableBlock(workspace, manager, newBlock
+				.getBlockID()));
+
+		manager.addStaticBlocks(drawerRBs, "fiveBlocks");
+
+	}
+
+	// original loadMyBlockFrom
+	public static void loadMyBlockFrom(Workspace workspace, Element root,
+			FactoryManager manager/* , ArrayList<MyBlock> myBlockSet */) {
 		WorkspaceEnvironment env = workspace.getEnv();
 		ArrayList<RenderableBlock> drawerRBs = new ArrayList<RenderableBlock>();
 		Pattern attrExtractor = Pattern.compile("\"(.*)\"");
 		Matcher nameMatcher;
 		NodeList genusNodes = root.getElementsByTagName("MyBlock"); // look for
 																	// genus
-
+		MyBlock myNewBlock = new MyBlock();
 		Node genusNode;
 		StringTokenizer col;
 		String attribName = "";// Added to get attribute name
 		for (int i = 0; i < genusNodes.getLength(); i++) { // find them
 			String code = new String("");
+			String globalCode = new String("");
+			String setupCode = new String("");
 			genusNode = genusNodes.item(i);
 			if (genusNode.getNodeName().equals("MyBlock")) {
 				// / LOAD BLOCK GENUS PROPERTIES ///
@@ -1192,17 +1258,25 @@ public class BlockGenus {
 				// assert that no other genus has this name
 				assert env.getGenusWithName(newGenus.genusName) == null : "Block genus names must be unique.  A block genus already exists with this name: "
 						+ newGenus.genusName;
-				newGenus.color = new Color(200,150,100);
+				newGenus.color = new Color(200, 150, 100);
 				newGenus.kind = ("command");
 				newGenus.initLabel = newGenus.genusName;
 
 				// get the code
 				code = ((Element) genusNode).getAttribute("code");
+				globalCode = ((Element) genusNode).getAttribute("globalCode");
+				setupCode = ((Element) genusNode).getAttribute("setupCode");
 				// System.out.println("code is "+code);
 				/*
 				 * if (nameMatcher.find()) { code= nameMatcher.group(1); }
 				 */
-				myBlock.put(newGenus.genusName, code);
+				myNewBlock.setGenusName(newGenus.genusName);
+				myNewBlock.setCode(code);
+				// myNewBlock.setGlobalCode(globalCode);
+				myNewBlock.setGlobalVarSet(globalCode);
+				myNewBlock.setSetupCode(setupCode);
+
+				// myBlock.put(newGenus.genusName, code);
 				// if genus is a data genus (kind=data) or a variable block (and
 				// soon a declaration block)
 				// it is both a starter and terminator
@@ -1246,18 +1320,18 @@ public class BlockGenus {
 	}
 
 	public static void loadMyBlockAfterSave(Workspace workspace,
-			FactoryManager manager, String name, String code) {
+			FactoryManager manager, MyBlock myBlock) {
 		WorkspaceEnvironment env = workspace.getEnv();
 		ArrayList<RenderableBlock> drawerRBs = new ArrayList<RenderableBlock>();
 
 		BlockGenus newGenus = new BlockGenus(env);
 		// first, parse out the attributes
 
-		newGenus.genusName = name;
+		newGenus.genusName = myBlock.getGenusName();
 
 		assert env.getGenusWithName(newGenus.genusName) == null : "Block genus names must be unique.  A block genus already exists with this name: "
 				+ newGenus.genusName;
-		newGenus.color = new Color(200,150,100);
+		newGenus.color = new Color(200, 150, 100);
 		newGenus.kind = ("command");
 		newGenus.initLabel = newGenus.genusName;
 		// if genus is a data genus (kind=data) or a variable block (and

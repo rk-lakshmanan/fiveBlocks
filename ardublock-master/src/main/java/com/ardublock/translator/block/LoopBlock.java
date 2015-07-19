@@ -14,6 +14,7 @@ public class LoopBlock extends TranslatorBlock
 	@Override
 	public String toCode() throws SocketNullException, SubroutineNotDeclaredException
 	{
+		translator.getBlock(blockId).resetLocalVariableSet();
 		String ret;
 		ret = "void loop()\n{\n";
 		if (translator.isGuinoProgram())

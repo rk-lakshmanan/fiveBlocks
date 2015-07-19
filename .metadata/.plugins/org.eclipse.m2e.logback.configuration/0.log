@@ -4145,3 +4145,323 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact arduino:pde:j
 2015-07-18 20:47:50,280 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 323 resources
 2015-07-18 20:47:50,428 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2015-07-18 20:47:50,429 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 21 resources
+2015-07-18 22:08:28,673 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-18 22:08:28,698 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 9 resources
+2015-07-18 22:08:28,720 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-18 22:08:28,723 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2015-07-18 22:13:53,700 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-18 22:13:53,764 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 323 resources
+2015-07-18 22:13:53,884 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-18 22:13:53,886 [Worker-14] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 21 resources
+2015-07-18 22:14:15,818 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-18 22:14:15,827 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2015-07-18 22:14:15,846 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-18 22:14:15,847 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 00:33:46,767 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 00:33:46,867 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2015-07-19 00:33:46,991 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 00:33:46,992 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 00:33:48,375 [Worker-50] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 00:33:48,453 [Worker-50] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2015-07-19 00:33:48,567 [Worker-50] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 00:33:48,568 [Worker-50] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 00:33:54,904 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 00:33:54,969 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2015-07-19 00:33:55,073 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 00:33:55,074 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 00:33:56,391 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 00:33:56,429 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2015-07-19 00:33:56,491 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 00:33:56,492 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 01:23:01,101 [Worker-64] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 01:23:01,399 [Worker-64] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2015-07-19 01:23:02,190 [Worker-64] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 01:23:02,227 [Worker-64] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 10:39:15,571 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 10:39:15,595 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 9 resources
+2015-07-19 10:39:15,680 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 10:39:15,684 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2015-07-19 10:39:16,078 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 10:39:16,227 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 323 resources
+2015-07-19 10:39:16,459 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 10:39:16,462 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 21 resources
+2015-07-19 10:39:18,137 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 10:39:18,266 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2015-07-19 10:39:18,473 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 10:39:18,474 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 10:40:01,127 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 10:40:01,160 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 11 resources
+2015-07-19 10:40:01,194 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 10:40:01,195 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 10:42:46,437 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 10:42:46,445 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 11 resources
+2015-07-19 10:42:46,457 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 10:42:46,458 [Worker-11] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 10:52:48,902 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 10:52:48,911 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 11 resources
+2015-07-19 10:52:48,923 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 10:52:48,924 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 10:54:07,592 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 10:54:07,599 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 11 resources
+2015-07-19 10:54:07,607 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 10:54:07,607 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 10:56:49,943 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 10:56:49,951 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 11 resources
+2015-07-19 10:56:49,966 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 10:56:49,967 [Worker-10] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 10:59:49,663 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 10:59:49,669 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 11 resources
+2015-07-19 10:59:49,678 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 10:59:49,680 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 11:02:17,601 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 11:02:17,608 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 11 resources
+2015-07-19 11:02:17,617 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 11:02:17,618 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 11:02:17,717 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 11:02:17,821 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2015-07-19 11:02:17,992 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 11:02:17,993 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 11:03:03,816 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 11:03:03,823 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 11 resources
+2015-07-19 11:03:03,832 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 11:03:03,833 [Worker-9] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 11:04:51,653 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 11:04:51,658 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 11 resources
+2015-07-19 11:04:51,664 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 11:04:51,665 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 11:12:42,415 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 11:12:42,421 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 11 resources
+2015-07-19 11:12:42,430 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 11:12:42,431 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 11:12:42,553 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 11:12:42,734 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2015-07-19 11:12:42,907 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 11:12:42,908 [Worker-13] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 11:42:33,683 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 11:42:33,709 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 11 resources
+2015-07-19 11:42:33,724 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 11:42:33,725 [Worker-12] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 13:24:46,752 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 13:24:46,760 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 11 resources
+2015-07-19 13:24:46,776 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 13:24:46,778 [Worker-17] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 13:24:52,768 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 13:24:52,774 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 11 resources
+2015-07-19 13:24:52,785 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 13:24:52,786 [Worker-36] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 13:25:27,509 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 13:25:27,515 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 11 resources
+2015-07-19 13:25:27,524 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 13:25:27,525 [Worker-22] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 14:27:22,823 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 14:27:22,830 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 11 resources
+2015-07-19 14:27:22,842 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 14:27:22,844 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 14:27:22,908 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 14:27:23,044 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2015-07-19 14:27:23,391 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 14:27:23,392 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 14:29:58,358 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 14:29:58,363 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 11 resources
+2015-07-19 14:29:58,373 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 14:29:58,374 [Worker-31] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 15:10:10,911 [Worker-44] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 15:10:10,917 [Worker-44] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 11 resources
+2015-07-19 15:10:10,927 [Worker-44] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 15:10:10,928 [Worker-44] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 15:10:57,492 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 15:10:57,498 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 11 resources
+2015-07-19 15:10:57,506 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 15:10:57,507 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 15:10:57,615 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 15:10:57,722 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2015-07-19 15:10:57,844 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 15:10:57,844 [Worker-49] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 16:06:28,375 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 16:06:28,382 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 11 resources
+2015-07-19 16:06:28,393 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 16:06:28,395 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 16:22:38,405 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 16:22:38,507 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2015-07-19 16:22:38,645 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 16:22:38,646 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 16:22:52,225 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 16:22:52,306 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2015-07-19 16:22:52,457 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 16:22:52,458 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 16:23:31,090 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 16:23:31,167 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2015-07-19 16:23:31,283 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 16:23:31,284 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 16:23:36,157 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 16:23:36,164 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 11 resources
+2015-07-19 16:23:36,175 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 16:23:36,176 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 16:23:39,701 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 16:23:39,705 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 11 resources
+2015-07-19 16:23:39,712 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 16:23:39,713 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 16:23:44,522 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 16:23:44,528 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 11 resources
+2015-07-19 16:23:44,538 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 16:23:44,539 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 16:28:28,844 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 16:28:28,854 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 11 resources
+2015-07-19 16:28:28,864 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 16:28:28,865 [Worker-60] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 16:33:02,638 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 16:33:02,643 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 11 resources
+2015-07-19 16:33:02,653 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 16:33:02,654 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 16:37:54,638 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 16:37:54,645 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 11 resources
+2015-07-19 16:37:54,656 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 16:37:54,657 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 16:38:51,833 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 16:38:51,840 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 11 resources
+2015-07-19 16:38:51,851 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 16:38:51,852 [Worker-52] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 16:39:44,149 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 16:39:44,157 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 11 resources
+2015-07-19 16:39:44,167 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 16:39:44,168 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 16:39:49,963 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 16:39:49,971 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 11 resources
+2015-07-19 16:39:49,980 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 16:39:49,981 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 18:48:10,380 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 18:48:10,437 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2015-07-19 18:48:10,530 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 18:48:10,530 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 20:25:13,803 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 20:25:13,904 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2015-07-19 20:25:14,098 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 20:25:14,099 [Worker-72] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 20:25:23,368 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 20:25:23,422 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2015-07-19 20:25:23,506 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 20:25:23,507 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 20:34:05,213 [Worker-66] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 20:34:05,281 [Worker-66] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2015-07-19 20:34:05,359 [Worker-66] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 20:34:05,359 [Worker-66] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 20:34:28,158 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 20:34:28,261 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2015-07-19 20:34:28,401 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 20:34:28,402 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 21:15:57,452 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 21:15:57,477 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2015-07-19 21:15:57,520 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 21:15:57,521 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 21:16:34,274 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 21:16:34,295 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2015-07-19 21:16:34,346 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 21:16:34,347 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 21:16:41,246 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 21:16:41,273 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2015-07-19 21:16:41,305 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 21:16:41,305 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 21:35:02,533 [Worker-80] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 21:35:02,541 [Worker-80] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 11 resources
+2015-07-19 21:35:02,550 [Worker-80] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 21:35:02,551 [Worker-80] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 21:35:03,354 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 21:35:03,422 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2015-07-19 21:35:03,614 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 21:35:03,620 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 21 resources
+2015-07-19 21:40:08,265 [Worker-66] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 21:40:08,276 [Worker-66] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 11 resources
+2015-07-19 21:40:08,286 [Worker-66] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 21:40:08,287 [Worker-66] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 21:40:18,161 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 21:40:18,256 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2015-07-19 21:40:18,363 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 21:40:18,363 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 21:51:03,553 [Worker-66] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 21:51:03,635 [Worker-66] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2015-07-19 21:51:03,747 [Worker-66] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 21:51:03,748 [Worker-66] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 21:51:38,000 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 21:51:38,079 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2015-07-19 21:51:38,185 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 21:51:38,186 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 21:53:20,643 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 21:53:20,714 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2015-07-19 21:53:20,832 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 21:53:20,833 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 21:54:39,703 [Worker-80] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 21:54:39,765 [Worker-80] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2015-07-19 21:54:39,857 [Worker-80] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 21:54:39,858 [Worker-80] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 21:56:26,696 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 21:56:26,760 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2015-07-19 21:56:26,861 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 21:56:26,862 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 21:59:41,276 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 21:59:41,336 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2015-07-19 21:59:41,438 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 21:59:41,439 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 22:03:48,265 [Worker-80] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 22:03:48,352 [Worker-80] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2015-07-19 22:03:48,499 [Worker-80] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 22:03:48,501 [Worker-80] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 22:04:47,865 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 22:04:47,923 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2015-07-19 22:04:48,019 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 22:04:48,020 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 22:14:36,728 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 22:14:36,816 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2015-07-19 22:14:36,992 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 22:14:36,992 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 22:17:53,172 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 22:17:53,278 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2015-07-19 22:17:53,404 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 22:17:53,405 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 22:20:08,542 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 22:20:08,550 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 11 resources
+2015-07-19 22:20:08,563 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 22:20:08,565 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 22:23:39,633 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 22:23:39,729 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2015-07-19 22:23:39,876 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 22:23:39,877 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 22:24:15,574 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 22:24:15,635 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2015-07-19 22:24:15,732 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 22:24:15,732 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 22:26:18,423 [Worker-66] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 22:26:18,488 [Worker-66] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2015-07-19 22:26:18,590 [Worker-66] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 22:26:18,591 [Worker-66] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 22:32:46,682 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 22:32:46,689 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 11 resources
+2015-07-19 22:32:46,701 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 22:32:46,701 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 22:40:47,428 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 22:40:47,435 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 11 resources
+2015-07-19 22:40:47,449 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 22:40:47,450 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 22:40:47,880 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 22:40:47,982 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2015-07-19 22:40:48,144 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 22:40:48,145 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 22:44:36,705 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 22:44:36,710 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 11 resources
+2015-07-19 22:44:36,719 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 22:44:36,720 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 22:44:36,939 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 22:44:37,006 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2015-07-19 22:44:37,145 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 22:44:37,145 [Worker-81] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 22:45:02,295 [Worker-80] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 22:45:02,302 [Worker-80] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 11 resources
+2015-07-19 22:45:02,311 [Worker-80] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 22:45:02,312 [Worker-80] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 22:46:37,292 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 22:46:37,351 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2015-07-19 22:46:37,426 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 22:46:37,427 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2015-07-19 22:58:50,102 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 22:58:50,175 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2015-07-19 22:58:50,271 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-19 22:58:50,272 [Worker-77] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource

@@ -8,15 +8,21 @@ import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;
 
 public class FunctionBlock extends TranslatorBlock
 {
+	Translator translator;
+	Long blockId;
 	public FunctionBlock(Long blockId, Translator translator, String codePrefix, String codeSuffix, String label)
 	{
 		super(blockId, translator, codePrefix, codeSuffix, label);
+		this.translator = translator;
+		this.blockId = blockId;
 	}
 
 	@Override
 	public String toCode() throws SocketNullException, SubroutineNotDeclaredException
 	{
+		
 		String functionName = getTranslatorBlockAtSocket(0).toCode();
+		
 		int i = 1;
 		ArrayList<String> paramList = new ArrayList<String>();
 		while(!isTranslatorBlockAtSocketNull(i)){
@@ -36,7 +42,10 @@ public class FunctionBlock extends TranslatorBlock
 		return functionName+" "+inputParams+";\n";
 	}
 	public String getCode() throws SocketNullException,SubroutineNotDeclaredException{
+		this.translator.getBlock(blockId).resetLocalVariableSet();
+		
 		String functionName = getTranslatorBlockAtSocket(0).toCode();
+		System.out.println("blockId is "+blockId +" and name is "+functionName);
 		int i = 1;
 		ArrayList<String> paramList = new ArrayList<String>();
 		while(!isTranslatorBlockAtSocketNull(i)){

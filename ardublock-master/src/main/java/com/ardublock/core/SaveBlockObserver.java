@@ -9,6 +9,7 @@ import com.ardublock.translator.block.exception.SocketNullException;
 import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;
 
 import edu.mit.blocks.codeblocks.Block;
+import edu.mit.blocks.workspace.MyBlock;
 import edu.mit.blocks.workspace.Workspace;
 
 public class SaveBlockObserver implements Observer{
@@ -22,19 +23,19 @@ public class SaveBlockObserver implements Observer{
 		if(block instanceof Block){
 			//System.out.println("block name is "+ ((Block) block).getGenusName());
 			Translator translator = new Translator(workspace);
-			try {
-				workspace.getBlockSave().writeToXML(/*(Block)block,*/ translator.translateForSave(((Block) block).getBlockID()),workspace);
-			} catch (SocketNullException e) {
+			//try {
+				workspace.getBlockSave().writeToXML(/*(Block)block,*/new MyBlock(),/* translator.translateForSave(((Block) block).getBlockID()),*/workspace);
+			//} catch (SocketNullException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+			/*	e.printStackTrace();
 			} catch (SubroutineNotDeclaredException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (BlockException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
-			}
+			}*/
+		}
 	}
 
 }

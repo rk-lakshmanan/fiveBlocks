@@ -197,7 +197,6 @@ public class GlassCard implements ActionListener, PropertyChangeListener {
             }
             // Draw the text (if any)
             String text = canvas.getName();
-            System.out.println("canvas name is"+canvas.getName());
             if (text != null && buttonHeight > 4) {
                 //Font font = g2.getFont().deriveFont((float)(((float)this.getHeight()) * .6));
                 Font font = g2.getFont().deriveFont((float) (this.getHeight() - INSET * 2 - 2) * .7f);

@@ -1,6 +1,5 @@
 package edu.mit.blocks.workspace;
 
-
 import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -37,13 +36,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-
-
-
-
-
-
-
 import edu.mit.blocks.codeblocks.Block;
 import edu.mit.blocks.codeblocks.BlockGenus;
 import edu.mit.blocks.renderable.FactoryRenderableBlock;
@@ -52,21 +44,24 @@ import edu.mit.blocks.renderable.RenderableBlock;
 // The following class handles reading and writing to myBlocks.xml
 // which is a user-defined block library
 public class BlockSave {
-	private Map<String, String> myBlock = new HashMap<String,String>();
+	private ArrayList<MyBlock> myBlockSet = new ArrayList<MyBlock>();
 	private static File file;
 	private boolean isFileExists = true;
-	public boolean isFileExists(){
+
+	public boolean isFileExists() {
 		return this.isFileExists;
 	}
-	public BlockSave() {
-		//File file = new File("C:\\Users\\Laksh\\Desktop\\myBlocksFolder\\myBlocks.xml");
-		 JFileChooser fr = new JFileChooser();
-	     FileSystemView fw = fr.getFileSystemView();
-	     File tempPath = fw.getDefaultDirectory();
-	     String path = tempPath.getAbsolutePath()+"\\myBlocks.xml";
-	     File file = new File(path);
 
-	//	File file = new File("myBlocks.xml");
+	public BlockSave() {
+		// File file = new
+		// File("C:\\Users\\Laksh\\Desktop\\myBlocksFolder\\myBlocks.xml");
+		JFileChooser fr = new JFileChooser();
+		FileSystemView fw = fr.getFileSystemView();
+		File tempPath = fw.getDefaultDirectory();
+		String path = tempPath.getAbsolutePath() + "\\myBlocks.xml";
+		File file = new File(path);
+
+		// File file = new File("myBlocks.xml");
 		try {
 			if (!file.exists()) {
 				file.createNewFile();
@@ -112,14 +107,25 @@ public class BlockSave {
 
 		}
 	}
-	public String getCodeOfMyBlock(String key){
-		return myBlock.get(key);
+
+	public String getCodeOfMyBlock(String genusName) {
+		for (int i = 0; i < myBlockSet.size(); i++) {
+			if (myBlockSet.get(i).getGenusName().equals(genusName)) {
+				return myBlockSet.get(i).getCode();
+			}
+		}
+		return null;
 	}
-	public boolean isMyBlock(String key){
-		return myBlock.containsKey(key);
+public boolean isMyBlock(String genusName) {
+	for (int i = 0; i < myBlockSet.size(); i++) {
+		if (myBlockSet.get(i).getGenusName().equals(genusName)) {
+			return true;
+		}
+	}
+		return false;
 	}
 
-	public void readXML(Workspace workspace,FactoryManager manager) {
+	public void readXML(Workspace workspace, FactoryManager manager) {
 
 		final DocumentBuilderFactory factory = DocumentBuilderFactory
 				.newInstance();
@@ -141,15 +147,15 @@ public class BlockSave {
 			// from
 			// langDefRoot
 			/*
-			NodeList blockList = root.getElementsByTagName("Block");
-		
-				System.out.println("empty");
-			
-			for (int i =0 ; i<blockList.getLength();i++){
-				Node node = blockList.item(i);
-				System.out.println("item is "+node.getTextContent());
-			}*/
-		 BlockGenus.loadMyBlockFrom(workspace, root, manager,myBlock);
+			 * NodeList blockList = root.getElementsByTagName("Block");
+			 * 
+			 * System.out.println("empty");
+			 * 
+			 * for (int i =0 ; i<blockList.getLength();i++){ Node node =
+			 * blockList.item(i);
+			 * System.out.println("item is "+node.getTextContent()); }
+			 */
+			BlockGenus.loadMyBlockFrom(workspace, root, manager, myBlockSet);
 		} catch (ParserConfigurationException e) {
 			throw new RuntimeException(e);
 		} catch (SAXException e) {
@@ -159,7 +165,6 @@ public class BlockSave {
 			e.printStackTrace();
 		}
 	}
-	
 
 	/*
 	 * Pattern attrExtractor = Pattern.compile("\"(.*)\""); Matcher nameMatcher;
@@ -232,38 +237,47 @@ public class BlockSave {
 		}
 
 	}
-	
-	
-	
 
-	public void writeToXML(String code, Workspace workspace) {
-		String name =JOptionPane.showInputDialog("Enter your MyBlock Name","");
-		myBlock.put(name,code);
-		
+	public void writeToXML(MyBlock myBlock, Workspace workspace) {
+		String name = JOptionPane.showInputDialog("Enter your MyBlock Name", "");
+		if(isMyBlock(name)){
+			//TODO add code for throwing error
+		}else{
+			myBlock.setGenusName(name);
+			myBlockSet.add(myBlock);
+		}
+
 		try {
-			
-			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+
+			DocumentBuilderFactory docFactory = DocumentBuilderFactory
+					.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 			Document doc = docBuilder.parse(file.getAbsolutePath());
-			
+
 			// Get the root element
 			Node rootNode = doc.getFirstChild();
-			
-			
-			Element myBlock = doc.createElement("MyBlock");
-			
-			//System.out.println("code is "+code);
-			myBlock.setAttribute("code",code);
-			myBlock.setAttribute("name", name);
-			rootNode.appendChild(myBlock);
-			
-			TransformerFactory transformerFactory = TransformerFactory.newInstance();
+
+			Element myBlockElement = doc.createElement("MyBlock");
+
+			// System.out.println("code is "+code);
+			myBlockElement.setAttribute("code", myBlock.getCode());
+			myBlockElement.setAttribute("name", myBlock.getGenusName());
+			myBlockElement.setAttribute("functionCallCode",myBlock.getFunctionCallCode());
+			myBlockElement.setAttribute("setupCode",myBlock.getSetupCode());
+			myBlockElement.setAttribute("functionDecCode", myBlock.getFunctionDecCode());
+			myBlockElement.setAttribute("OtherFunctionCode", myBlock.getOtherFunctionCode());
+			rootNode.appendChild(myBlockElement);
+
+			TransformerFactory transformerFactory = TransformerFactory
+					.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(doc);
-			StreamResult result = new StreamResult(new File(file.getAbsolutePath()));
+			StreamResult result = new StreamResult(new File(
+					file.getAbsolutePath()));
 			transformer.transform(source, result);
-			
-			BlockGenus.loadMyBlockAfterSave(workspace,workspace.getFactoryManager(),name,code);
+
+			BlockGenus.loadMyBlockAfterSave(workspace,
+					workspace.getFactoryManager(), myBlock);
 		} catch (ParserConfigurationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -280,6 +294,6 @@ public class BlockSave {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
+
 	}
 }

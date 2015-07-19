@@ -1,13 +1,24 @@
 package com.ardublock.translator.block;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 import com.ardublock.translator.Translator;
 import com.ardublock.translator.block.exception.SocketNullException;
 import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;
 
+import edu.mit.blocks.codeblocks.Block;
+import edu.mit.blocks.workspace.Workspace;
+
 public class ExecutionBlock extends TranslatorBlock {
+	Translator translator;
+	Long blockId;
+
 	public ExecutionBlock(Long blockId, Translator translator,
 			String codePrefix, String codeSuffix, String label) {
 		super(blockId, translator, codePrefix, codeSuffix, label);
+		this.translator = translator;
+		this.blockId = blockId;
 	}
 
 	@Override
@@ -17,22 +28,56 @@ public class ExecutionBlock extends TranslatorBlock {
 		 * DO NOT add tab in code any more, we'll use arduino to format code, or
 		 * the code will duplicated.
 		 */
+		Block block = translator.getWorkspace().getEnv().getBlock(blockId);
+		Block beforeBlock = block;
+		ArrayList<String> localVariableSet = getLocalVariable(beforeBlock);
+		if(localVariableSet == null){
+			System.out.println("null catch");
+		}
 
-		TranslatorBlock translatorBlock = this
-				.getRequiredTranslatorBlockAtSocket(0);
 
-		String variable = translatorBlock.toCode();
+
+		String variable = this.getRequiredTranslatorBlockAtSocket(0).toCode();
 
 		String value = this.getRequiredTranslatorBlockAtSocket(1).toCode();
-		if (translator.getNumberVariable(variable) != null) {
+		if (localVariableSet.contains(variable)) {
 
-			return variable + " = " + value + ";\n";
+			return variable + " = " + value + "	;\n";
 		} else {
-			translator.addNumberVariable(variable, value);
-			
-			translator.addDefinitionCommand( "float " + variable + " = " + value + ";\n");
-			return  variable + " = " + value + ";\n";
+			localVariableSet.add(variable);
+
+			return "float " +variable + " = " + value + ";\n";
 
 		}
+	}
+
+	private ArrayList<String> getLocalVariable(Block beforeBlock) {
+		while (true) {
+			if (!beforeBlock.getBeforeBlockID().equals(Block.NULL)) {
+				beforeBlock = translator.getWorkspace().getEnv()
+						.getBlock(beforeBlock.getBeforeBlockID());
+			} else if (!beforeBlock.getPlugBlockID().equals(Block.NULL)) {
+				beforeBlock = translator.getWorkspace().getEnv()
+						.getBlock(beforeBlock.getPlugBlockID());
+			}else{
+				System.out.println("cannot find root BLOCK");
+				break;
+			}
+			System.out.println("still looping "+beforeBlock.getGenusName());
+			if(beforeBlock!=null&&			
+					beforeBlock.getBeforeBlockID().equals(Block.NULL)&&
+					beforeBlock.getPlugBlockID().equals(Block.NULL)){
+				System.out.println("root BLOCK is "+beforeBlock.getGenusName());
+				System.out.println("blockId is "+beforeBlock.getBlockID());
+				if(beforeBlock.getLocalVariableSet() == null){
+					System.out.println("null catch 2");
+				}
+				return beforeBlock.getLocalVariableSet();
+			}
+			
+			
+			
+		}
+		return null;
 	}
 }
