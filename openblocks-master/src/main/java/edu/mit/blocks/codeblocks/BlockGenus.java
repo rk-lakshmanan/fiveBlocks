@@ -1274,7 +1274,7 @@ public class BlockGenus {
 				myNewBlock.setCode(code);
 				// myNewBlock.setGlobalCode(globalCode);
 				myNewBlock.setGlobalVarSet(globalCode);
-				myNewBlock.setSetupCode(setupCode);
+				//myNewBlock.setSetupCode(setupCode);
 
 				// myBlock.put(newGenus.genusName, code);
 				// if genus is a data genus (kind=data) or a variable block (and
@@ -1339,6 +1339,18 @@ public class BlockGenus {
 		// it is both a starter and terminator
 		// in other words, it should not have before and after
 		// connectors
+		for(int i=0;i<myBlock.getInputParameterList().size();i++){
+			;
+			BlockConnector socket = new BlockConnector(workspace, myBlock.getInputParameterList().get(i),
+					"number", false, false);
+		// add def args if any
+			socket.setDefaultArgument("number", myBlock.getInputParameterList().get(i));
+			newGenus.sockets.add(socket);
+			
+		}
+		newGenus.hasDefArgs = true;
+		
+		
 		if (newGenus.isDataBlock() || newGenus.isVariableDeclBlock()
 				|| newGenus.isFunctionBlock()) {
 			newGenus.isStarter = true;

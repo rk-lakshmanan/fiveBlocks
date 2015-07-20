@@ -2117,7 +2117,8 @@ public class RenderableBlock extends JComponent implements SearchableElement,
 			pickedUp = true; // mark this block as currently being picked up
 			double x = this.getLocation().getX();
 			double y = this.getLocation().getY();
-			System.out.println("x is "+this.getLocation().getX() +"y is "+this.getLocation().getY());
+			System.out.println("this id is "+this.getBlockID());
+			//System.out.println("x is "+this.getLocation().getX() +"y is "+this.getLocation().getY());
 			/*if(this.getBlock().getGenusName().equals("loop")&&x == 56&&y==165){
 				createsFakeStaticBlock(this,x,y);
 			}else */if(this.getBlock().getGenusName().equals("addition")&&x == 119&&y==12){

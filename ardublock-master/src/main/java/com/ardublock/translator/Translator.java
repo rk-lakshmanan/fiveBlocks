@@ -164,22 +164,31 @@ public class Translator
 		}
 		return rootTranslatorBlock.toCode();
 	}
+	
+	private boolean isProcessSave = false;
 	//translate method for gettting code for MyBlock
 	public String translateForSave(Long blockId)throws SocketNullException, SubroutineNotDeclaredException, BlockException{
+		this.setProcessSave(true);
 		TranslatorBlockFactory translatorBlockFactory = new TranslatorBlockFactory();
 		Block block = workspace.getEnv().getBlock(blockId);
 		TranslatorBlock translatorBlock = translatorBlockFactory.buildTranslatorBlock(this, blockId, block.getGenusName(), "", "", block.getBlockLabel());
-		//ERROR SHOULD BE THROWN WHEN THERE IS FUNCTION(MODIFY THE FOLLOWING CODE)
+		
 		if(block.getGenusName().equals("function")){
-			return translatorBlock.getCode();
+			
+			String code =  translatorBlock.getCode();
+			this.setProcessSave(false);
+			return code;
 		}
-		String ret = new String("");
+		this.setProcessSave(false);
+		//ERROR SHOULD BE THROWN WHEN THERE IS NO FUNCTION
+		return null;
+	/*	String ret = new String("");
 		while (translatorBlock != null)
 		{
 			ret = ret + translatorBlock.toCode();
 			translatorBlock = translatorBlock.nextTranslatorBlock();
 		}
-		return  ret;
+		return  ret;*/
 		
 	}
 	public BlockAdaptor getBlockAdaptor()
@@ -227,6 +236,9 @@ public class Translator
 		}
 	}
 	
+	public List<String> getSetupCommand(){
+		return  setupCommand;
+	}
 	public void addSetupCommand(String command)
 	{
 		if (!setupCommand.contains(command))
@@ -234,6 +246,7 @@ public class Translator
 			setupCommand.add(command);
 		}
 	}
+	
 	
 	public void addSetupCommandForced(String command)
 	{
@@ -491,5 +504,13 @@ public class Translator
 	public void addInternalData(String name, Object value)
 	{
 		internalData.put(name, value);
+	}
+
+	public boolean isProcessSave() {
+		return isProcessSave;
+	}
+
+	public void setProcessSave(boolean isProcessSave) {
+		this.isProcessSave = isProcessSave;
 	}
 }

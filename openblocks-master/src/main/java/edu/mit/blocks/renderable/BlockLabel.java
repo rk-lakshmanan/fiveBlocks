@@ -551,7 +551,14 @@ public class BlockLabel implements MouseListener, MouseMotionListener,
 						"number", "");
 			}
 			if (genus.equals("save")) {
-				workspace.getSaveBlockObservable().saveBlock(oldBlock);
+				//check that it is a function and that it is root function block
+				//last socket needs to be cmd to ensure that it is NOT a function call block
+				if(rb.getBlock().getGenusName().equals("function")&&rb.getBlock().getBeforeBlockID().equals(Block.NULL)&&
+						rb.getBlock().getPlugBlockID().equals(Block.NULL)
+						&&rb.getBlock().getSocketAt(rb.getBlock().getNumSockets()-1).getKind().equals("cmd")){
+					workspace.getSaveBlockObservable().saveBlock(oldBlock);
+				}
+				
 			} else {
 				oldBlock.changeGenusTo(genus);
 				rb.repaintBlock();

@@ -15,7 +15,7 @@ public class ForBlock extends TranslatorBlock {
 			SubroutineNotDeclaredException {
 
 		String tempInit = getTranslatorBlockAtSocket(0).toCode();
-		System.out.println("tempInit is"+tempInit);
+		//System.out.println("tempInit is"+tempInit);
 		String init = new String("");
 		for (int i = 0; i < tempInit.length(); i++) {
 			if (i + 1 != tempInit.length()) {
@@ -26,7 +26,7 @@ public class ForBlock extends TranslatorBlock {
 			init += tempInit.charAt(i);
 		}
 		
-		System.out.println(init + "init is ");
+		//System.out.println(init + "init is ");
 		String cond = getTranslatorBlockAtSocket(1).toCode();
 		String step = getTranslatorBlockAtSocket(2).toCode();
 		String var = new String("");

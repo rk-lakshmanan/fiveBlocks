@@ -33,7 +33,7 @@ public class ExecutionBlock extends TranslatorBlock {
 		ArrayList<String> localVariableSet = getLocalVariable(beforeBlock);
 	
 
-
+		
 
 		String variable = this.getRequiredTranslatorBlockAtSocket(0).toCode();
 

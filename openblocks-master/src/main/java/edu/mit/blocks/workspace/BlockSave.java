@@ -9,12 +9,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
-import java.util.StringTokenizer;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -239,13 +234,8 @@ public boolean isMyBlock(String genusName) {
 	}
 
 	public void writeToXML(MyBlock myBlock, Workspace workspace) {
-		String name = JOptionPane.showInputDialog("Enter your MyBlock Name", "");
-		if(isMyBlock(name)){
-			//TODO add code for throwing error
-		}else{
-			myBlock.setGenusName(name);
-			myBlockSet.add(myBlock);
-		}
+		//String name = JOptionPane.showInputDialog("Enter your MyBlock Name", "");
+		
 
 		try {
 
@@ -258,16 +248,17 @@ public boolean isMyBlock(String genusName) {
 			Node rootNode = doc.getFirstChild();
 
 			Element myBlockElement = doc.createElement("MyBlock");
-
-			// System.out.println("code is "+code);
-			myBlockElement.setAttribute("code", myBlock.getCode());
-			myBlockElement.setAttribute("name", myBlock.getGenusName());
-			myBlockElement.setAttribute("functionCallCode",myBlock.getFunctionCallCode());
-			myBlockElement.setAttribute("setupCode",myBlock.getSetupCode());
-			myBlockElement.setAttribute("functionDecCode", myBlock.getFunctionDecCode());
-			myBlockElement.setAttribute("OtherFunctionCode", myBlock.getOtherFunctionCode());
-			rootNode.appendChild(myBlockElement);
-
+			formatElement(myBlockElement,myBlock,rootNode);
+			
+		
+			Node myBlockNode = rootNode.getLastChild();
+			ArrayList<BaseFunction> baseFunctionList = myBlock.getBaseFunctionList();
+			for(int i=0; i < baseFunctionList.size();i++){
+				BaseFunction bf = baseFunctionList.get(i);
+				Element baseFunctionElement = doc.createElement("BaseFunction");
+				formatElement(baseFunctionElement, bf, myBlockNode);
+			}
+			
 			TransformerFactory transformerFactory = TransformerFactory
 					.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
@@ -276,8 +267,29 @@ public boolean isMyBlock(String genusName) {
 					file.getAbsolutePath()));
 			transformer.transform(source, result);
 
+			
+			if(!isMyBlock(myBlock.getGenusName())){
+				myBlockSet.add(myBlock);
+			}else{
+				//L_EXCEPTION throw error for trying to save block with same name
+			}
+			
+			//save the block			
 			BlockGenus.loadMyBlockAfterSave(workspace,
 					workspace.getFactoryManager(), myBlock);
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 		} catch (ParserConfigurationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -295,5 +307,28 @@ public boolean isMyBlock(String genusName) {
 			e.printStackTrace();
 		}
 
+	}
+	//myBlockElement.setAttribute("name", myBlock.getGenusName());
+	
+	//myBlockElement.setAttribute("parameterList", myBlock.getGenusName());
+
+	//myBlockElement.setAttribute("returnParameter", myBlock.getReturnParameter());
+	//myBlockElement.setAttribute("setupCode", myBlock.get);
+//	myBlockElement.setAttribute("code", myBlock.getCode());
+	public void formatElement(Element e,BaseFunction bf,Node node){
+		e.setAttribute("name", bf.getGenusName());
+		e.setAttribute("parameterList", bf.getFormattedInputParameters());
+		e.setAttribute("code", bf.getCode());
+		e.setAttribute("returnParameter", bf.getReturnParameter());
+		e.setAttribute("setupCode", bf.getFormattedSetupCode());
+		node.appendChild(e);
+	}
+	public MyBlock getMyBlock(String genusName){
+		for(int i=0;i<myBlockSet.size();i++){
+			if(myBlockSet.get(i).getGenusName().equals(genusName)){
+				return myBlockSet.get(i);
+			}
+		}
+		return null;
 	}
 }

@@ -39,7 +39,7 @@ public class FunctionBlock extends TranslatorBlock
 		inputParams+=" )";
 		i++;
 		
-		return functionName+" "+inputParams+";\n";
+		return functionName/*+" "*/+inputParams+";\n";
 	}
 	public String getCode() throws SocketNullException,SubroutineNotDeclaredException{
 		this.translator.getBlock(blockId).resetLocalVariableSet();
@@ -101,6 +101,9 @@ public class FunctionBlock extends TranslatorBlock
 			if(!paramList.contains(arr.get(j))){
 			varDec += "float "+ arr.get(j)+" = 0\n";
 			}
+		}
+		if(translator.isProcessSave()){
+			return varDec+functionCode;
 		}
 		
 		return returnType+" "+functionName+" "+inputParams+varDec+functionCode+returnString+"}\n";
