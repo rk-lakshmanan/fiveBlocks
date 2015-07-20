@@ -1,5 +1,7 @@
 package com.ardublock.translator.block;
 
+import java.util.ArrayList;
+
 import com.ardublock.translator.Translator;
 import com.ardublock.translator.block.exception.SocketNullException;
 import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;
@@ -32,17 +34,17 @@ public class MyBlockBlock extends TranslatorBlock
 		//return translator.getWorkspace().getBlockSave().getCodeOfMyBlock(translator.getBlock(blockId).getGenusName());
 		return "";
 	}
-/*
-	private void generate(BaseFunction bf) {
-		generateDeclaration(bf);
+
+	private void generate(BaseFunction bf,ArrayList<BaseFunction> bfList) {
+		generateDefinition(bf);
 		generateSetupCode(bf);
-		generateFunctionCode(bf);
 	}
 
-	private void generateDeclaration(BaseFunction bf) {
+	private void generateDefinition(BaseFunction bf,ArrayList<BaseFunction> bfList) {
 		String returnType = new String("");
 		String functionName = new String("");
 		String inputParamList = new String("(");
+		String code = new String("");
 		if(!(bf.getReturnParameter()==null||bf.getReturnParameter().equals(""))){
 			returnType="float ";
 		}
@@ -53,7 +55,8 @@ public class MyBlockBlock extends TranslatorBlock
 				inputParamList+=" , ";
 			}
 		}
-		inputParamList+=");";
-		translator.addFunctionName(blockId, functionName, paramList, returnParam);
-	}*/
+		inputParamList+="){\n";
+		String oriCode = bf.getCode();
+		
+	}
 }
