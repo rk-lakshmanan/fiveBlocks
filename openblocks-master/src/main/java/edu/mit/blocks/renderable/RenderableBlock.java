@@ -2109,14 +2109,90 @@ public class RenderableBlock extends JComponent implements SearchableElement,
 			}
 		}
 	}
+	
 
 	public void mousePressed(MouseEvent e) {
 		if (SwingUtilities.isLeftMouseButton(e)) {
 			dragHandler.mousePressed(e);
 			pickedUp = true; // mark this block as currently being picked up
+			double x = this.getLocation().getX();
+			double y = this.getLocation().getY();
+			System.out.println("x is "+this.getLocation().getX() +"y is "+this.getLocation().getY());
+			/*if(this.getBlock().getGenusName().equals("loop")&&x == 56&&y==165){
+				createsFakeStaticBlock(this,x,y);
+			}else */if(this.getBlock().getGenusName().equals("addition")&&x == 119&&y==12){
+				createsFakeStaticBlock(this,x,y);
+			}else if(this.getBlock().getGenusName().equals("number")&&x == 158&&y==47){
+				createsFakeStaticBlock(this,x,y);
+			}else if(this.getBlock().getGenusName().equals("execution")&&x == 266&&y==9){
+				createsFakeStaticBlock(this,x,y);
+			}else if(this.getBlock().getGenusName().equals("Input/Output")&&x == 520&&y==22){
+				createsFakeStaticBlock(this,x,y);
+			}else if(this.getBlock().getGenusName().equals("ifelse_2")&&x ==7&&y==10){
+				createsFakeStaticBlock(this,x,y);
+			}
+				
 		}
-		System.out.println("x is "+this.getLocation().getX() +"y is "+this.getLocation().getY());
 		
+		
+		 
+		
+	}
+	private void createsFakeStaticBlock(RenderableBlock oldRb,double x,double y) {
+		// create new connector block
+		Block newBlock = new Block(workspace,oldRb.getGenus());
+
+		RenderableBlock newRb = new RenderableBlock(workspace,
+				oldRb.getParentWidget(), newBlock.getBlockID(), false);
+		
+		
+		if (oldRb.getGenus().equals("addition")) {
+			// TODO connect two number blocks
+			// System.out.println("error is "+
+			// newRb.getSocketSpaceDimension(newRb.getBlock().getSocketAt(0)).width);
+			createConnectorBlock(newRb, newRb.getBlock().getSocketAt(0),
+					"number", "");
+			createConnectorBlock(newRb, newRb.getBlock().getSocketAt(1),
+					"number", "");
+			newRb.moveConnectedBlocks();
+		}
+
+		newRb.setLocation((int)x,(int)y);
+		// newRb.getBlock().getPlug().setConnectorBlockID(id);
+		
+		oldRb.getParentWidget().addBlock(newRb);
+
+	}
+	private void createConnectorBlock(RenderableBlock oldRb,
+			BlockConnector oldBc, String newGenus, String label) {
+		// create new connector block
+		Block newBlock;
+		if (!label.equals("")) {
+			newBlock = new Block(workspace, newGenus, label);
+		} else {
+			newBlock = new Block(workspace, newGenus);
+		}
+		RenderableBlock newRb = new RenderableBlock(workspace,
+				oldRb.getParentWidget(), newBlock.getBlockID(), false);
+
+		// set the ids for both connectors
+		newRb.getBlock().getPlug().setConnectorBlockID(oldRb.getBlockID());
+		oldBc.setConnectorBlockID(newBlock.getBlockID());
+		if (newGenus.equals("greater") || newGenus.equals("equal")) {
+			// TODO connect two number blocks
+			// System.out.println("error is "+
+			// newRb.getSocketSpaceDimension(newRb.getBlock().getSocketAt(0)).width);
+			createConnectorBlock(newRb, newRb.getBlock().getSocketAt(0),
+					"number", "");
+			createConnectorBlock(newRb, newRb.getBlock().getSocketAt(1),
+					"number", "");
+		}
+
+		 newRb.setLocation(10,10);
+		// newRb.getBlock().getPlug().setConnectorBlockID(id);
+		newRb.moveConnectedBlocks();
+		oldRb.getParentWidget().addBlock(newRb);
+
 	}
 
 	// //////////////

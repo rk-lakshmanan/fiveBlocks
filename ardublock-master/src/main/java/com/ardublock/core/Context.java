@@ -187,15 +187,15 @@ public class Context
 		 createNewRenderableBlock(workspace,
 				manager,page,"loop",56,165);
 		 createNewRenderableBlock(workspace,
-					manager,page,"addition",136,8);
+					manager,page,"addition",119,12);
 		 createNewRenderableBlock(workspace,
 					manager,page,"number",158,47);
 		 createNewRenderableBlock(workspace,
-					manager,page,"execution",254,7);
+					manager,page,"execution",266,9);
 		 createNewRenderableBlock(workspace,
 					manager,page,"Input/Output",520,22);
 		 createNewRenderableBlock(workspace,
-					manager,page,"ifelse_2",0,10);
+					manager,page,"ifelse_2",7,10);
      
         
         
