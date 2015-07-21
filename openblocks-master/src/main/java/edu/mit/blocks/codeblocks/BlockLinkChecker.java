@@ -151,7 +151,8 @@ public class BlockLinkChecker {
 							.distance(currentSocketPoint);
 					if (currentDistance < closestDistance) {
 						
-						if(rblock1.getBlock().getGenusName().equals("function")&&rblock2.getBlock().getGenusName().equals("execution")){
+						if(rblock1.getBlock().getGenusName().equals("function")&&rblock2.getBlock().getGenusName().equals("execution")
+								||workspace.getBlockSave().isMyBlock(rblock1.getBlock().getGenusName())&&rblock2.getBlock().getGenusName().equals("execution")){
 							if(!changedBlocks.contains(rblock2.getBlockID())){
 								changedBlocks.add(rblock2.getBlockID());
 							rblock2.getBlock().removeSocket(1);

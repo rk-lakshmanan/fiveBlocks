@@ -7,6 +7,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
@@ -25,6 +26,7 @@ import edu.mit.blocks.renderable.BlockImageIcon;
 import edu.mit.blocks.renderable.FactoryRenderableBlock;
 import edu.mit.blocks.renderable.RenderableBlock;
 import edu.mit.blocks.renderable.BlockImageIcon.ImageLocation;
+import edu.mit.blocks.workspace.BaseFunction;
 import edu.mit.blocks.workspace.FactoryManager;
 import edu.mit.blocks.workspace.MyBlock;
 import edu.mit.blocks.workspace.Workspace;
@@ -1162,9 +1164,9 @@ public class BlockGenus {
 		}
 
 	}
-
+//temporary LoadMyBlockFrom (delete the code after use)
 	public static void loadMyBlockFrom(Workspace workspace, Element root,
-			FactoryManager manager, ArrayList<MyBlock> myBlockSet) {
+			FactoryManager manager/* ArrayList<MyBlock> myBlockSet*/) {
 		WorkspaceEnvironment env = workspace.getEnv();
 		ArrayList<RenderableBlock> drawerRBs = new ArrayList<RenderableBlock>();
 		
@@ -1225,25 +1227,26 @@ public class BlockGenus {
 
 	}
 
-	// original loadMyBlockFrom
+	
 	public static void loadMyBlockFrom(Workspace workspace, Element root,
-			FactoryManager manager/* , ArrayList<MyBlock> myBlockSet */) {
+			FactoryManager manager , ArrayList<MyBlock> myBlockSet ) {
 		WorkspaceEnvironment env = workspace.getEnv();
 		ArrayList<RenderableBlock> drawerRBs = new ArrayList<RenderableBlock>();
 		Pattern attrExtractor = Pattern.compile("\"(.*)\"");
 		Matcher nameMatcher;
 		NodeList genusNodes = root.getElementsByTagName("MyBlock"); // look for
-																	// genus
-		MyBlock myNewBlock = new MyBlock();
+		
+													// genus
+		MyBlock myNewBlock ;
 		Node genusNode;
 		StringTokenizer col;
 		String attribName = "";// Added to get attribute name
-		for (int i = 0; i < genusNodes.getLength(); i++) { // find them
-			String code = new String("");
-			String globalCode = new String("");
-			String setupCode = new String("");
+		for (int i = 0; i < genusNodes.getLength(); i++) { 
+		
 			genusNode = genusNodes.item(i);
 			if (genusNode.getNodeName().equals("MyBlock")) {
+				myNewBlock=new MyBlock();
+				String[] inputParam;
 				// / LOAD BLOCK GENUS PROPERTIES ///
 				BlockGenus newGenus = new BlockGenus(env);
 				// first, parse out the attributes
@@ -1261,21 +1264,46 @@ public class BlockGenus {
 				newGenus.color = new Color(200, 150, 100);
 				newGenus.kind = ("command");
 				newGenus.initLabel = newGenus.genusName;
-
-				// get the code
-				code = ((Element) genusNode).getAttribute("code");
-				globalCode = ((Element) genusNode).getAttribute("globalCode");
-				setupCode = ((Element) genusNode).getAttribute("setupCode");
-				// System.out.println("code is "+code);
-				/*
-				 * if (nameMatcher.find()) { code= nameMatcher.group(1); }
-				 */
+				if(workspace.getBlockSave().isMyBlock(newGenus.genusName)){
+					//L_Exception throw error (myblocks with same name)
+				}
 				myNewBlock.setGenusName(newGenus.genusName);
-				myNewBlock.setCode(code);
-				// myNewBlock.setGlobalCode(globalCode);
-				myNewBlock.setGlobalVarSet(globalCode);
-				//myNewBlock.setSetupCode(setupCode);
+				myNewBlock.setCode(((Element) genusNode).getAttribute("code"));
+				myNewBlock.setReturnParameter(((Element) genusNode).getAttribute("returnParameter"));
+				//proper way to setup the code involves splitting up the setupCode
+				//here we will just put everything inside
+				List<String> tempSetup = new LinkedList<String>();
+				tempSetup.add(((Element) genusNode).getAttribute("setupCode"));
+				myNewBlock.setSetupCode(tempSetup);
+				String[] tempInputParamList = ((Element) genusNode).getAttribute("parameterList").split("\\s");
+				ArrayList<String> paramList = new ArrayList<String>();
+				for(int j=0;j<tempInputParamList.length;j++){
+					if(!tempInputParamList[j].trim().equals("")){
+						paramList.add(tempInputParamList[j]);
+					}
+					
+				}
+				myNewBlock.setInputParameterList(paramList);
+				ArrayList<BaseFunction> tempBaseFunctionList = new ArrayList<BaseFunction>();
+				NodeList baseFunctionNodeList = genusNode.getChildNodes();
+				for(int k = 0;k<baseFunctionNodeList.getLength();k++){
+					loadBaseFunctionFrom((Element)baseFunctionNodeList.item(k),new BaseFunction(),tempBaseFunctionList);
+				}
+				myNewBlock.setBaseFunctionList(tempBaseFunctionList);
 
+				//add sockets to myNewBlock and set any Default args if there are any
+				if(paramList.size()>0){
+					newGenus.hasDefArgs = true;
+					for(int r= 0;r<paramList.size();r++){
+						BlockConnector socket = new BlockConnector(workspace,paramList.get(r).trim(),
+								"number", false, false);
+						socket.setDefaultArgument("number", paramList.get(r).trim());
+						newGenus.sockets.add(socket);
+					}
+				}
+	
+				
+				
 				// myBlock.put(newGenus.genusName, code);
 				// if genus is a data genus (kind=data) or a variable block (and
 				// soon a declaration block)
@@ -1302,7 +1330,8 @@ public class BlockGenus {
 							BlockConnector.PositionType.BOTTOM, "", false,
 							false, Block.NULL);
 				}
-
+				//add to myBlock set in BlockSave
+				myBlockSet.add(myNewBlock);
 				// System.out.println("Added "+newGenus.toString());
 				env.addBlockGenus(newGenus);
 
@@ -1317,6 +1346,25 @@ public class BlockGenus {
 			manager.addStaticBlocks(drawerRBs, "fiveBlocks");
 
 		}
+	}
+	private static void loadBaseFunctionFrom(Element e,BaseFunction bf, ArrayList<BaseFunction> bfList){
+		
+		bf.setGenusName(e.getAttribute("name"));
+		bf.setCode(e.getAttribute("code"));
+		bf.setReturnParameter(e.getAttribute("returnParameter"));
+		//proper way to setup the code involves splitting up the setupCode
+		//here we will just put everything inside
+		List<String> tempSetup = new LinkedList<String>();
+		tempSetup.add(e.getAttribute("setupCode"));
+		bf.setSetupCode(tempSetup);
+		String[] tempInputParamList = e.getAttribute("parameterList").split("\\s");
+		ArrayList<String> paramList = new ArrayList<String>();
+		for(int j=0;j<tempInputParamList.length;j++){
+			paramList.add(tempInputParamList[j]);
+		}
+		bf.setInputParameterList(paramList);
+		
+		bfList.add(bf);
 	}
 
 	public static void loadMyBlockAfterSave(Workspace workspace,

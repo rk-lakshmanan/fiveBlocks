@@ -11,7 +11,9 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 
+
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileSystemView;
 import javax.xml.parsers.ParserConfigurationException;
@@ -48,8 +50,6 @@ public class BlockSave {
 	}
 
 	public BlockSave() {
-		// File file = new
-		// File("C:\\Users\\Laksh\\Desktop\\myBlocksFolder\\myBlocks.xml");
 		JFileChooser fr = new JFileChooser();
 		FileSystemView fw = fr.getFileSystemView();
 		File tempPath = fw.getDefaultDirectory();
@@ -270,13 +270,19 @@ public boolean isMyBlock(String genusName) {
 			
 			if(!isMyBlock(myBlock.getGenusName())){
 				myBlockSet.add(myBlock);
+				//save the block			
+				BlockGenus.loadMyBlockAfterSave(workspace,
+						workspace.getFactoryManager(), myBlock);
 			}else{
 				//L_EXCEPTION throw error for trying to save block with same name
+			JFrame frame = new JFrame();
+				JOptionPane.showMessageDialog(frame,
+					    "You can't save the block with the same name",
+					    "Error",
+					    JOptionPane.ERROR_MESSAGE);
 			}
 			
-			//save the block			
-			BlockGenus.loadMyBlockAfterSave(workspace,
-					workspace.getFactoryManager(), myBlock);
+			
 			
 			
 			
@@ -308,13 +314,6 @@ public boolean isMyBlock(String genusName) {
 		}
 
 	}
-	//myBlockElement.setAttribute("name", myBlock.getGenusName());
-	
-	//myBlockElement.setAttribute("parameterList", myBlock.getGenusName());
-
-	//myBlockElement.setAttribute("returnParameter", myBlock.getReturnParameter());
-	//myBlockElement.setAttribute("setupCode", myBlock.get);
-//	myBlockElement.setAttribute("code", myBlock.getCode());
 	public void formatElement(Element e,BaseFunction bf,Node node){
 		e.setAttribute("name", bf.getGenusName());
 		e.setAttribute("parameterList", bf.getFormattedInputParameters());

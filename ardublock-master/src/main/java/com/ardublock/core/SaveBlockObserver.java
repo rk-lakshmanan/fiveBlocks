@@ -35,13 +35,14 @@ public class SaveBlockObserver implements Observer {
 			
 			MyBlock myBlock = new MyBlock();
 			myBlock.generateMyFunctionBlock(workspace, (Block)block);
-			System.out.println("name of MYBLOCK IS" +myBlock.getGenusName());
-			myBlock.setBaseFunctionList(createBaseFunctionList(workspace,baseFunctionIDSet,myBlockBaseSet,((Block)block).getBlockID()));
+			//System.out.println("name of MYBLOCK IS" +myBlock.getGenusName());
+			myBlock.setBaseFunctionList(createBaseFunctionList(workspace,baseFunctionIDSet,myBlockBaseSet/*,((Block)block).getBlockID()*/));
 			
 			try {
 				String code = translator.translateForSave(((Block) block).getBlockID());
+				code = setupCodeForReturn(myBlock, code);
 				myBlock.setCode(code);
-				System.out.println("code of myBlock is "+code);
+				//System.out.println("code of myBlock is "+code);
 				myBlock.setSetupCode(translator.getSetupCommand());
 				workspace.getBlockSave().writeToXML(myBlock, workspace);
 			} catch (SocketNullException e) {
@@ -77,11 +78,11 @@ public class SaveBlockObserver implements Observer {
 		}
 	}
 
-	private ArrayList<BaseFunction> createBaseFunctionList(Workspace workspace,ArrayList<Long> baseFunctionIDSet,ArrayList<String> myBlockBaseSet,Long blockID) {
+	private ArrayList<BaseFunction> createBaseFunctionList(Workspace workspace,ArrayList<Long> baseFunctionIDSet,ArrayList<String> myBlockBaseSet) {
 		ArrayList<BaseFunction> baseFunctionsList = new ArrayList<BaseFunction>();
 		processBaseFunctionIDSet(workspace, baseFunctionIDSet,
 				baseFunctionsList);
-		
+		//demotes all myBlocks that are found in the traverse method earlier to baseFunction
 		for(int i=0;i<myBlockBaseSet.size();i++){
 			MyBlock myBlock = workspace.getBlockSave().getMyBlock(myBlockBaseSet.get(i));
 			//transfer all baseFunctions in myBlock
@@ -91,7 +92,7 @@ public class SaveBlockObserver implements Observer {
 			//transfer myBlocks as a baseFunction itself
 			BaseFunction bf = new BaseFunction();
 			bf.setGenusName(myBlock.getGenusName());
-			bf.setCode(myBlock.getCode());
+			bf.setCode(setupCodeForReturn(myBlock, myBlock.getCode()));
 			bf.setInputParameterList(myBlock.getInputParameterList());
 			bf.setReturnParameter(myBlock.getReturnParameter());
 			bf.setSetupCode(myBlock.getSetupCode());
@@ -101,7 +102,7 @@ public class SaveBlockObserver implements Observer {
 		
 		return baseFunctionsList;
 	}
-
+	//convert all the block ids to baseFunctions and add them to baseFunction list
 	private void processBaseFunctionIDSet(Workspace workspace,
 			ArrayList<Long> baseFunctionIDSet,
 			ArrayList<BaseFunction> baseFunctionsList) {
@@ -111,6 +112,7 @@ public class SaveBlockObserver implements Observer {
 			baseFunction.generateMyFunctionBlock(workspace, workspace.getEnv().getBlock(baseFunctionIDSet.get(i)));
 			try {
 				String code = translator.translateForSave(baseFunctionIDSet.get(i));
+				code = setupCodeForReturn(baseFunction, code);
 				baseFunction.setCode(code);
 				baseFunction.setSetupCode(translator.getSetupCommand());
 				baseFunctionsList.add(baseFunction);
@@ -125,6 +127,13 @@ public class SaveBlockObserver implements Observer {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	private String setupCodeForReturn(BaseFunction baseFunction, String code) {
+		if(baseFunction.getReturnParameter()!=null&&!baseFunction.getReturnParameter().trim().equals("")){
+			code += "return "+baseFunction.getReturnParameter()+";\n";
+		}
+		return code;
 	}
 
 	//accelerator for traverse recursion method (start from the code blocks)

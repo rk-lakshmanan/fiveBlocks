@@ -45,6 +45,7 @@ public class MyBlockBlock extends TranslatorBlock {
 	private void generate( BaseFunction bf,ArrayList<BaseFunction> bfList) {
 		String topCode = generateTopCode(bf);
 		String code = generateCode(bf, bfList);
+		String returnCode = "return "+ bf.getReturnParameter()+";\n";
 		translator.addDefinitionCommand(topCode + code + "}\n");
 		translator.addSetupCommand(bf.getFormattedSetupCode());
 	}
