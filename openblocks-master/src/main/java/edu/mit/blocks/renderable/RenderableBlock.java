@@ -291,6 +291,10 @@ public class RenderableBlock extends JComponent implements SearchableElement,
 			setBlockToolTip(getBlock().getBlockDescription().trim());
 		}
 		setCursor(dragHandler.getDragHintCursor());
+		if(workspace.getBlockSave().isMyBlock(this.getBlock().getGenusName())){
+			setBlockToolTip(workspace.getBlockSave().getMyBlock(this.getBlock().getGenusName()).getBubbleText());
+			System.out.println("this is tool text "+workspace.getBlockSave().getMyBlock(this.getBlock().getGenusName()).getBubbleText());
+		}
 	}
 
 	/**

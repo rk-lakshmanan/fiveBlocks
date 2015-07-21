@@ -1,6 +1,8 @@
 package edu.mit.blocks.workspace;
 
 import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.GridLayout;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -10,11 +12,13 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
-
-
+import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.filechooser.FileSystemView;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
@@ -44,7 +48,7 @@ public class BlockSave {
 	private ArrayList<MyBlock> myBlockSet = new ArrayList<MyBlock>();
 	private static File file;
 	private boolean isFileExists = true;
-
+	
 	public boolean isFileExists() {
 		return this.isFileExists;
 	}
@@ -111,12 +115,13 @@ public class BlockSave {
 		}
 		return null;
 	}
-public boolean isMyBlock(String genusName) {
-	for (int i = 0; i < myBlockSet.size(); i++) {
-		if (myBlockSet.get(i).getGenusName().equals(genusName)) {
-			return true;
+
+	public boolean isMyBlock(String genusName) {
+		for (int i = 0; i < myBlockSet.size(); i++) {
+			if (myBlockSet.get(i).getGenusName().equals(genusName)) {
+				return true;
+			}
 		}
-	}
 		return false;
 	}
 
@@ -234,9 +239,12 @@ public boolean isMyBlock(String genusName) {
 	}
 
 	public void writeToXML(MyBlock myBlock, Workspace workspace) {
-		//String name = JOptionPane.showInputDialog("Enter your MyBlock Name", "");
-		
+		// String name = JOptionPane.showInputDialog("Enter your MyBlock Name",
+		// "");
 
+		JOptionPaneDescription jop = new JOptionPaneDescription();
+		jop.showText(myBlock);
+		System.out.println("moving on");
 		try {
 
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory
@@ -248,17 +256,17 @@ public boolean isMyBlock(String genusName) {
 			Node rootNode = doc.getFirstChild();
 
 			Element myBlockElement = doc.createElement("MyBlock");
-			formatElement(myBlockElement,myBlock,rootNode);
-			
-		
+			formatMyBlockElement(myBlockElement, myBlock, rootNode);
+
 			Node myBlockNode = rootNode.getLastChild();
-			ArrayList<BaseFunction> baseFunctionList = myBlock.getBaseFunctionList();
-			for(int i=0; i < baseFunctionList.size();i++){
+			ArrayList<BaseFunction> baseFunctionList = myBlock
+					.getBaseFunctionList();
+			for (int i = 0; i < baseFunctionList.size(); i++) {
 				BaseFunction bf = baseFunctionList.get(i);
 				Element baseFunctionElement = doc.createElement("BaseFunction");
 				formatElement(baseFunctionElement, bf, myBlockNode);
 			}
-			
+
 			TransformerFactory transformerFactory = TransformerFactory
 					.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
@@ -267,35 +275,22 @@ public boolean isMyBlock(String genusName) {
 					file.getAbsolutePath()));
 			transformer.transform(source, result);
 
-			
-			if(!isMyBlock(myBlock.getGenusName())){
+			if (!isMyBlock(myBlock.getGenusName())) {
 				myBlockSet.add(myBlock);
-				//save the block			
+				// save the block
 				BlockGenus.loadMyBlockAfterSave(workspace,
 						workspace.getFactoryManager(), myBlock);
-			}else{
-				//L_EXCEPTION throw error for trying to save block with same name
-			JFrame frame = new JFrame();
-				JOptionPane.showMessageDialog(frame,
-					    "You can't save the block with the same name",
-					    "Error",
-					    JOptionPane.ERROR_MESSAGE);
+			} else {
+				// L_EXCEPTION throw error for trying to save block with same
+				// name
+				/*
+				 * JFrame frame = new JFrame();
+				 * JOptionPane.showMessageDialog(frame,
+				 * "You can't save the block with the same name", "Error",
+				 * JOptionPane.ERROR_MESSAGE);
+				 */
 			}
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+
 		} catch (ParserConfigurationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -314,7 +309,108 @@ public boolean isMyBlock(String genusName) {
 		}
 
 	}
-	public void formatElement(Element e,BaseFunction bf,Node node){
+
+	
+	
+	
+
+	class JOptionPaneDescription {
+		private MyBlock myBlock;
+
+		private void display() {
+			// String[] items = {"One", "Two", "Three", "Four", "Five"};
+			// JComboBox combo = new JComboBox(items);
+			ArrayList<JTextField> jTextFieldList = new ArrayList<JTextField>();
+			JPanel panel = new JPanel(new GridLayout(0, 1));
+			jTextFieldList = new ArrayList<JTextField>();
+			JTextField field = new JTextField("");
+			panel.add(new JLabel("Block Description for "
+					+ myBlock.getGenusName()));
+			jTextFieldList.add(field);
+			panel.add(field);
+			for (int i = 0; i < myBlock.getInputParameterList().size(); i++) {
+				String str = myBlock.getInputParameterList().get(i);
+				if (str != null && !str.equals("")) {
+					JTextField field2 = new JTextField("");
+					panel.add(new JLabel("Input parameter " + str));
+					jTextFieldList.add(field2);
+					panel.add(field2);
+				}
+
+			}
+			boolean hasReturn = false;
+			String str = myBlock.getReturnParameter();
+			JTextField field3 = new JTextField("");
+			if (str != null && !str.equals("")) {
+				panel.add(new JLabel("Return parameter " + str));
+				jTextFieldList.add(field3);
+				panel.add(field3);
+				hasReturn = true;
+			}
+			// JTextField field1 = new JTextField("1234.56");
+			// JTextField field2 = new JTextField("9876.54");
+
+			// panel.add(combo);
+			// panel.add(new JLabel("Field 1:"));
+			// panel.add(field1);
+			// panel.add(new JLabel("Field 2:"));
+			// panel.add(field2);
+			int result = JOptionPane.showConfirmDialog(null, panel,
+					"Enter Description", JOptionPane.OK_CANCEL_OPTION,
+					JOptionPane.PLAIN_MESSAGE);
+			if (result == JOptionPane.OK_OPTION) {
+				// System.out.println(combo.getSelectedItem()
+				// + " " + field1.getText()
+				// + " " + field2.getText());
+			/*	for (int i = 0; i < jTextFieldList.size(); i++) {
+					System.out.println("text is "
+							+ jTextFieldList.get(i).getText());
+					
+				}*/
+				myBlock.setBubbleText(formatTextBubble(jTextFieldList,hasReturn));
+				
+			} else {
+				System.out.println("Cancelled");
+			}
+		}
+		private String formatTextBubble(ArrayList<JTextField> fieldList,boolean hasReturn) {
+			String textBubble = new String("");
+			textBubble += "Block description: "+fieldList.get(0).getText()+"\n";
+			for(int i = 1;i<fieldList.size();i++){
+				if(hasReturn){
+					textBubble+= myBlock.getReturnParameter()+" description(return parameter):" +fieldList.get(i).getText()+" \n";
+					break;
+				}
+				textBubble+= myBlock.getInputParameterList().get(i-1)+" description(parameter):" +fieldList.get(i).getText()+" \n";
+			}	
+			System.out.println("textBubble is "+ textBubble);
+			return textBubble;
+		}
+
+
+		public void showText(MyBlock myBlock) {
+			this.myBlock = myBlock;
+			EventQueue.invokeLater(new Runnable() {
+
+				@Override
+				public void run() {
+					display();
+				}
+			});
+		}
+	}
+
+	public void formatMyBlockElement(Element e, MyBlock bf, Node node) {
+		e.setAttribute("name", bf.getGenusName());
+		e.setAttribute("parameterList", bf.getFormattedInputParameters());
+		e.setAttribute("code", bf.getCode());
+		e.setAttribute("returnParameter", bf.getReturnParameter());
+		e.setAttribute("setupCode", bf.getFormattedSetupCode());
+		System.out.println("bubble text is writing "+bf.getBubbleText());
+		e.setAttribute("bubbleText",bf.getBubbleText());
+		node.appendChild(e);
+	}
+	public void formatElement(Element e, BaseFunction bf, Node node) {
 		e.setAttribute("name", bf.getGenusName());
 		e.setAttribute("parameterList", bf.getFormattedInputParameters());
 		e.setAttribute("code", bf.getCode());
@@ -322,9 +418,10 @@ public boolean isMyBlock(String genusName) {
 		e.setAttribute("setupCode", bf.getFormattedSetupCode());
 		node.appendChild(e);
 	}
-	public MyBlock getMyBlock(String genusName){
-		for(int i=0;i<myBlockSet.size();i++){
-			if(myBlockSet.get(i).getGenusName().equals(genusName)){
+
+	public MyBlock getMyBlock(String genusName) {
+		for (int i = 0; i < myBlockSet.size(); i++) {
+			if (myBlockSet.get(i).getGenusName().equals(genusName)) {
 				return myBlockSet.get(i);
 			}
 		}

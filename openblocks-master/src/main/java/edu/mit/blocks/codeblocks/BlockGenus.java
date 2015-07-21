@@ -1270,6 +1270,7 @@ public class BlockGenus {
 				myNewBlock.setGenusName(newGenus.genusName);
 				myNewBlock.setCode(((Element) genusNode).getAttribute("code"));
 				myNewBlock.setReturnParameter(((Element) genusNode).getAttribute("returnParameter"));
+				myNewBlock.setBubbleText(((Element) genusNode).getAttribute("bubbleText"));
 				//proper way to setup the code involves splitting up the setupCode
 				//here we will just put everything inside
 				List<String> tempSetup = new LinkedList<String>();
