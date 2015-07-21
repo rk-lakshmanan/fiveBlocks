@@ -9,54 +9,74 @@ import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;
 import edu.mit.blocks.workspace.BaseFunction;
 import edu.mit.blocks.workspace.MyBlock;
 
-public class MyBlockBlock extends TranslatorBlock
-{
+public class MyBlockBlock extends TranslatorBlock {
 	private Translator translator;
 	private Long blockId;
-	public MyBlockBlock(Long blockId, Translator translator, String codePrefix, String codeSuffix, String label)
-	{
+
+	public MyBlockBlock(Long blockId, Translator translator, String codePrefix,
+			String codeSuffix, String label) {
 		super(blockId, translator);
 		this.translator = translator;
 		this.blockId = blockId;
 	}
 
 	@Override
-	public String toCode() throws SocketNullException, SubroutineNotDeclaredException
-	{
-		MyBlock myBlock = translator.getWorkspace().getBlockSave().getMyBlock(translator.getBlock(blockId).getGenusName());
-	for(int i=0;i<myBlock.getBaseFunctionList().size();i++){
-		BaseFunction bf = myBlock.getBaseFunctionList().get(i);
-		//generate(bf);
-	}
-		
-		
-	//	return generateMyBlockFunctionCall(myBlock);
-		//return translator.getWorkspace().getBlockSave().getCodeOfMyBlock(translator.getBlock(blockId).getGenusName());
-		return "";
+	public String toCode() throws SocketNullException,
+			SubroutineNotDeclaredException {
+		MyBlock myBlock = translator.getWorkspace().getBlockSave()
+				.getMyBlock(translator.getBlock(blockId).getGenusName());
+		ArrayList<BaseFunction> bfList = myBlock.getBaseFunctionList();
+		for (int i = 0; i < bfList.size(); i++) {
+			BaseFunction bf = bfList.get(i);
+			generate(bf,bfList);
+		}
+		generate(myBlock,bfList);
+		String myBlockCallCode = generateTopCode(myBlock);
+		myBlockCallCode = myBlockCallCode.replaceAll("float", "");
+		myBlockCallCode = myBlockCallCode.replaceAll("\\{", ";");
+		// return generateMyBlockFunctionCall(myBlock);
+		// return
+		// translator.getWorkspace().getBlockSave().getCodeOfMyBlock(translator.getBlock(blockId).getGenusName());
+		return myBlockCallCode;
 	}
 
-	private void generate(BaseFunction bf,ArrayList<BaseFunction> bfList) {
-		generateDefinition(bf);
-		generateSetupCode(bf);
+
+
+	private void generate( BaseFunction bf,ArrayList<BaseFunction> bfList) {
+		String topCode = generateTopCode(bf);
+		String code = generateCode(bf, bfList);
+		translator.addDefinitionCommand(topCode + code + "}\n");
+		translator.addSetupCommand(bf.getFormattedSetupCode());
 	}
 
-	private void generateDefinition(BaseFunction bf,ArrayList<BaseFunction> bfList) {
+	private String generateCode(BaseFunction bf, ArrayList<BaseFunction> bfList) {
+		String code = new String("");
+		code = bf.getCode();
+		for (int i = 0; i < bfList.size(); i++) {
+			code = code.replaceAll(bfList.get(i).getGenusName() + "\\(", bfList.get(i).getGenusName() + "_"
+					+ blockId + "(");
+		}
+		return code;
+	}
+
+	private String generateTopCode(BaseFunction bf) {
 		String returnType = new String("");
 		String functionName = new String("");
 		String inputParamList = new String("(");
-		String code = new String("");
-		if(!(bf.getReturnParameter()==null||bf.getReturnParameter().equals(""))){
-			returnType="float ";
+
+		if (!(bf.getReturnParameter() == null || bf.getReturnParameter()
+				.equals(""))) {
+			returnType = "float ";
 		}
-		functionName = bf.getGenusName().trim()+"_"+blockId;
-		for(int i=0;i<bf.getInputParameterList().size();i++){
-			inputParamList += " float "+bf.getInputParameterList().get(i);
-			if(i!=bf.getInputParameterList().size()-1){
-				inputParamList+=" , ";
+		functionName = bf.getGenusName().trim() + "_" + blockId;
+		for (int i = 0; i < bf.getInputParameterList().size(); i++) {
+			inputParamList += " float " + bf.getInputParameterList().get(i);
+			if (i != bf.getInputParameterList().size() - 1) {
+				inputParamList += " , ";
 			}
 		}
-		inputParamList+="){\n";
-		String oriCode = bf.getCode();
-		
+		inputParamList += ") {\n";
+		return returnType + functionName + inputParamList;
 	}
+
 }
