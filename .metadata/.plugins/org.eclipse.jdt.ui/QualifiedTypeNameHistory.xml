@@ -19,14 +19,12 @@
 <fullyQualifiedTypeName name="javax.xml.transform.TransformerException"/>
 <fullyQualifiedTypeName name="org.w3c.dom.Attr"/>
 <fullyQualifiedTypeName name="edu.mit.blocks.workspace.FactoryManager"/>
-<fullyQualifiedTypeName name="com.ardublock.translator.block.MyBlockBlock"/>
 <fullyQualifiedTypeName name="com.sun.java.accessibility.util.Translator"/>
 <fullyQualifiedTypeName name="java.util.Observable"/>
 <fullyQualifiedTypeName name="edu.mit.blocks.renderable.SaveBlockObservable"/>
 <fullyQualifiedTypeName name="com.ardublock.core.SaveBlockObserver"/>
 <fullyQualifiedTypeName name="java.util.Observer"/>
 <fullyQualifiedTypeName name="java.util.Random"/>
-<fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="edu.mit.blocks.renderable.ConnectorTag"/>
 <fullyQualifiedTypeName name="java.lang.Exception"/>
@@ -47,9 +45,19 @@
 <fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="edu.mit.blocks.workspace.MyFunctionBlock"/>
 <fullyQualifiedTypeName name="com.ardublock.translator.Translator"/>
-<fullyQualifiedTypeName name="java.util.LinkedList"/>
-<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="com.ardublock.translator.block.MyBlockBlock"/>
 <fullyQualifiedTypeName name="edu.mit.blocks.workspace.MyBlock"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.util.LinkedList"/>
 <fullyQualifiedTypeName name="edu.mit.blocks.workspace.BaseFunction"/>
+<fullyQualifiedTypeName name="javax.swing.JFrame"/>
+<fullyQualifiedTypeName name="javax.swing.JComboBox"/>
+<fullyQualifiedTypeName name="java.awt.GridLayout"/>
+<fullyQualifiedTypeName name="javax.swing.JPanel"/>
+<fullyQualifiedTypeName name="java.awt.EventQueue"/>
+<fullyQualifiedTypeName name="javax.swing.JLabel"/>
+<fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+<fullyQualifiedTypeName name="javax.swing.JTextField"/>
+<fullyQualifiedTypeName name="org.w3c.dom.Element"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>

@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><MyBlockSet>
-	<MyBlock code="float a = 1;&#10;if (( ( a ) &lt; ( 5 ) ))&#10;{&#10;switch(a){&#10;case 1:Serial.write(10);&#10;Serial.write(10);&#10;case 2:Serial.write(10);&#10;case 3:Serial.write(10);&#10;case 4:Serial.write(10);&#10;case 5:Serial.write(10);&#10;}&#10;}&#10;" name="myBlock"/>
-<MyBlock code="float hello = awesome (world );&#10;;&#10;" name="set_variable"/><MyBlock code="void  haha (float hehehe ){&#10;float hello = awesome (world );&#10;;&#10;}&#10;" name="Haha"/></MyBlockSet>

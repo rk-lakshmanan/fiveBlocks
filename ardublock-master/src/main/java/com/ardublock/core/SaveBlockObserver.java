@@ -44,7 +44,7 @@ public class SaveBlockObserver implements Observer {
 				myBlock.setCode(code);
 				//System.out.println("code of myBlock is "+code);
 				myBlock.setSetupCode(translator.getSetupCommand());
-				workspace.getBlockSave().writeToXML(myBlock, workspace);
+				workspace.getBlockSave().save(myBlock, workspace);
 			} catch (SocketNullException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

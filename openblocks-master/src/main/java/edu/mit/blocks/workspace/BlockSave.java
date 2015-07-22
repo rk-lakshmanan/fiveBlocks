@@ -25,6 +25,7 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.TransformerFactoryConfigurationError;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.parsers.DocumentBuilder;
@@ -33,6 +34,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
@@ -48,7 +50,7 @@ public class BlockSave {
 	private ArrayList<MyBlock> myBlockSet = new ArrayList<MyBlock>();
 	private static File file;
 	private boolean isFileExists = true;
-	
+
 	public boolean isFileExists() {
 		return this.isFileExists;
 	}
@@ -238,13 +240,29 @@ public class BlockSave {
 
 	}
 
-	public void writeToXML(MyBlock myBlock, Workspace workspace) {
+	public void save(MyBlock myBlock, Workspace workspace) {
 		// String name = JOptionPane.showInputDialog("Enter your MyBlock Name",
 		// "");
+		if (!isMyBlock(myBlock.getGenusName())) {
+			writeToXML(myBlock);
+			myBlockSet.add(myBlock);
+			// save the block
+			BlockGenus.loadMyBlockAfterSave(workspace,
+					workspace.getFactoryManager(), myBlock);
+		} else {
+			// L_EXCEPTION throw error for trying to save block with same
+			// name
 
-		JOptionPaneDescription jop = new JOptionPaneDescription();
-		jop.showText(myBlock);
-		System.out.println("moving on");
+			JFrame frame = new JFrame();
+			JOptionPane.showMessageDialog(frame,
+					"You can't save the block with the same name", "Error",
+					JOptionPane.ERROR_MESSAGE);
+
+		}
+	}
+
+	private void writeToXML(MyBlock myBlock)
+			throws TransformerFactoryConfigurationError {
 		try {
 
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory
@@ -256,7 +274,7 @@ public class BlockSave {
 			Node rootNode = doc.getFirstChild();
 
 			Element myBlockElement = doc.createElement("MyBlock");
-			formatMyBlockElement(myBlockElement, myBlock, rootNode);
+			formatElement(myBlockElement, myBlock, rootNode);
 
 			Node myBlockNode = rootNode.getLastChild();
 			ArrayList<BaseFunction> baseFunctionList = myBlock
@@ -274,22 +292,11 @@ public class BlockSave {
 			StreamResult result = new StreamResult(new File(
 					file.getAbsolutePath()));
 			transformer.transform(source, result);
+			JOptionPaneDescription jop = new JOptionPaneDescription();
+			jop.showText(myBlock,rootNode,doc);
+			
 
-			if (!isMyBlock(myBlock.getGenusName())) {
-				myBlockSet.add(myBlock);
-				// save the block
-				BlockGenus.loadMyBlockAfterSave(workspace,
-						workspace.getFactoryManager(), myBlock);
-			} else {
-				// L_EXCEPTION throw error for trying to save block with same
-				// name
-				/*
-				 * JFrame frame = new JFrame();
-				 * JOptionPane.showMessageDialog(frame,
-				 * "You can't save the block with the same name", "Error",
-				 * JOptionPane.ERROR_MESSAGE);
-				 */
-			}
+			
 
 		} catch (ParserConfigurationException e) {
 			// TODO Auto-generated catch block
@@ -307,16 +314,41 @@ public class BlockSave {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+/*
+	public void formatMyBlockElement(Element e, MyBlock bf, Node node) {
+		e.setAttribute("name", bf.getGenusName());
+		e.setAttribute("parameterList", bf.getFormattedInputParameters());
+		e.setAttribute("code", bf.getCode());
+		e.setAttribute("returnParameter", bf.getReturnParameter());
+		e.setAttribute("setupCode", bf.getFormattedSetupCode());
+		System.out.println("bubble text is writing " + bf.getBubbleText());
+		//e.setAttribute("bubbleText", bf.getBubbleText());
+		node.appendChild(e);
+	}*/
 
+	public void formatElement(Element e, BaseFunction bf, Node node) {
+		e.setAttribute("name", bf.getGenusName());
+		e.setAttribute("parameterList", bf.getFormattedInputParameters());
+		e.setAttribute("code", bf.getCode());
+		e.setAttribute("returnParameter", bf.getReturnParameter());
+		e.setAttribute("setupCode", bf.getFormattedSetupCode());
+		node.appendChild(e);
 	}
 
-	
-	
-	
+	public MyBlock getMyBlock(String genusName) {
+		for (int i = 0; i < myBlockSet.size(); i++) {
+			if (myBlockSet.get(i).getGenusName().equals(genusName)) {
+				return myBlockSet.get(i);
+			}
+		}
+		return null;
+	}
 
 	class JOptionPaneDescription {
 		private MyBlock myBlock;
-
+		private Node rootNode;
+		private Document doc;
 		private void display() {
 			// String[] items = {"One", "Two", "Three", "Four", "Five"};
 			// JComboBox combo = new JComboBox(items);
@@ -362,34 +394,75 @@ public class BlockSave {
 				// System.out.println(combo.getSelectedItem()
 				// + " " + field1.getText()
 				// + " " + field2.getText());
-			/*	for (int i = 0; i < jTextFieldList.size(); i++) {
-					System.out.println("text is "
-							+ jTextFieldList.get(i).getText());
-					
-				}*/
-				myBlock.setBubbleText(formatTextBubble(jTextFieldList,hasReturn));
-				
+				/*
+				 * for (int i = 0; i < jTextFieldList.size(); i++) {
+				 * System.out.println("text is " +
+				 * jTextFieldList.get(i).getText());
+				 * 
+				 * }
+				 */
+				myBlock.setBubbleText(formatTextBubble(jTextFieldList,
+						hasReturn));
+				modifyXMLforBubbleText(rootNode,myBlock);
+
 			} else {
 				System.out.println("Cancelled");
 			}
+			
 		}
-		private String formatTextBubble(ArrayList<JTextField> fieldList,boolean hasReturn) {
+
+		private void modifyXMLforBubbleText(Node node, MyBlock mb) {
+			NodeList myBlockNodeList = node.getChildNodes();
+			for(int i= 0;i<myBlockNodeList.getLength();i++){
+				NamedNodeMap attr = myBlockNodeList.item(i).getAttributes();
+				if(attr.getNamedItem("name").getTextContent().equals(mb.getGenusName())){
+					((Element) myBlockNodeList.item(i)).setAttribute("bubbleText", mb.getBubbleText());
+					//attr.getNamedItem("bubbleText").setTextContent(mb.getBubbleText());
+				}
+			}
+			TransformerFactory transformerFactory = TransformerFactory
+					.newInstance();
+			Transformer transformer;
+			try {
+				transformer = transformerFactory.newTransformer();
+				DOMSource source = new DOMSource(doc);
+				StreamResult result = new StreamResult(new File(
+						file.getAbsolutePath()));
+				transformer.transform(source, result);
+			} catch (TransformerConfigurationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (TransformerException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+
+		private String formatTextBubble(ArrayList<JTextField> fieldList,
+				boolean hasReturn) {
 			String textBubble = new String("");
-			textBubble += "Block description: "+fieldList.get(0).getText()+"\n";
-			for(int i = 1;i<fieldList.size();i++){
-				if(hasReturn){
-					textBubble+= myBlock.getReturnParameter()+" description(return parameter):" +fieldList.get(i).getText()+" \n";
+			textBubble += "Block description: " + fieldList.get(0).getText()
+					+ "\n";
+			for (int i = 1; i < fieldList.size(); i++) {
+				if (hasReturn) {
+					textBubble += myBlock.getReturnParameter()
+							+ " description(return parameter):"
+							+ fieldList.get(i).getText() + " \n";
 					break;
 				}
-				textBubble+= myBlock.getInputParameterList().get(i-1)+" description(parameter):" +fieldList.get(i).getText()+" \n";
-			}	
-			System.out.println("textBubble is "+ textBubble);
+				textBubble += myBlock.getInputParameterList().get(i - 1)
+						+ " description(parameter):"
+						+ fieldList.get(i).getText() + " \n";
+			}
+			System.out.println("textBubble is " + textBubble);
 			return textBubble;
 		}
 
-
-		public void showText(MyBlock myBlock) {
+		public void showText(MyBlock myBlock, Node rootNode, Document doc) {
 			this.myBlock = myBlock;
+			this.rootNode = rootNode;
+			this.doc = doc;
 			EventQueue.invokeLater(new Runnable() {
 
 				@Override
@@ -400,31 +473,4 @@ public class BlockSave {
 		}
 	}
 
-	public void formatMyBlockElement(Element e, MyBlock bf, Node node) {
-		e.setAttribute("name", bf.getGenusName());
-		e.setAttribute("parameterList", bf.getFormattedInputParameters());
-		e.setAttribute("code", bf.getCode());
-		e.setAttribute("returnParameter", bf.getReturnParameter());
-		e.setAttribute("setupCode", bf.getFormattedSetupCode());
-		System.out.println("bubble text is writing "+bf.getBubbleText());
-		e.setAttribute("bubbleText",bf.getBubbleText());
-		node.appendChild(e);
-	}
-	public void formatElement(Element e, BaseFunction bf, Node node) {
-		e.setAttribute("name", bf.getGenusName());
-		e.setAttribute("parameterList", bf.getFormattedInputParameters());
-		e.setAttribute("code", bf.getCode());
-		e.setAttribute("returnParameter", bf.getReturnParameter());
-		e.setAttribute("setupCode", bf.getFormattedSetupCode());
-		node.appendChild(e);
-	}
-
-	public MyBlock getMyBlock(String genusName) {
-		for (int i = 0; i < myBlockSet.size(); i++) {
-			if (myBlockSet.get(i).getGenusName().equals(genusName)) {
-				return myBlockSet.get(i);
-			}
-		}
-		return null;
-	}
 }
