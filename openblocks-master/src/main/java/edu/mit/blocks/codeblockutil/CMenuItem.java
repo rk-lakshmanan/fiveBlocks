@@ -8,6 +8,7 @@ import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.Rectangle2D;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 
@@ -60,12 +61,37 @@ public class CMenuItem extends JButton implements MouseListener {
             } else {
                 x = (float) ((this.getWidth() / 2) - (textWidth / 2));
             }
-
+        
+            ArrayList<String> green = new ArrayList<String>();
+           ArrayList<String> red = new ArrayList<String>();
+            ArrayList<String> blue = new ArrayList<String>();
+            green.add(">");
+            green.add("<");
+            green.add(">=");
+            green.add("<=");
+            green.add("!=");
+            green.add("=");
+            blue.add("and");
+            blue.add("or");
+            blue.add("delay MILLIS");
+            green.add("User-Def Function");
+            green.add("set digital pin");
+            red.add("Analog Read");
+            red.add("Analog Write");
+            blue.add("Serial Port Out");
+            blue.add("Serial Port In");
+            red.add("save");
            // g2.setColor(Color.black);
-            if(text.equals("save")){
-            	g2.setColor(new Color(100,200,100));
-            }else {
-            	g2.setColor(Color.BLACK);
+            if(red.contains(text)){
+            	g2.setColor(new Color(250,0,0));
+            
+            }else if(blue.contains(text)){
+            	g2.setColor(new Color(0,0,250));
+            }else if(green.contains(text)){
+            	g2.setColor(new Color(0,250,0));
+            }
+            else {
+              	g2.setColor(Color.BLACK);
             }
            
             g2.drawString(text, x, y);

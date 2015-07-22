@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.awt.geom.Point2D"/>
 <fullyQualifiedTypeName name="edu.mit.blocks.codeblocks.BlockConnectorShape"/>
 <fullyQualifiedTypeName name="java.io.BufferedWriter"/>
 <fullyQualifiedTypeName name="java.io.OutputStreamWriter"/>
@@ -31,8 +30,6 @@
 <fullyQualifiedTypeName name="javax.swing.JFileChooser"/>
 <fullyQualifiedTypeName name="javax.swing.filechooser.FileSystemView"/>
 <fullyQualifiedTypeName name="javax.swing.text.html.HTML"/>
-<fullyQualifiedTypeName name="edu.mit.blocks.codeblockutil.CMenuItem"/>
-<fullyQualifiedTypeName name="edu.mit.blocks.codeblocks.BlockGenus"/>
 <fullyQualifiedTypeName name="edu.mit.blocks.codeblocks.BlockConnector"/>
 <fullyQualifiedTypeName name="com.ardublock.translator.block.FunctionBlock"/>
 <fullyQualifiedTypeName name="edu.mit.blocks.workspace.Workspace"/>
@@ -42,7 +39,6 @@
 <fullyQualifiedTypeName name="java.lang.Long"/>
 <fullyQualifiedTypeName name="edu.mit.blocks.codeblocks.Block"/>
 <fullyQualifiedTypeName name="edu.mit.blocks.workspace.WorkspaceEnvironment"/>
-<fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="edu.mit.blocks.workspace.MyFunctionBlock"/>
 <fullyQualifiedTypeName name="com.ardublock.translator.Translator"/>
 <fullyQualifiedTypeName name="com.ardublock.translator.block.MyBlockBlock"/>
@@ -59,5 +55,9 @@
 <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
 <fullyQualifiedTypeName name="javax.swing.JTextField"/>
 <fullyQualifiedTypeName name="org.w3c.dom.Element"/>
+<fullyQualifiedTypeName name="org.w3c.dom.NamedNodeMap"/>
+<fullyQualifiedTypeName name="edu.mit.blocks.codeblocks.BlockGenus"/>
+<fullyQualifiedTypeName name="edu.mit.blocks.codeblockutil.CMenuItem"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>

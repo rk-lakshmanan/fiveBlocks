@@ -18,9 +18,11 @@ import javax.swing.SwingUtilities;
 //import com.sun.java.accessibility.util.Translator;
 
 
+
 import edu.mit.blocks.codeblocks.Block;
 import edu.mit.blocks.codeblocks.BlockConnector;
 import edu.mit.blocks.codeblocks.BlockConnectorShape;
+import edu.mit.blocks.codeblocks.BlockGenus;
 import edu.mit.blocks.codeblocks.BlockStub;
 import edu.mit.blocks.codeblockutil.LabelWidget;
 import edu.mit.blocks.workspace.Workspace;
@@ -351,6 +353,9 @@ public class BlockLabel implements MouseListener, MouseMotionListener,
 
 			Block oldBlock = workspace.getEnv().getBlock(blockID);
 			RenderableBlock rb = workspace.getEnv().getRenderableBlock(blockID);
+			BlockGenus tempGenus = workspace.getEnv().getGenusWithName(genus);
+			rb.setBlockToolTip(tempGenus.getBlockDescription());
+			//create fake static block
 			if(oldBlock.getGenusName().equals("addition")&&rb.getLocation().getX() == 119&&rb.getLocation().getY()==12){
 				createsFakeStaticBlock(rb,rb.getLocation().getX(),rb.getLocation().getY());
 			}else if(oldBlock.getGenusName().equals("number")&&rb.getLocation().getX() == 158&&rb.getLocation().getY()==47){

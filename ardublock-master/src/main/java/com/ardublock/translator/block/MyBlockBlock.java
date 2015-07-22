@@ -68,6 +68,8 @@ public class MyBlockBlock extends TranslatorBlock {
 		if (!(bf.getReturnParameter() == null || bf.getReturnParameter()
 				.equals(""))) {
 			returnType = "float ";
+		}else{
+			returnType = "void ";
 		}
 		functionName = bf.getGenusName().trim() + "_" + blockId;
 		for (int i = 0; i < bf.getInputParameterList().size(); i++) {
