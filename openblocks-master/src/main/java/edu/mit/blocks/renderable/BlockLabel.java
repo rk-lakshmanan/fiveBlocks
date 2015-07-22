@@ -17,6 +17,7 @@ import javax.swing.SwingUtilities;
 
 //import com.sun.java.accessibility.util.Translator;
 
+
 import edu.mit.blocks.codeblocks.Block;
 import edu.mit.blocks.codeblocks.BlockConnector;
 import edu.mit.blocks.codeblocks.BlockConnectorShape;
@@ -309,6 +310,31 @@ public class BlockLabel implements MouseListener, MouseMotionListener,
 			}
 		}
 	}
+	private void createsFakeStaticBlock(RenderableBlock oldRb,double x,double y) {
+		// create new connector block
+		Block newBlock = new Block(workspace,oldRb.getGenus());
+
+		RenderableBlock newRb = new RenderableBlock(workspace,
+				oldRb.getParentWidget(), newBlock.getBlockID(), false);
+		
+		
+		if (oldRb.getGenus().equals("addition")) {
+			// TODO connect two number blocks
+			// System.out.println("error is "+
+			// newRb.getSocketSpaceDimension(newRb.getBlock().getSocketAt(0)).width);
+			createConnectorBlock(newRb, newRb.getBlock().getSocketAt(0),
+					"number", "");
+			createConnectorBlock(newRb, newRb.getBlock().getSocketAt(1),
+					"number", "");
+			newRb.moveConnectedBlocks();
+		}
+
+		newRb.setLocation((int)x,(int)y);
+		// newRb.getBlock().getPlug().setConnectorBlockID(id);
+		
+		oldRb.getParentWidget().addBlock(newRb);
+
+	}
 
 	protected void genusChanged(String genus) {
 
@@ -325,7 +351,17 @@ public class BlockLabel implements MouseListener, MouseMotionListener,
 
 			Block oldBlock = workspace.getEnv().getBlock(blockID);
 			RenderableBlock rb = workspace.getEnv().getRenderableBlock(blockID);
-
+			if(oldBlock.getGenusName().equals("addition")&&rb.getLocation().getX() == 119&&rb.getLocation().getY()==12){
+				createsFakeStaticBlock(rb,rb.getLocation().getX(),rb.getLocation().getY());
+			}else if(oldBlock.getGenusName().equals("number")&&rb.getLocation().getX() == 158&&rb.getLocation().getY()==47){
+				createsFakeStaticBlock(rb,rb.getLocation().getX(),rb.getLocation().getY());
+			}else if(oldBlock.getGenusName().equals("execution")&&rb.getLocation().getX() == 266&&rb.getLocation().getY()==9){
+				createsFakeStaticBlock(rb,rb.getLocation().getX(),rb.getLocation().getY());
+			}else if(oldBlock.getGenusName().equals("Input/Output")&&rb.getLocation().getX() == 520&&rb.getLocation().getY()==22){
+				createsFakeStaticBlock(rb,rb.getLocation().getX(),rb.getLocation().getY());
+			}else if(oldBlock.getGenusName().equals("ifelse_2")&&rb.getLocation().getX() ==7&&rb.getLocation().getY()==10){
+				createsFakeStaticBlock(rb,rb.getLocation().getX(),rb.getLocation().getY());
+			}
 			// System.out.println(rb.getBlock().getGenusName());
 			// System.out.println(genus);
 			if (genus.equals("ifelse_2")) {
