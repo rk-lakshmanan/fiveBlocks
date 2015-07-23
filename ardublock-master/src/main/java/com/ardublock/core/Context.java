@@ -187,15 +187,15 @@ public class Context
 		 createNewRenderableBlock(workspace,
 				manager,page,"loop",56,165);
 		 createNewRenderableBlock(workspace,
-					manager,page,"addition",119,12);
+					manager,page,"addition",(int)workspace.additionX,(int)workspace.additionY);
 		 createNewRenderableBlock(workspace,
-					manager,page,"number",158,47);
+					manager,page,"number",(int)workspace.numberX,(int)workspace.numberY);
 		 createNewRenderableBlock(workspace,
-					manager,page,"execution",266,9);
+					manager,page,"execution",(int)workspace.executionX,(int)workspace.executionY);
 		 createNewRenderableBlock(workspace,
-					manager,page,"Input/Output",520,22);
+					manager,page,"Input/Output",(int)workspace.ioX,(int)workspace.ioY);
 		 createNewRenderableBlock(workspace,
-					manager,page,"ifelse_2",7,10);
+					manager,page,"ifelse_2",(int)workspace.ifX,(int)workspace.ifY);
      
         
         

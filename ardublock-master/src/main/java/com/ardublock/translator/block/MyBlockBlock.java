@@ -32,6 +32,7 @@ public class MyBlockBlock extends TranslatorBlock {
 		}
 		generate(myBlock,bfList);
 		String myBlockCallCode = generateTopCode(myBlock);
+		myBlockCallCode = myBlockCallCode.replaceAll("void", "");
 		myBlockCallCode = myBlockCallCode.replaceAll("float", "");
 		myBlockCallCode = myBlockCallCode.replaceAll("\\{", ";");
 		// return generateMyBlockFunctionCall(myBlock);

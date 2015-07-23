@@ -56,6 +56,16 @@ import edu.mit.blocks.workspace.typeblocking.TypeBlockManager;
 public class Workspace extends JLayeredPane implements ISupportMemento,
 		RBParent, ChangeListener, ExplorerListener {
 	
+	public double ifX = 7;
+	public double ifY = 10;
+	public double executionX = 179;
+	public double executionY = 13;
+	public double numberX = 605;
+	public double numberY = 13;
+	public double additionX = 433;
+	public double additionY = 10;
+	public double ioX = 437;
+	public double ioY = 46;
 	//observable class for detection of saving myBlock
 	private SaveBlockObservable saveBlockObservable;
 

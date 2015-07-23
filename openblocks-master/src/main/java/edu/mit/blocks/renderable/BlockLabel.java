@@ -356,15 +356,15 @@ public class BlockLabel implements MouseListener, MouseMotionListener,
 			BlockGenus tempGenus = workspace.getEnv().getGenusWithName(genus);
 			rb.setBlockToolTip(tempGenus.getBlockDescription());
 			//create fake static block
-			if(oldBlock.getGenusName().equals("addition")&&rb.getLocation().getX() == 119&&rb.getLocation().getY()==12){
+			if(oldBlock.getGenusName().equals("addition")&&rb.getLocation().getX() == workspace.additionX&&rb.getLocation().getY()==workspace.additionY){
 				createsFakeStaticBlock(rb,rb.getLocation().getX(),rb.getLocation().getY());
-			}else if(oldBlock.getGenusName().equals("number")&&rb.getLocation().getX() == 158&&rb.getLocation().getY()==47){
+			}else if(oldBlock.getGenusName().equals("number")&&rb.getLocation().getX() == workspace.numberX&&rb.getLocation().getY()==workspace.additionY){
 				createsFakeStaticBlock(rb,rb.getLocation().getX(),rb.getLocation().getY());
-			}else if(oldBlock.getGenusName().equals("execution")&&rb.getLocation().getX() == 266&&rb.getLocation().getY()==9){
+			}else if(oldBlock.getGenusName().equals("execution")&&rb.getLocation().getX() == workspace.executionX&&rb.getLocation().getY()==workspace.executionY){
 				createsFakeStaticBlock(rb,rb.getLocation().getX(),rb.getLocation().getY());
-			}else if(oldBlock.getGenusName().equals("Input/Output")&&rb.getLocation().getX() == 520&&rb.getLocation().getY()==22){
+			}else if(oldBlock.getGenusName().equals("Input/Output")&&rb.getLocation().getX() == workspace.ioX&&rb.getLocation().getY()==workspace.ioY){
 				createsFakeStaticBlock(rb,rb.getLocation().getX(),rb.getLocation().getY());
-			}else if(oldBlock.getGenusName().equals("ifelse_2")&&rb.getLocation().getX() ==7&&rb.getLocation().getY()==10){
+			}else if(oldBlock.getGenusName().equals("ifelse_2")&&rb.getLocation().getX() ==workspace.ifX&&rb.getLocation().getY()==workspace.ifY){
 				createsFakeStaticBlock(rb,rb.getLocation().getX(),rb.getLocation().getY());
 			}
 			// System.out.println(rb.getBlock().getGenusName());

@@ -443,17 +443,17 @@ public class BlockSave {
 				boolean hasReturn) {
 			String textBubble = new String("");
 			textBubble += "Block description: " + fieldList.get(0).getText()
-					+ "\n";
+					+ "\n\n";
 			for (int i = 1; i < fieldList.size(); i++) {
-				if (hasReturn) {
+				if (hasReturn&&i==fieldList.size()-1) {
 					textBubble += myBlock.getReturnParameter()
-							+ " description(return parameter):"
-							+ fieldList.get(i).getText() + " \n";
+							+ /*" description(return parameter):"*/":\n"
+							+ fieldList.get(i).getText() + "";
 					break;
 				}
 				textBubble += myBlock.getInputParameterList().get(i - 1)
-						+ " description(parameter):"
-						+ fieldList.get(i).getText() + " \n";
+						+ /*" description(parameter):"*/":\n"
+						+ fieldList.get(i).getText() + "\n\n";
 			}
 			System.out.println("textBubble is " + textBubble);
 			return textBubble;

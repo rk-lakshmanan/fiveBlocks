@@ -2121,19 +2121,19 @@ public class RenderableBlock extends JComponent implements SearchableElement,
 			pickedUp = true; // mark this block as currently being picked up
 			double x = this.getLocation().getX();
 			double y = this.getLocation().getY();
-			System.out.println("this id is "+this.getBlockID());
+			//System.out.println("this id is "+this.getBlockID());
 			//System.out.println("x is "+this.getLocation().getX() +"y is "+this.getLocation().getY());
 			/*if(this.getBlock().getGenusName().equals("loop")&&x == 56&&y==165){
 				createsFakeStaticBlock(this,x,y);
-			}else */if(this.getBlock().getGenusName().equals("addition")&&x == 119&&y==12){
+			}else */if(this.getBlock().getGenusName().equals("addition")&&x == workspace.additionX&&y==workspace.additionY){
 				createsFakeStaticBlock(this,x,y);
-			}else if(this.getBlock().getGenusName().equals("number")&&x == 158&&y==47){
+			}else if(this.getBlock().getGenusName().equals("number")&&x == workspace.numberX&&y==workspace.numberY){
 				createsFakeStaticBlock(this,x,y);
-			}else if(this.getBlock().getGenusName().equals("execution")&&x == 266&&y==9){
+			}else if(this.getBlock().getGenusName().equals("execution")&&x == workspace.executionX&&y==workspace.executionY){
 				createsFakeStaticBlock(this,x,y);
-			}else if(this.getBlock().getGenusName().equals("Input/Output")&&x == 520&&y==22){
+			}else if(this.getBlock().getGenusName().equals("Input/Output")&&x == workspace.ioX&&y==workspace.ioY){
 				createsFakeStaticBlock(this,x,y);
-			}else if(this.getBlock().getGenusName().equals("ifelse_2")&&x ==7&&y==10){
+			}else if(this.getBlock().getGenusName().equals("ifelse_2")&&x ==workspace.ifX&&y==workspace.ifY){
 				createsFakeStaticBlock(this,x,y);
 			}
 				
