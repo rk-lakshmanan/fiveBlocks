@@ -1,0 +1,3 @@
+1437196988640	Extract method 'createConnectorBlock'
+1437197259797	Rename local variable 'rb'
+1437199236303	Extract method 'setAllPlugToNull'

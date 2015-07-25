@@ -1,0 +1,128 @@
+package com.ardublock.core;
+
+import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
+
+import com.ardublock.translator.Translator;
+import com.ardublock.translator.block.exception.BlockException;
+import com.ardublock.translator.block.exception.SocketNullException;
+import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;
+
+import edu.mit.blocks.codeblocks.Block;
+import edu.mit.blocks.renderable.RenderableBlock;
+import edu.mit.blocks.workspace.BaseFunction;
+import edu.mit.blocks.workspace.MyBlock;
+import edu.mit.blocks.workspace.Workspace;
+
+public class SaveBlockObserver implements Observer {
+	Workspace workspace;
+
+	public SaveBlockObserver(Workspace workspace) {
+		this.workspace = workspace;
+	}
+
+	public void update(Observable oberservable, Object block) {
+
+		if (block instanceof Block) {
+			// System.out.println("block name is "+ ((Block)
+			// block).getGenusName());
+			Translator translator = new Translator(workspace);
+			ArrayList<Long> baseFunctionIDSet = new ArrayList<Long>();
+			traverseAccel((Block)block,baseFunctionIDSet);
+
+			// try {
+			// workspace.getBlockSave().writeToXML(/*(Block)block,*/new
+			// MyBlock(),/* translator.translateForSave(((Block)
+			// block).getBlockID()),*/workspace);
+			// } catch (SocketNullException e) {
+			// TODO Auto-generated catch block
+			/*
+			 * e.printStackTrace(); } catch (SubroutineNotDeclaredException e) {
+			 * // TODO Auto-generated catch block e.printStackTrace(); } catch
+			 * (BlockException e) { // TODO Auto-generated catch block
+			 * e.printStackTrace(); }
+			 */
+		}
+	}
+	//accelerator for traverse recursion method (start from the code blocks)
+	private void traverseAccel(Block block,ArrayList<Long> baseFunctionIDSet){
+		if(!block.getSocketAt( block.getNumSockets()-1).getBlockID().equals(Block.NULL)){
+			Block nextBlock = workspace.getEnv().getBlock( block.getSocketAt( block.getNumSockets()-1).getBlockID());
+			traverse((Block) nextBlock,baseFunctionIDSet);
+		}
+	
+	}
+
+	//recursion to traverse through the blocks 
+	private void traverse(Block block,ArrayList<Long> baseFunctionIDSet) {
+		// System.out.println("block name is "+block.getGenusName()+"  and blockID is "+block.getBlockID());
+		Long blockID = block.getBlockID();
+		for (int i = 0; i < block.getNumSockets(); i++) {
+			// if there is a block at the connector, then recurse
+			if (!block.getSocketAt(i).getBlockID().equals(Block.NULL)) {
+				traverse(workspace.getEnv().getBlock(
+						block.getSocketAt(i).getBlockID()),baseFunctionIDSet);
+			}
+		}
+		if (block.getAfterBlockID() != Block.NULL) {
+			traverse(workspace.getEnv().getBlock(block.getAfterBlockID()),baseFunctionIDSet);
+		}
+		if (block.getGenusName().equals("function")
+				&& lastConnectorKind(block).equals("cmd")) {
+			// L_EXCEPTION THROW ERROR BECAUSE THIS IS NOT SUPPOSED TO BE ATTACHED TO THE
+			// BLOCK
+		} else if (block.getGenusName().equals("function")
+				&& !lastConnectorKind(block).equals("cmd")) {
+			findBaseFunction(block,baseFunctionIDSet);
+		}
+	}
+
+	private void findBaseFunction(Block block, ArrayList<Long> baseFunctionIDSet) {
+		String functionName = getBlockLabelFrom(block);
+		 System.out.println("blockLabel/functionName LOOKING IS __________________"+functionName);
+		Iterable<RenderableBlock> renderableBlocks = workspace
+				.getRenderableBlocks();
+		for (RenderableBlock renderableBlock : renderableBlocks) {
+
+			Block possibleBlock = renderableBlock.getBlock();
+
+			// finds all block that is not connected to any prior blocks
+			if (!possibleBlock.hasPlug()
+					&& (Block.NULL.equals(possibleBlock.getBeforeBlockID()))) {
+				//System.out.println("possibleBlock are "
+					//	+ possibleBlock.getGenusName() + " and their id is "
+					//	+ possibleBlock.getBlockID());
+				// System.out.println(workspace.getEnv().getBlock(possibleBlock.getSocketAt(0).getBlockID()).getBlockLabel());
+				if (possibleBlock.getGenusName().equals("function")) {
+					if (getBlockLabelFrom(possibleBlock).equals(functionName)
+							&& lastConnectorKind(possibleBlock).equals("cmd")) {
+						
+						//L_EXCEPTION needs to be modified to ensure that there is no circular reference and to handle recursion
+						if(!baseFunctionIDSet.contains(possibleBlock.getBlockID())){
+							System.out.println(baseFunctionIDSet.size()+" is size");
+							 System.out.println("FOUND ------------------>function name is "+functionName+" and bingo!");
+							baseFunctionIDSet.add(possibleBlock.getBlockID());
+							 traverseAccel(possibleBlock,baseFunctionIDSet);
+							 
+						}
+						
+						 
+					}
+				}
+			}
+		}
+	}
+
+	private String lastConnectorKind(Block possibleBlock) {
+		return possibleBlock.getSocketAt(possibleBlock.getNumSockets() - 1)
+				.getKind();
+	}
+
+	private String getBlockLabelFrom(Block possibleBlock) {
+		return workspace.getEnv()
+				.getBlock(possibleBlock.getSocketAt(0).getBlockID())
+				.getBlockLabel();
+	}
+
+}

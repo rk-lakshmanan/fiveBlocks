@@ -1,0 +1,16 @@
+package edu.mit.blocks.workspace;
+
+import java.util.Map;
+
+public class MyBlock {
+	private String name =  null;
+	private String globalCode = null;
+	private String setupCode = null;
+	private String headerDecCode = null;
+	private Map<String,String> globalVarSet;	
+	
+	public MyBlock() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

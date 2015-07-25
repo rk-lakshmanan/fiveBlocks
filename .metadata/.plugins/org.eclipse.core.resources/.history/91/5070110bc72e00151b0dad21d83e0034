@@ -1,0 +1,67 @@
+package edu.mit.blocks.workspace;
+
+import java.util.ArrayList;
+
+public class BaseFunction {
+	// NOTE genusName indicates the name of the function and not "myBlock"
+	private String genusName = null;
+	// list of input parameters
+	private ArrayList<String> parameterList = null;
+	// list of functions that this myBlock is based upon
+
+	private String returnParameter = null;
+	private String setupCode = null;
+	private String code = null;
+
+	public BaseFunction() {
+
+	}
+	public void addParam(String param){
+		this.parameterList.add(param);
+	}
+	public void setGlobalVarSet(String globalCode) {
+	
+	}
+
+	public String getGenusName() {
+		return genusName;
+	}
+
+	public void setGenusName(String genusName) {
+		this.genusName = genusName;
+	}
+
+	public String getSetupCode() {
+		return setupCode;
+	}
+
+	public void setSetupCode(String setupCode) {
+		this.setupCode = setupCode;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public ArrayList<String> getParameters() {
+		return parameterList;
+	}
+
+	public void setParameters(ArrayList<String> parameters) {
+		this.parameterList = parameters;
+	}
+
+
+	public String getReturnParameter() {
+		return returnParameter;
+	}
+
+	public void setReturnParameter(String returnParameter) {
+		this.returnParameter = returnParameter;
+	}
+
+}
