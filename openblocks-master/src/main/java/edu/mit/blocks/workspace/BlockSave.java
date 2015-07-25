@@ -207,6 +207,8 @@ public class BlockSave {
 	 * FactoryRenderableBlock( workspace, manager, newBlock .getBlockID())); } }
 	 * manager.addStaticBlocks(drawerRBs, drawerName); } } } } }
 	 */
+	
+	
 	public static void saveToFile(ArrayList<String> list) {
 
 		BufferedWriter output = null;
@@ -447,7 +449,7 @@ public class BlockSave {
 			for (int i = 1; i < fieldList.size(); i++) {
 				if (hasReturn&&i==fieldList.size()-1) {
 					textBubble += myBlock.getReturnParameter()
-							+ /*" description(return parameter):"*/":\n"
+							+ /*" description(return parameter):"*/" (return):\n"
 							+ fieldList.get(i).getText() + "";
 					break;
 				}
@@ -455,7 +457,7 @@ public class BlockSave {
 						+ /*" description(parameter):"*/":\n"
 						+ fieldList.get(i).getText() + "\n\n";
 			}
-			System.out.println("textBubble is " + textBubble);
+			//System.out.println("textBubble is " + textBubble);
 			return textBubble;
 		}
 
