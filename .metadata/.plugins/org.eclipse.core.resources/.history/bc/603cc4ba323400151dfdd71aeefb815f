@@ -49,10 +49,7 @@ public class MyBlockBlock extends TranslatorBlock {
 		String functionName = myBlock.getGenusName().trim() + "_" + blockId;
 		String code = new String("(");
 		for(int i = 0;i<translator.getBlock(blockId).getNumSockets();i++){
-			code += this.getRequiredTranslatorBlockAtSocket(i).toCode();
-			if(i<translator.getBlock(blockId).getNumSockets()-1){
-				code+=" , ";
-			}
+			code += this.getRequiredTranslatorBlockAtSocket(i).toCode()+" , ";
 		}
 		code+=");";
 		return functionName+code;

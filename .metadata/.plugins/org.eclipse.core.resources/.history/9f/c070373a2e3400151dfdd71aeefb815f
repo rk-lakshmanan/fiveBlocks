@@ -42,15 +42,8 @@ public class ForBlock extends TranslatorBlock {
 		step = removeBracket(step);
 		String execution = "";
 		if (!isTranslatorBlockAtSocketNull(3)) {
-			//execution = getTranslatorBlockAtSocket(3).toCode();
-			TranslatorBlock translatorBlock = getTranslatorBlockAtSocket(3);
-			while (translatorBlock != null)
-			{
-				execution = execution + translatorBlock.toCode();
-				translatorBlock = translatorBlock.nextTranslatorBlock();
-			}
+			execution = getTranslatorBlockAtSocket(3).toCode();
 		}
-		
 		
 		String ret = "for(" + init + " ; " + cond + " ; " + step + " ){\n"
 				+ execution + "\n}\n";

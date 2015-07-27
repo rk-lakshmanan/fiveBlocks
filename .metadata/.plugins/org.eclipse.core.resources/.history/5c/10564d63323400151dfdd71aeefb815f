@@ -3,7 +3,6 @@ package com.ardublock.translator.block;
 import java.util.ArrayList;
 
 import com.ardublock.translator.Translator;
-import com.ardublock.translator.block.exception.BlockException;
 import com.ardublock.translator.block.exception.SocketNullException;
 import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;
 
@@ -32,11 +31,10 @@ public class MyBlockBlock extends TranslatorBlock {
 			generate(bf,bfList);
 		}
 		generate(myBlock,bfList);
-		String myBlockCallCode = generateMyBlockCallCode(myBlock);
-		/*myBlockCallCode = myBlockCallCode.replaceAll("void", "");
+		String myBlockCallCode = generateTopCode(myBlock);
+		myBlockCallCode = myBlockCallCode.replaceAll("void", "");
 		myBlockCallCode = myBlockCallCode.replaceAll("float", "");
-		myBlockCallCode = myBlockCallCode.replaceAll("\\{", ";");*/
-		
+		myBlockCallCode = myBlockCallCode.replaceAll("\\{", ";");
 		// return generateMyBlockFunctionCall(myBlock);
 		// return
 		// translator.getWorkspace().getBlockSave().getCodeOfMyBlock(translator.getBlock(blockId).getGenusName());
@@ -44,19 +42,6 @@ public class MyBlockBlock extends TranslatorBlock {
 	}
 
 
-
-	private String generateMyBlockCallCode(MyBlock myBlock) throws SocketNullException, SubroutineNotDeclaredException, BlockException {
-		String functionName = myBlock.getGenusName().trim() + "_" + blockId;
-		String code = new String("(");
-		for(int i = 0;i<translator.getBlock(blockId).getNumSockets();i++){
-			code += this.getRequiredTranslatorBlockAtSocket(i).toCode();
-			if(i<translator.getBlock(blockId).getNumSockets()-1){
-				code+=" , ";
-			}
-		}
-		code+=");";
-		return functionName+code;
-	}
 
 	private void generate( BaseFunction bf,ArrayList<BaseFunction> bfList) {
 		String topCode = generateTopCode(bf);

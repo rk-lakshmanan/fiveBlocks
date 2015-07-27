@@ -21,9 +21,9 @@ public class DigitalOutputBlock extends TranslatorBlock
 		{
 			String number = translatorBlock.toCode();
 			String setupCode = "pinMode( " + number + " , OUTPUT);";
-			translator.addSetupCommand(setupCode);
+			//translator.addSetupCommand(setupCode);
 			
-			String ret = "digitalWrite( ";
+			String ret = setupCode+"\n"+"digitalWrite( ";
 			ret = ret + number;
 			ret = ret + " , ";
 			translatorBlock = this.getRequiredTranslatorBlockAtSocket(1);
