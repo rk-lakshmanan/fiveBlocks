@@ -37,7 +37,7 @@ public class LoopBlock extends TranslatorBlock
 		String varDec = new String("");
 		ArrayList<String> arr = translator.getBlock(blockId).getLocalVariableSet();
 		for(int j=0;j<arr.size();j++){
-			varDec += "float "+ arr.get(j)+" = 0\n";
+			varDec += "float "+ arr.get(j)+" = 0;\n";
 		}
 		return ret+varDec+code+"}\n\n";
 		//ret = ret + "}\n\n";
