@@ -1342,11 +1342,18 @@ public class BlockGenus {
 				newBlock = new Block(workspace, newGenus.genusName, false);
 				drawerRBs.add(new FactoryRenderableBlock(workspace, manager,
 						newBlock.getBlockID()));
+				
+				//Adding explode label to drop-down by adding dummy string
+				ArrayList<String> dummyFam = new ArrayList<String>();
+				dummyFam.add("Explode");
+				env.getGenusWithName(newGenus.genusName).familyList = dummyFam;
 
 			}
+			
 			manager.addStaticBlocks(drawerRBs, "fiveBlocks");
 
 		}
+		
 	}
 	private static void loadBaseFunctionFrom(Element e,BaseFunction bf, ArrayList<BaseFunction> bfList){
 		

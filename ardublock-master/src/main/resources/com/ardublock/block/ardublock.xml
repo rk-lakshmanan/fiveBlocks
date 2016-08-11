@@ -314,6 +314,10 @@
 		<BlockGenus name="save" kind="command" color="200 200 0"
 			initlabel="bg.save" editable-label="yes">
 		</BlockGenus>
+		<!-- dummy block that is meat for explode functionality -->
+		<BlockGenus name="Explode" kind="command" color="200 200 0"
+			initlabel="bg.explode" editable-label="yes">
+		</BlockGenus>
 		<BlockGenus name="subroutine-ref" kind="command" color="200 200 0"
 			initlabel="bg.subroutine" editable-label="yes">
 			<description>

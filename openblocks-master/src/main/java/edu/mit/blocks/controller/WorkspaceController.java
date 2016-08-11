@@ -219,8 +219,12 @@ public class WorkspaceController {
         		String name = elm.getAttribute("name");
 				
         		// System.out.println("Translating BlockGenu:" + name);
-				
-        		String altName = langResourceBundle.getString("bg." + name);
+				try{
+        		String atName = langResourceBundle.getString("bg." + name);
+				}catch(Exception e){
+					System.out.println(e.getMessage());
+				}
+				String altName = langResourceBundle.getString("bg." + name);
         		if (altName != null) {
         			elm.setAttribute("initlabel", altName);
         		}
