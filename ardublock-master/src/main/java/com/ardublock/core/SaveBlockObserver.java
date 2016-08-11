@@ -38,6 +38,8 @@ public class SaveBlockObserver implements Observer {
 			//System.out.println("name of MYBLOCK IS" +myBlock.getGenusName());
 			myBlock.setBaseFunctionList(createBaseFunctionList(workspace,baseFunctionIDSet,myBlockBaseSet/*,((Block)block).getBlockID()*/));
 			
+			//TODO:Remove this function because it is unnecessary additional looping
+			myBlock.setInternalBlockList(generateInternalBlockList((Block)block,baseFunctionIDSet));
 			try {
 				String code = translator.translateForSave(((Block) block).getBlockID());
 				code = setupCodeForReturn(myBlock, code);
@@ -76,6 +78,17 @@ public class SaveBlockObserver implements Observer {
 			 * e.printStackTrace(); }
 			 */
 		}
+	}
+
+	//TODO:Remove this function because it is unnecessary additional looping
+	private ArrayList<Block> generateInternalBlockList(Block block,
+			ArrayList<Long> baseFunctionIDSet) {
+		ArrayList<Block> internalBlockList = new ArrayList<Block>();
+		internalBlockList.add(block);
+		for(Long internalBlockID:baseFunctionIDSet){
+			internalBlockList.add(workspace.getEnv().getBlock(internalBlockID));
+		}
+		return internalBlockList;
 	}
 
 	private ArrayList<BaseFunction> createBaseFunctionList(Workspace workspace,ArrayList<Long> baseFunctionIDSet,ArrayList<String> myBlockBaseSet) {

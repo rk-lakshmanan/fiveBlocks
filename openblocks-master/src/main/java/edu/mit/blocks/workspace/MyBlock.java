@@ -3,6 +3,8 @@ package edu.mit.blocks.workspace;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.mit.blocks.codeblocks.Block;
+
 public class MyBlock extends BaseFunction{
 	
 	//private String genusName = null;
@@ -14,6 +16,8 @@ public class MyBlock extends BaseFunction{
 	//private List<String> setupCode = null;
 	//private String code = null;
 	private String bubbleText = new String("");
+	
+	private ArrayList<Block> internalBlockList = new ArrayList<Block>();
 	public MyBlock() {
 		
 	}
@@ -50,6 +54,14 @@ public class MyBlock extends BaseFunction{
 
 	public void setBubbleText(String textBubble) {
 		this.bubbleText = textBubble;
+	}
+
+	public ArrayList<Block> getInternalBlockList() {
+		return internalBlockList;
+	}
+
+	public void setInternalBlockList(ArrayList<Block> internalBlockList) {
+		this.internalBlockList = internalBlockList;
 	}
 
 }
