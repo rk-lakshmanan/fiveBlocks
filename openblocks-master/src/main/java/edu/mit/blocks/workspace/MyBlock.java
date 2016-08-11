@@ -17,6 +17,10 @@ public class MyBlock extends BaseFunction{
 	//private String code = null;
 	private String bubbleText = new String("");
 	
+	//IMPORTANT NOTE: All information like position and id are relative 
+	//ids that are to be used in relation with others in the same internalBlockList
+	//These information cannot be used in workspace as they may conflict with 
+	//existing ids/ cause other issues
 	private ArrayList<Block> internalBlockList = new ArrayList<Block>();
 	public MyBlock() {
 		

@@ -1374,7 +1374,9 @@ public class BlockGenus {
 		
 		bfList.add(bf);
 	}
-
+	
+	//This function is to load myBlock into the drawer when the user clicks on
+	//save drop-down menu
 	public static void loadMyBlockAfterSave(Workspace workspace,
 			FactoryManager manager, MyBlock myBlock) {
 		WorkspaceEnvironment env = workspace.getEnv();
@@ -1437,6 +1439,11 @@ public class BlockGenus {
 		newBlock = new Block(workspace, newGenus.genusName, false);
 		drawerRBs.add(new FactoryRenderableBlock(workspace, manager, newBlock
 				.getBlockID()));
+		
+		//Adding explode label to drop-down by adding dummy string
+		ArrayList<String> dummyFam = new ArrayList<String>();
+		dummyFam.add("Explode");
+		env.getGenusWithName(newGenus.genusName).familyList = dummyFam;
 
 		manager.addStaticBlocks(drawerRBs, "fiveBlocks");
 	}

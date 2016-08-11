@@ -600,7 +600,10 @@ public class BlockLabel implements MouseListener, MouseMotionListener,
 					workspace.getSaveBlockObservable().saveBlock(oldBlock);
 				}
 				
-			} else {
+			}else if(genus.equals("Explode")){
+				BlockExplodeManager expManager = new BlockExplodeManager(workspace,rb);
+				expManager.explode();
+			}else {
 				oldBlock.changeGenusTo(genus);
 				rb.repaintBlock();
 				workspace.notifyListeners(new WorkspaceEvent(workspace, rb
