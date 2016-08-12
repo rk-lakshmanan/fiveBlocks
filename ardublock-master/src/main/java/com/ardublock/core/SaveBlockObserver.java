@@ -30,16 +30,16 @@ public class SaveBlockObserver implements Observer {
 			Translator translator = new Translator(workspace);
 			ArrayList<Long> baseFunctionIDSet = new ArrayList<Long>();
 			ArrayList<String> myBlockBaseSet = new ArrayList<String>();
-			traverseAccel((Block)block,baseFunctionIDSet,myBlockBaseSet);
+			ArrayList<Block> internalBlockList = new ArrayList<Block>();
+			traverseAccel((Block)block,baseFunctionIDSet,myBlockBaseSet,internalBlockList);
 			
 			
 			MyBlock myBlock = new MyBlock();
 			myBlock.generateMyFunctionBlock(workspace, (Block)block);
 			//System.out.println("name of MYBLOCK IS" +myBlock.getGenusName());
 			myBlock.setBaseFunctionList(createBaseFunctionList(workspace,baseFunctionIDSet,myBlockBaseSet/*,((Block)block).getBlockID()*/));
-			
-			//TODO:Remove this function because it is unnecessary additional looping
-			myBlock.setInternalBlockList(generateInternalBlockList((Block)block,baseFunctionIDSet));
+			myBlock.setInternalRenderableBlockList(generateRenderableBlocks(internalBlockList));
+			myBlock.setInternalBlockList(internalBlockList);
 			try {
 				String code = translator.translateForSave(((Block) block).getBlockID());
 				code = setupCodeForReturn(myBlock, code);
@@ -80,15 +80,18 @@ public class SaveBlockObserver implements Observer {
 		}
 	}
 
-	//TODO:Remove this function because it is unnecessary additional looping
-	private ArrayList<Block> generateInternalBlockList(Block block,
-			ArrayList<Long> baseFunctionIDSet) {
-		ArrayList<Block> internalBlockList = new ArrayList<Block>();
-		internalBlockList.add(block);
-		for(Long internalBlockID:baseFunctionIDSet){
-			internalBlockList.add(workspace.getEnv().getBlock(internalBlockID));
+	private ArrayList<RenderableBlock> generateRenderableBlocks(
+			ArrayList<Block> internalBlockList) {
+		ArrayList<RenderableBlock> internalRenderableBlocks = new ArrayList<RenderableBlock>();
+		for(Block block: internalBlockList){
+			for(RenderableBlock rBlock: workspace.getRenderableBlocksFromGenus(block.getGenusName())){
+				if(block.getBlockID().compareTo(rBlock.getBlockID())== 0){
+					internalRenderableBlocks.add(rBlock);
+				}
+			}
 		}
-		return internalBlockList;
+		
+		return internalRenderableBlocks;
 	}
 
 	private ArrayList<BaseFunction> createBaseFunctionList(Workspace workspace,ArrayList<Long> baseFunctionIDSet,ArrayList<String> myBlockBaseSet) {
@@ -150,12 +153,60 @@ public class SaveBlockObserver implements Observer {
 	}
 
 	//accelerator for traverse recursion method (start from the code blocks)
-	private void traverseAccel(Block block,ArrayList<Long> baseFunctionIDSet,ArrayList<String> myBlockBaseSet){
+	//Overloaded with internalBlockList argument
+	private void traverseAccel(Block block,ArrayList<Long> baseFunctionIDSet,ArrayList<String> myBlockBaseSet,
+								ArrayList<Block> internalBlockList){
 		if(!block.getSocketAt( block.getNumSockets()-1).getBlockID().equals(Block.NULL)){
 			Block nextBlock = workspace.getEnv().getBlock( block.getSocketAt( block.getNumSockets()-1).getBlockID());
-			traverse((Block) nextBlock,baseFunctionIDSet,myBlockBaseSet);
+			traverse((Block) nextBlock,baseFunctionIDSet,myBlockBaseSet,internalBlockList);
 		}
-	
+		for (int i = 0; i < block.getNumSockets()-1; i++) {
+			// if there is a block at the connector, then recurse
+			if (!block.getSocketAt(i).getBlockID().equals(Block.NULL)) {
+				traverse(workspace.getEnv().getBlock(
+						block.getSocketAt(i).getBlockID()),new ArrayList<Long>(),new ArrayList<String>(),internalBlockList);
+			}
+		}
+		internalBlockList.add(block);
+	}
+	//accelerator for traverse recursion method (start from the code blocks)
+		private void traverseAccel(Block block,ArrayList<Long> baseFunctionIDSet,ArrayList<String> myBlockBaseSet){
+			if(!block.getSocketAt( block.getNumSockets()-1).getBlockID().equals(Block.NULL)){
+				Block nextBlock = workspace.getEnv().getBlock( block.getSocketAt( block.getNumSockets()-1).getBlockID());
+				traverse((Block) nextBlock,baseFunctionIDSet,myBlockBaseSet);
+			}
+		
+		}
+	//recursion to traverse through the blocks 
+	//Overloaded method with internalBlockList argument
+	private void traverse(Block block,ArrayList<Long> baseFunctionIDSet,ArrayList<String> myBlockBaseSet, 
+					ArrayList<Block> internalBlockList) {
+		// System.out.println("block name is "+block.getGenusName()+"  and blockID is "+block.getBlockID());
+		Long blockID = block.getBlockID();
+		for (int i = 0; i < block.getNumSockets(); i++) {
+			// if there is a block at the connector, then recurse
+			if (!block.getSocketAt(i).getBlockID().equals(Block.NULL)) {
+				traverse(workspace.getEnv().getBlock(
+						block.getSocketAt(i).getBlockID()),baseFunctionIDSet,myBlockBaseSet,internalBlockList);
+			}
+		}
+		if (block.getAfterBlockID() != Block.NULL) {
+			traverse(workspace.getEnv().getBlock(block.getAfterBlockID()),baseFunctionIDSet,myBlockBaseSet,internalBlockList);
+		}
+		if (block.getGenusName().equals("function")
+				&& lastConnectorKind(block).equals("cmd")) {
+			// L_EXCEPTION THROW ERROR BECAUSE THIS IS NOT SUPPOSED TO BE ATTACHED TO THE
+			// BLOCK
+		} else if (block.getGenusName().equals("function")
+				&& !lastConnectorKind(block).equals("cmd")) {
+			findBaseFunction(block,baseFunctionIDSet,myBlockBaseSet);
+			internalBlockList.add(block);
+		}else{
+			internalBlockList.add(block);
+		}
+		if(workspace.getBlockSave().isMyBlock(block.getGenusName())&&!myBlockBaseSet.contains(block.getGenusName())){
+			myBlockBaseSet.add(block.getGenusName());
+		}
 	}
 
 	//recursion to traverse through the blocks 

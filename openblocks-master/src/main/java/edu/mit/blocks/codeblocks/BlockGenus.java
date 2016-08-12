@@ -31,6 +31,7 @@ import edu.mit.blocks.workspace.FactoryManager;
 import edu.mit.blocks.workspace.MyBlock;
 import edu.mit.blocks.workspace.Workspace;
 import edu.mit.blocks.workspace.WorkspaceEnvironment;
+import edu.mit.blocks.workspace.WorkspaceWidget;
 
 /**
  * A genus describes the properties that define a block. For example, fd is a
@@ -1331,6 +1332,25 @@ public class BlockGenus {
 							BlockConnector.PositionType.BOTTOM, "", false,
 							false, Block.NULL);
 				}
+				
+				//Getting parent widget to hold internablRenderableBlocks
+				WorkspaceWidget widget = null;
+				for(RenderableBlock rBlock: workspace.getRenderableBlocks()){
+					widget = rBlock.getParentWidget();
+					break;
+				}
+				//Extracting internalRenderableBlockList from XML
+				ArrayList<RenderableBlock> internalRenderableBlockList = new ArrayList<RenderableBlock>();
+				HashMap<Long,Long> idMapping = new HashMap<Long, Long>();
+				NodeList childNodes = genusNode.getChildNodes();
+				for(int index = 0; index <childNodes.getLength();index++){
+					if(childNodes.item(index).getNodeName().equals("Block")){
+						internalRenderableBlockList.add(RenderableBlock.loadBlockNode(workspace, childNodes.item(index),
+										widget, idMapping));
+					}
+				}
+				myNewBlock.setInternalRenderableBlockList(internalRenderableBlockList);
+				
 				//add to myBlock set in BlockSave
 				myBlockSet.add(myNewBlock);
 				// System.out.println("Added "+newGenus.toString());
@@ -1347,7 +1367,9 @@ public class BlockGenus {
 				ArrayList<String> dummyFam = new ArrayList<String>();
 				dummyFam.add("Explode");
 				env.getGenusWithName(newGenus.genusName).familyList = dummyFam;
-
+				
+				
+				
 			}
 			
 			manager.addStaticBlocks(drawerRBs, "fiveBlocks");

@@ -286,6 +286,8 @@ public class BlockSave {
 				Element baseFunctionElement = doc.createElement("BaseFunction");
 				formatElement(baseFunctionElement, bf, myBlockNode);
 			}
+			
+			appendInternalRenderableBlock(myBlock,myBlockNode, doc);
 
 			TransformerFactory transformerFactory = TransformerFactory
 					.newInstance();
@@ -297,7 +299,6 @@ public class BlockSave {
 			JOptionPaneDescription jop = new JOptionPaneDescription();
 			jop.showText(myBlock,rootNode,doc);
 			
-
 			
 
 		} catch (ParserConfigurationException e) {
@@ -328,6 +329,28 @@ public class BlockSave {
 		//e.setAttribute("bubbleText", bf.getBubbleText());
 		node.appendChild(e);
 	}*/
+
+	//Appends internalRenderableBlock nodes to myBlockNode in the XML
+	private void appendInternalRenderableBlock(MyBlock myBlock, Node myBlockNode, Document doc) {
+		
+	for(RenderableBlock iRenBlock:myBlock.getInternalRenderableBlockList()){
+		/*DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        factory.setNamespaceAware(true);
+
+        DocumentBuilder builder;
+		try {
+			builder = factory.newDocumentBuilder();
+			Document document = builder.newDocument();*/
+			
+			Node iRenBlockNode = iRenBlock.getSaveNode(doc);
+			myBlockNode.appendChild(iRenBlockNode);
+	/*	} catch (ParserConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+		}
+		
+	}
 
 	public void formatElement(Element e, BaseFunction bf, Node node) {
 		e.setAttribute("name", bf.getGenusName());
@@ -417,7 +440,7 @@ public class BlockSave {
 			NodeList myBlockNodeList = node.getChildNodes();
 			for(int i= 0;i<myBlockNodeList.getLength();i++){
 				NamedNodeMap attr = myBlockNodeList.item(i).getAttributes();
-				if(attr.getNamedItem("name").getTextContent().equals(mb.getGenusName())){
+				if(attr!=null && attr.getNamedItem("name").getTextContent().equals(mb.getGenusName())){
 					((Element) myBlockNodeList.item(i)).setAttribute("bubbleText", mb.getBubbleText());
 					//attr.getNamedItem("bubbleText").setTextContent(mb.getBubbleText());
 				}

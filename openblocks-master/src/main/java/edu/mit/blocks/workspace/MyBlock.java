@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.mit.blocks.codeblocks.Block;
+import edu.mit.blocks.renderable.RenderableBlock;
 
 public class MyBlock extends BaseFunction{
 	
@@ -22,6 +23,7 @@ public class MyBlock extends BaseFunction{
 	//These information cannot be used in workspace as they may conflict with 
 	//existing ids/ cause other issues
 	private ArrayList<Block> internalBlockList = new ArrayList<Block>();
+	private ArrayList<RenderableBlock> internalRenderableBlockList = new ArrayList<RenderableBlock>();
 	public MyBlock() {
 		
 	}
@@ -66,6 +68,15 @@ public class MyBlock extends BaseFunction{
 
 	public void setInternalBlockList(ArrayList<Block> internalBlockList) {
 		this.internalBlockList = internalBlockList;
+	}
+
+	public ArrayList<RenderableBlock> getInternalRenderableBlockList() {
+		return internalRenderableBlockList;
+	}
+
+	public void setInternalRenderableBlockList(
+			ArrayList<RenderableBlock> internalRenderableBlockList) {
+		this.internalRenderableBlockList = internalRenderableBlockList;
 	}
 
 }

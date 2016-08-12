@@ -19,6 +19,8 @@ import javax.swing.SwingUtilities;
 
 
 
+import javax.xml.parsers.ParserConfigurationException;
+
 import edu.mit.blocks.codeblocks.Block;
 import edu.mit.blocks.codeblocks.BlockConnector;
 import edu.mit.blocks.codeblocks.BlockConnectorShape;
@@ -602,7 +604,12 @@ public class BlockLabel implements MouseListener, MouseMotionListener,
 				
 			}else if(genus.equals("Explode")){
 				BlockExplodeManager expManager = new BlockExplodeManager(workspace,rb);
-				expManager.explode();
+				try {
+					expManager.explode();
+				} catch (ParserConfigurationException e) {
+					// TODO Auto-generated catch block
+					System.out.println("Error is "+e.getMessage());
+				}
 			}else {
 				oldBlock.changeGenusTo(genus);
 				rb.repaintBlock();
