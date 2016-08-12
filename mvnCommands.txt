@@ -1,0 +1,7 @@
+in the OpenBlocks, do this:
+
+$ mvn clean install 
+
+Then in Ardublock
+
+$ mvn clean package
