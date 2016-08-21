@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="edu.mit.blocks.codeblocks.BlockConnectorShape"/>
-<fullyQualifiedTypeName name="java.io.BufferedWriter"/>
-<fullyQualifiedTypeName name="java.io.OutputStreamWriter"/>
-<fullyQualifiedTypeName name="java.io.File"/>
-<fullyQualifiedTypeName name="java.io.FileOutputStream"/>
-<fullyQualifiedTypeName name="java.io.IOException"/>
-<fullyQualifiedTypeName name="com.ardublock.core.BlockSave"/>
-<fullyQualifiedTypeName name="java.io.BufferedReader"/>
 <fullyQualifiedTypeName name="java.io.FileReader"/>
 <fullyQualifiedTypeName name="com.ardublock.translator.List_Variables"/>
 <fullyQualifiedTypeName name="javax.xml.transform.TransformerFactory"/>
@@ -30,19 +22,12 @@
 <fullyQualifiedTypeName name="javax.swing.JFileChooser"/>
 <fullyQualifiedTypeName name="javax.swing.filechooser.FileSystemView"/>
 <fullyQualifiedTypeName name="javax.swing.text.html.HTML"/>
-<fullyQualifiedTypeName name="edu.mit.blocks.codeblocks.BlockConnector"/>
 <fullyQualifiedTypeName name="com.ardublock.translator.block.FunctionBlock"/>
-<fullyQualifiedTypeName name="edu.mit.blocks.workspace.Workspace"/>
-<fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="java.util.Map"/>
-<fullyQualifiedTypeName name="edu.mit.blocks.renderable.RenderableBlock"/>
 <fullyQualifiedTypeName name="java.lang.Long"/>
-<fullyQualifiedTypeName name="edu.mit.blocks.codeblocks.Block"/>
-<fullyQualifiedTypeName name="edu.mit.blocks.workspace.WorkspaceEnvironment"/>
 <fullyQualifiedTypeName name="edu.mit.blocks.workspace.MyFunctionBlock"/>
 <fullyQualifiedTypeName name="com.ardublock.translator.Translator"/>
 <fullyQualifiedTypeName name="com.ardublock.translator.block.MyBlockBlock"/>
-<fullyQualifiedTypeName name="edu.mit.blocks.workspace.MyBlock"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.LinkedList"/>
 <fullyQualifiedTypeName name="edu.mit.blocks.workspace.BaseFunction"/>
@@ -59,5 +44,20 @@
 <fullyQualifiedTypeName name="edu.mit.blocks.codeblocks.BlockGenus"/>
 <fullyQualifiedTypeName name="edu.mit.blocks.codeblockutil.CMenuItem"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="edu.mit.blocks.workspace.Workspace"/>
+<fullyQualifiedTypeName name="edu.mit.blocks.codeblocks.Block"/>
+<fullyQualifiedTypeName name="edu.mit.blocks.renderable.BlockExplodeManager"/>
+<fullyQualifiedTypeName name="edu.mit.blocks.workspace.WorkspaceEnvironment"/>
+<fullyQualifiedTypeName name="edu.mit.blocks.workspace.BlockSave"/>
+<fullyQualifiedTypeName name="java.util.Dictionary"/>
+<fullyQualifiedTypeName name="java.util.HashSet"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="edu.mit.blocks.codeblocks.BlockConnector"/>
+<fullyQualifiedTypeName name="org.w3c.dom.Node"/>
+<fullyQualifiedTypeName name="org.w3c.dom.Document"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="edu.mit.blocks.renderable.RenderableBlock"/>
+<fullyQualifiedTypeName name="edu.mit.blocks.workspace.WorkspaceWidget"/>
+<fullyQualifiedTypeName name="edu.mit.blocks.workspace.MyBlock"/>
 </qualifiedTypeNameHistroy>

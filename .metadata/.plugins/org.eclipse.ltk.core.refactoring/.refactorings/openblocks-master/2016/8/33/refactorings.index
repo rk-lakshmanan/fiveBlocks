@@ -1,1 +1,3 @@
 1470946841324	Encapsulate field 'internalBlockList'
+1470964095300	Encapsulate field 'internalRenderableBlockList'
+1470965109899	Rename local variable 'irenBlock'
