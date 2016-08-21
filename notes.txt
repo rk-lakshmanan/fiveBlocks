@@ -1,0 +1,13 @@
+BlockLabel.java
+add code for fire triggering
+
+
+RenderableBlock.java
+refer for creating new blocks
+
+workspace.wksEnv.getnextBlockId/setnextBlockId
+
+Recursion Function for BlockSave
+traverseAccel
+
+open File > look for blocksForPages >loadPageFrom >loadBlockNode >loadBlockFrom
