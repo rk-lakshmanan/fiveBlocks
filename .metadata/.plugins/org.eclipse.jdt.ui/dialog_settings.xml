@@ -2,8 +2,8 @@
 <section name="Workbench">
 	<item value="2" key="TypeHierarchyViewPart.hierarchyview"/>
 	<item value="filter_imports;" key="filters_last_used"/>
-	<item value="3" key="TypeHierarchyViewPart.orientation"/>
 	<item value="false" key="TypeHierarchyViewPart.qualifiednames"/>
+	<item value="3" key="TypeHierarchyViewPart.orientation"/>
 	<item value="false" key="TypeHierarchyViewPart.linkeditors"/>
 	<section name="OptionalMessageDialog.hide.">
 		<item value="true" key="org.eclipse.jdt.ui.typecomment.deprecated"/>
@@ -22,10 +22,10 @@
 			<item value="11" key="includeMask"/>
 			<item value="2" key="limitTo"/>
 			<item value="0" key="scope"/>
-			<item value="=openblocks-master/src\/main\/java&lt;edu.mit.blocks.renderable{RenderableBlock.java[RenderableBlock~loadBlockNode~QWorkspace;~QNode;~QWorkspaceWidget;~QHashMap\&lt;QLong;QLong;&gt;;" key="javaElement"/>
 			<item value="edu.mit.blocks.renderable.RenderableBlock.loadBlockNode(Workspace, Node, WorkspaceWidget, HashMap&lt;Long,Long&gt;)" key="pattern"/>
-			<item value="0" key="matchLocations"/>
+			<item value="=openblocks-master/src\/main\/java&lt;edu.mit.blocks.renderable{RenderableBlock.java[RenderableBlock~loadBlockNode~QWorkspace;~QNode;~QWorkspaceWidget;~QHashMap\&lt;QLong;QLong;&gt;;" key="javaElement"/>
 			<item value="1" key="searchFor"/>
+			<item value="0" key="matchLocations"/>
 			<item value="true" key="isCaseSensitive"/>
 			<list key="workingSets">
 			</list>
@@ -34,10 +34,10 @@
 			<item value="11" key="includeMask"/>
 			<item value="2" key="limitTo"/>
 			<item value="0" key="scope"/>
-			<item value="" key="javaElement"/>
 			<item value="readxml" key="pattern"/>
-			<item value="0" key="matchLocations"/>
+			<item value="" key="javaElement"/>
 			<item value="1" key="searchFor"/>
+			<item value="0" key="matchLocations"/>
 			<item value="true" key="isCaseSensitive"/>
 			<list key="workingSets">
 			</list>
@@ -46,22 +46,10 @@
 			<item value="11" key="includeMask"/>
 			<item value="2" key="limitTo"/>
 			<item value="0" key="scope"/>
-			<item value="" key="javaElement"/>
 			<item value="clone" key="pattern"/>
-			<item value="0" key="matchLocations"/>
+			<item value="" key="javaElement"/>
 			<item value="1" key="searchFor"/>
-			<item value="true" key="isCaseSensitive"/>
-			<list key="workingSets">
-			</list>
-		</section>
-		<section name="HISTORY0">
-			<item value="11" key="includeMask"/>
-			<item value="2" key="limitTo"/>
-			<item value="0" key="scope"/>
-			<item value="=openblocks-master/src\/main\/java&lt;edu.mit.blocks.workspace{BlockSave.java[BlockSave~appendInternalRenderableBlock~QMyBlock;~QNode;~QDocument;" key="javaElement"/>
-			<item value="edu.mit.blocks.workspace.BlockSave.appendInternalRenderableBlock(MyBlock, Node, Document)" key="pattern"/>
 			<item value="0" key="matchLocations"/>
-			<item value="1" key="searchFor"/>
 			<item value="true" key="isCaseSensitive"/>
 			<list key="workingSets">
 			</list>
@@ -70,10 +58,22 @@
 			<item value="11" key="includeMask"/>
 			<item value="2" key="limitTo"/>
 			<item value="0" key="scope"/>
-			<item value="=openblocks-master/src\/main\/java&lt;edu.mit.blocks.renderable{RenderableBlock.java[RenderableBlock~getSaveNode~QDocument;" key="javaElement"/>
 			<item value="edu.mit.blocks.renderable.RenderableBlock.getSaveNode(Document)" key="pattern"/>
-			<item value="0" key="matchLocations"/>
+			<item value="=openblocks-master/src\/main\/java&lt;edu.mit.blocks.renderable{RenderableBlock.java[RenderableBlock~getSaveNode~QDocument;" key="javaElement"/>
 			<item value="1" key="searchFor"/>
+			<item value="0" key="matchLocations"/>
+			<item value="true" key="isCaseSensitive"/>
+			<list key="workingSets">
+			</list>
+		</section>
+		<section name="HISTORY0">
+			<item value="11" key="includeMask"/>
+			<item value="2" key="limitTo"/>
+			<item value="0" key="scope"/>
+			<item value="edu.mit.blocks.workspace.BlockSave.appendInternalRenderableBlock(MyBlock, Node, Document)" key="pattern"/>
+			<item value="=openblocks-master/src\/main\/java&lt;edu.mit.blocks.workspace{BlockSave.java[BlockSave~appendInternalRenderableBlock~QMyBlock;~QNode;~QDocument;" key="javaElement"/>
+			<item value="1" key="searchFor"/>
+			<item value="0" key="matchLocations"/>
 			<item value="true" key="isCaseSensitive"/>
 			<list key="workingSets">
 			</list>
@@ -82,10 +82,10 @@
 			<item value="11" key="includeMask"/>
 			<item value="2" key="limitTo"/>
 			<item value="0" key="scope"/>
-			<item value="=openblocks-master/src\/main\/java&lt;edu.mit.blocks.workspace{BlockSave.java[BlockSave~saveToFile~QArrayList\&lt;QString;&gt;;" key="javaElement"/>
 			<item value="edu.mit.blocks.workspace.BlockSave.saveToFile(ArrayList&lt;String&gt;)" key="pattern"/>
-			<item value="0" key="matchLocations"/>
+			<item value="=openblocks-master/src\/main\/java&lt;edu.mit.blocks.workspace{BlockSave.java[BlockSave~saveToFile~QArrayList\&lt;QString;&gt;;" key="javaElement"/>
 			<item value="1" key="searchFor"/>
+			<item value="0" key="matchLocations"/>
 			<item value="true" key="isCaseSensitive"/>
 			<list key="workingSets">
 			</list>
@@ -94,10 +94,10 @@
 			<item value="11" key="includeMask"/>
 			<item value="2" key="limitTo"/>
 			<item value="0" key="scope"/>
-			<item value="=openblocks-master/src\/main\/java&lt;edu.mit.blocks.workspace{Page.java[Page~getSaveNode~QDocument;" key="javaElement"/>
 			<item value="edu.mit.blocks.workspace.Page.getSaveNode(Document)" key="pattern"/>
-			<item value="0" key="matchLocations"/>
+			<item value="=openblocks-master/src\/main\/java&lt;edu.mit.blocks.workspace{Page.java[Page~getSaveNode~QDocument;" key="javaElement"/>
 			<item value="1" key="searchFor"/>
+			<item value="0" key="matchLocations"/>
 			<item value="true" key="isCaseSensitive"/>
 			<list key="workingSets">
 			</list>
@@ -106,10 +106,10 @@
 			<item value="11" key="includeMask"/>
 			<item value="2" key="limitTo"/>
 			<item value="0" key="scope"/>
-			<item value="=openblocks-master/src\/main\/java&lt;edu.mit.blocks.workspace{BlockCanvas.java[BlockCanvas~getSaveNode~QDocument;" key="javaElement"/>
 			<item value="edu.mit.blocks.workspace.BlockCanvas.getSaveNode(Document)" key="pattern"/>
-			<item value="0" key="matchLocations"/>
+			<item value="=openblocks-master/src\/main\/java&lt;edu.mit.blocks.workspace{BlockCanvas.java[BlockCanvas~getSaveNode~QDocument;" key="javaElement"/>
 			<item value="1" key="searchFor"/>
+			<item value="0" key="matchLocations"/>
 			<item value="true" key="isCaseSensitive"/>
 			<list key="workingSets">
 			</list>
@@ -118,10 +118,10 @@
 			<item value="11" key="includeMask"/>
 			<item value="2" key="limitTo"/>
 			<item value="0" key="scope"/>
-			<item value="=openblocks-master/src\/main\/java&lt;edu.mit.blocks.renderable{RenderableBlock.java[RenderableBlock~moveConnectedBlocks" key="javaElement"/>
 			<item value="edu.mit.blocks.renderable.RenderableBlock.moveConnectedBlocks()" key="pattern"/>
-			<item value="0" key="matchLocations"/>
+			<item value="=openblocks-master/src\/main\/java&lt;edu.mit.blocks.renderable{RenderableBlock.java[RenderableBlock~moveConnectedBlocks" key="javaElement"/>
 			<item value="1" key="searchFor"/>
+			<item value="0" key="matchLocations"/>
 			<item value="true" key="isCaseSensitive"/>
 			<list key="workingSets">
 			</list>
@@ -130,10 +130,10 @@
 			<item value="11" key="includeMask"/>
 			<item value="2" key="limitTo"/>
 			<item value="0" key="scope"/>
-			<item value="=openblocks-master/src\/main\/java&lt;edu.mit.blocks.renderable{RenderableBlock.java[RenderableBlock~updateSocketSpace~QBlockConnector;~J~Z" key="javaElement"/>
 			<item value="edu.mit.blocks.renderable.RenderableBlock.updateSocketSpace(BlockConnector, long, boolean)" key="pattern"/>
-			<item value="0" key="matchLocations"/>
+			<item value="=openblocks-master/src\/main\/java&lt;edu.mit.blocks.renderable{RenderableBlock.java[RenderableBlock~updateSocketSpace~QBlockConnector;~J~Z" key="javaElement"/>
 			<item value="1" key="searchFor"/>
+			<item value="0" key="matchLocations"/>
 			<item value="true" key="isCaseSensitive"/>
 			<list key="workingSets">
 			</list>
@@ -142,10 +142,10 @@
 			<item value="11" key="includeMask"/>
 			<item value="2" key="limitTo"/>
 			<item value="0" key="scope"/>
-			<item value="=openblocks-master/src\/main\/java&lt;edu.mit.blocks.workspace{Workspace.java[Workspace~getSaveNode~QDocument;" key="javaElement"/>
 			<item value="edu.mit.blocks.workspace.Workspace.getSaveNode(Document)" key="pattern"/>
-			<item value="0" key="matchLocations"/>
+			<item value="=openblocks-master/src\/main\/java&lt;edu.mit.blocks.workspace{Workspace.java[Workspace~getSaveNode~QDocument;" key="javaElement"/>
 			<item value="1" key="searchFor"/>
+			<item value="0" key="matchLocations"/>
 			<item value="true" key="isCaseSensitive"/>
 			<list key="workingSets">
 			</list>
@@ -154,10 +154,10 @@
 			<item value="11" key="includeMask"/>
 			<item value="2" key="limitTo"/>
 			<item value="0" key="scope"/>
-			<item value="" key="javaElement"/>
 			<item value="loadBlockFrom" key="pattern"/>
-			<item value="0" key="matchLocations"/>
+			<item value="" key="javaElement"/>
 			<item value="1" key="searchFor"/>
+			<item value="0" key="matchLocations"/>
 			<item value="true" key="isCaseSensitive"/>
 			<list key="workingSets">
 			</list>
@@ -187,18 +187,18 @@
 	</section>
 	<section name="JavaElementSearchActions">
 	</section>
+	<section name="RenameInformationPopup">
+	</section>
 	<section name="NewClassWizardPage">
 		<item value="false" key="create_constructor"/>
 		<item value="true" key="create_unimplemented"/>
 	</section>
 	<section name="org.eclipse.ltk.ui.refactoring.settings">
-		<item value="*" key="patterns"/>
-		<item value="false" key="updateQualifiedNames"/>
 		<item value="false" key="renameSubpackages"/>
+		<item value="false" key="updateQualifiedNames"/>
+		<item value="*" key="patterns"/>
 		<item value="1" key="updateSimilarElementsMatchStrategy"/>
 		<item value="false" key="updateTextualMatches"/>
 		<item value="false" key="updateSimilarElements"/>
-	</section>
-	<section name="RenameInformationPopup">
 	</section>
 </section>

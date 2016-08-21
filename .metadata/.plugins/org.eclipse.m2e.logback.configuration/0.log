@@ -6266,3 +6266,11 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact arduino:pde:j
 2016-08-21 22:14:33,582 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 323 resources
 2016-08-21 22:14:38,732 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2016-08-21 22:14:38,733 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 21 resources
+2016-08-22 01:23:39,060 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-08-22 01:23:39,068 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 11 resources
+2016-08-22 01:23:39,675 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-08-22 01:23:39,676 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2016-08-22 01:23:54,100 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-08-22 01:23:54,161 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 335 resources
+2016-08-22 01:24:06,295 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2016-08-22 01:24:06,296 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 21 resources
